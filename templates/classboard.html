@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+{% if session['logged_in'] %}
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Classboard</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/static/css/simple-sidebar.css" rel="stylesheet">
+
+</head>
+
+	<body>
+
+		<div id="wrapper">
+
+			<!-- Sidebar -->
+			<div id="sidebar-wrapper">
+				<ul class="sidebar-nav">
+					<li>
+						<a>---</a>
+					</li>
+					<li class="sidebar-brand">
+						<a href="#">
+							Grading Platform
+						</a>
+					</li>
+					<li>
+						<a href="/classboard_load">Classboard</a>
+					</li>
+					<li>
+						<a href="/logout">Log out</a>
+					</li>
+				</ul>
+			</div>
+			<!-- /#sidebar-wrapper -->
+			
+			<!-- Page Content -->
+			<div id="page-content-wrapper">
+				<div class="container-fluid">
+					<nav class="fixed-top" id="mainNav">
+						<a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Menu</a>
+						{% if role == "teacher" or role == "admin" %}
+						<a href="/createclass_load" class="btn btn-secondary" id="create-calss">Add class</a>
+						{% endif %}
+					</nav>
+				</div>
+			</div>
+			<!-- /#page-content-wrapper -->
+			<!-- /ใส่เว็บตรงนี้ -->
+			
+			<div class="container">
+			<!-- Page Heading -->
+			<h1 class="my-4">Classroom Board
+			</h1>
+			<div class="row">
+			{% for class in list_html %}
+			
+				<div class="col-lg-6 portfolio-item">
+					<div class="card h-100">
+						<a href="#"><img class="card-img-top" src="http://www.talentinternational.com/wp-content/uploads/2017/05/Toby-Greet-Newsjack-image.jpg" alt=""></a>
+						<div class="card-body">
+							<h4 class="card-title">
+								<a href="/load_class/{{class.name}}">{{class.name}}</a>
+							</h4>
+							<p class="card-text">{{class.about}}</p>
+						</div>
+					</div>
+				</div>  
+			
+			{% endfor %}
+			</div>
+			
+			</div>
+		</div>
+		<!-- /#wrapper -->
+
+		<!-- Bootstrap core JavaScript -->
+		<script src="/static/vendor/jquery/jquery.min.js"></script>
+		<script src="/static/vendor/popper/popper.min.js"></script>
+		<script src="/static/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+		<!-- Menu Toggle Script -->
+		<script>
+		$("#menu-toggle").click(function(e) {
+			e.preventDefault();
+			$("#wrapper").toggleClass("toggled");
+		});
+		</script>
+
+	</body>
+
+</html>
+{% else %}
+<h1><font color="Red">You don't have permission to enter this page.!</font></h1>
+{% endif %}

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+{% if session['logged_in'] %}
+
+<html>
+	<head>
+		<meta charset = "utf-8">
+		<title> Home Page!</title>
+	</head>
+	
+	<body>
+		<h2> Name Post : <font color="Blue">{{post.name}}</font> </h2>
+		<h4>Post By....<font color="Green">{{post.owner}}</font> </h4>
+		
+		<br><font color="gray">{{post.msn}}</font></br>
+		
+		</br>
+		<form action="/home">
+		<input type="button" value="Back to home" class="btn btn-primary btn-large btn-block" onclick="window.location.href='/home'" >
+		</form>
+	</body>
+</html>
+
+{% else %}
+<h1><font color="Red">You don't have permission to enter this page.!</font></h1>
+{% endif %}

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+{% if session['logged_in'] %}
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Quiz Board</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/static/css/simple-sidebar.css" rel="stylesheet">
+	
+	
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+				<li>
+                    <a>---</a>
+                </li>
+                <li class="sidebar-brand">
+                    <a href="#">
+                        Grading Platform
+                    </a>
+                </li>
+                <li>
+                    <a href="/classboard_load">Classboard</a>
+                </li>
+                <li>
+                    <a href="/load_class">Assignment</a>
+                </li>
+                <li>
+                    <a href="/logout">Log out</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+		
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+				<nav class="fixed-top" id="mainNav">
+					<a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Menu</a>
+					<a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Create Quiz</a>
+				</nav>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+		<h1 class="head">Quiz Board</h1> 
+		<div class="container">
+			<table class="table">
+			<thead>
+				<tr>
+					<th>Quizname</th>
+					<th></th>
+					<th>Rank</th>
+					<th>Date</th>
+				</tr>
+			</thead>
+			{% for quiz in list_html %}
+				<tbody>
+					<tr>
+						<td>{{quiz.name}}</td>
+						<td><button type="submit" class="btn btn-secondary">edit</button></td>
+						<td>{{quiz.rank}}</td>
+						<td>{{quiz.datetime}}</td>
+					</tr>
+				</tbody>
+			{% endfor %}
+			</table>
+		</div>
+
+    </div>
+
+    <!-- /#wrapper -->
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="/static/vendor/jquery/jquery.min.js"></script>
+    <script src="/static/vendor/popper/popper.min.js"></script>
+    <script src="/static/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Menu Toggle Script -->
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
+
+</body>
+
+</html>
+{% else %}
+<h1><font color="Red">You don't have permission to enter this page.!</font></h1>
+{% endif %}

@@ -1,0 +1,31 @@
+{% block body %}
+ 
+<form action="/register" method="POST">
+	<div class="login">
+		<div class="login-screen">
+				<h1>Register Form</h1>
+				<font color="red"><h3>{{error_msn}}</h3></font>
+			<div class="login-form">
+				<div class="control-group">
+				<input type="text" class="login-field" value="" placeholder="username" name="username">
+				<label class="regis-field-icon fui-user" for="regis-name"></label>
+				</div>
+ 
+				<div class="control-group">
+				<input type="text" class="login-field" value="" placeholder="password" name="password">
+				<label class="regis-field-icon fui-lock" for="regis-pass"></label>
+
+				<br></br>
+				<input type="text" class="login-field" value="" placeholder="password-confirm" name="password-confrim">
+				<label class="regis-field-icon fui-lock" for="regis-pass-ag"></label></br>
+				</div>
+ 
+                <input type="submit" value="submit" class="btn btn-primary btn-large btn-block" >
+				<input type="button" value="Back" class="btn btn-primary btn-large btn-block" onclick="window.location.href='/'" />
+			    <br>
+			</div>
+		</div>
+	</div>
+</form>
+
+{% endblock %}
