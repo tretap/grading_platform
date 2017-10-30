@@ -31,51 +31,6 @@ def home():
 	else :
 		#return render_template('home.html')
 		return home_page(username_gobal)
-"""
-@app.route('/registers')
-def register_page():
-	return render_template('register.html')
-"""
-
-
-"""
-@app.route('/register', methods=['POST'])
-def do_register():
-
-	Session = sessionmaker(bind = engine)
-	s = Session()
-
-	POST_USERNAME = str(request.form['username'])
-	POST_PASSWORD = str(request.form['password'])
-	POST_C_PASSWORD = str(request.form['password-confrim'])
-
-	#--------------------------#Check Text in register page , Protection 
-
-	if POST_PASSWORD != POST_C_PASSWORD:
-		return render_template('register.html', error_msn = "Password != Confrim Password")
-
-	if " " in POST_USERNAME or " " in POST_PASSWORD:
-		return render_template('register.html', error_msn = "Can't Use Free Space in username or password  ") 
-
-	#if POST_USERNAME.lower() not in 'abcdefghijklmnopqrstuvwxyz1234567890' or POST_PASSWORD.lower() not in 'abcdefghijklmnopqrstuvwxyz1234567890':
-		#return render_template('register.html', error_msn = "you can use only Eng Charecter and Diginumber")
-
-	if len(POST_PASSWORD) < 7 :
-		return render_template('register.html', error_msn = "Password should more 7 char!")
-
-	query = s.query(User).filter(User.username.in_([POST_USERNAME]))
-	result = query.first()
-
-	if result :
-		return render_template('register.html', error_msn = "This user has already in system .")
-
-	#--------------------------#
-
-	create_id(POST_USERNAME,POST_PASSWORD)
-
-	return home()
-
-"""
 
 @app.route('/login', methods=['POST'])
 def do_login():
@@ -294,8 +249,6 @@ def do_assigment():
 
 	return loadingclass(class_now)
 
-
-
 @app.route('/quiz_load')
 def quiz_board_page_load():
 	return loadingquiz(assignment_now) #Just bug , but it can work short time.
@@ -342,7 +295,6 @@ def loadingquiz(quiz_name):
 
 	return render_template('quizboard.html', list_html=list_html, code=code, role=role)
 
-
 @app.route('/create_quiz')
 def load_quiz_create_page():
 	return render_template('createquiz.html')
@@ -382,46 +334,11 @@ def do_quiz():
 
 	create_quiz(problem, solution, example, test_case, id_assignm)
 
-	"""quiz_html = []
-	store_html = {}
-
-	for row in dt_ac:
-		# row.name,row.owner
-		store_html['problem'] = row.problem
-		store_html['rank'] = row.rank
-
-		quiz_html = store_html
-		store_html = {}"""
-
 	return quiz_board_page_load()
 
-	"""for row in dt_ac:
-		if problem == row.problem:"""
-
-
-"""
-@app.route("/load_post/<int:post_id>")
-def loading_post(post_id):
-	db = create_engine('sqlite:///board.db', echo = False)
-	
-	metadata = MetaData(db)
-	posts = Table('posts',metadata, autoload = True)
-
-	dt = posts.select().execute()
-
-	dict_html = {}
-
-	for row in dt :
-		#row.name,row.owner
-		if int(row.id) == int(post_id) :
-			dict_html['name'] = row.name
-			dict_html['owner'] = row.owner
-			dict_html['msn'] = row.messenger 
-
-
-	return render_template('post.html',post = dict_html)
-
-"""
+@app.route('/quizpage_load', methods=['POST'])
+def quiz_page_load():
+	pass
 
 if __name__ == '__main__':
 	app.debug = True
