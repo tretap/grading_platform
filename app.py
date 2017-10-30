@@ -325,10 +325,24 @@ def do_quiz():
 
 	return loadingquiz(assignment_now)
 
-@app.route('/quizpage_load')
-def quiz_page_load():
-    quiz_info_html = {'problem':'problem data','solution':'solution data','example':'example data'}
-    return render_template('submission.html',quiz_info = quiz_info_html)
+@app.route('/quizpage_load/<string:quiz_name>')
+def quiz_page_load(quiz_name):
+	#quiz_info_html = {'problem':'problem data','solution':'solution data','example':'example data'}
+	
+	metadata = MetaData(engine)
+
+	class_a = Table('quiz', metadata, autoload=True)
+	dt_a = class_a.select().execute()
+
+	quiz_info_html = {}
+
+	for row in dt_a:
+		# row.name,row.owner
+		if row.problem.split(":")[0] == quiz_name:
+			quiz_info_html = {'problem':row.problem.split(":")[1],'solution':row.solution,'example':row.example}
+			#dict_html['rank'] = None
+
+	return render_template('submission.html',quiz_info = quiz_info_html)
 
 @app.route('/submission_answer', methods=['POST'])
 def submission_answer():
