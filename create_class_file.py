@@ -20,7 +20,7 @@ def create_assigment(name, classowner, discription, quiz = ""):
 	Session = sessionmaker(bind=engine)
 	session = Session()
 
-	class_a = Assigment_db(name, classowner, discription, quiz)
+	class_a = Assignment_db(name, classowner, discription, quiz)
 	session.add(class_a)
 
 	session.commit()

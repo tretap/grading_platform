@@ -9,15 +9,18 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Quiz Board</title>
+    <title>Create Assignment</title>
 
     <!-- Bootstrap core CSS -->
+	
     <link href="/static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
+	
     <!-- Custom styles for this template -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link href="/static/css/simple-sidebar.css" rel="stylesheet">
 	
 	
+
 </head>
 
 <body>
@@ -39,7 +42,7 @@
                     <a href="/classboard_load">Classboard</a>
                 </li>
                 <li>
-                    <a href="/load_class">Assignment</a>
+                    <a href="#">Assignment</a>
                 </li>
                 <li>
                     <a href="/logout">Log out</a>
@@ -53,36 +56,37 @@
             <div class="container-fluid">
 				<nav class="fixed-top" id="mainNav">
 					<a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Menu</a>
-					<a href="/create_quiz" class="btn btn-secondary" id="menu-toggle">Create Quiz</a>
+					
 				</nav>
             </div>
         </div>
         <!-- /#page-content-wrapper -->
-		<h1 class="head">Quiz Board</h1> 
+		<h1 class="head">Create Assignment</h1>
+		<font color="red"><h3>{{error_msn}}</h3></font>
 		<div class="container">
-			<table class="table">
-			<thead>
-				<tr>
-					<th>Quizname</th>
-					<th></th>
-					<th>Rank</th>
+		
+			<form action="/createassigment" method="POST" class="form-horizontal" >
+			<div class="form-group">
+				<label class="control-label col-lg-3" for="a_name">Assignment name &emsp;:</label>
+				<div class="col-sm-2">
+					<input type="text" class="form-control" placeholder="Assigment name " name="a_name">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-lg-3" for="descrip">Assignment Description &emsp; :</label>
+				<div class="col-lg-4">
+					<input type="text" class="form-control" placeholder="About Assigment " name="a_about">
+				</div>
+			</div>
+			
+			
+					<button type="button" value = "Back" class="btn btn-secondary" onclick="window.location.href='/load_class'">Cancel</button>
+					<button type="submit" value = "submit" class="btn btn-secondary">Create</button>
+				</div>
 
-				</tr>
-			</thead>
-			{% for quiz in list_html %}
-				<tbody>
-					<tr>
-						<td>{{quiz.problem}}</td>
-						<td><button type="submit" value="submit" class="btn btn-secondary">edit</button></td>
-						<!--<td>{{quiz.rank}}</td>-->
-					</tr>
-				</tbody>
-			{% endfor %}
-			</table>
+			</form>
 		</div>
-
-    </div>
-
+    
     <!-- /#wrapper -->
 
     <!-- Bootstrap core JavaScript -->

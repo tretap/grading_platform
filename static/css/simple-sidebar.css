@@ -127,7 +127,7 @@ background-color: #fff;
 }
 
 h1.head{
-margin: 30px 80px 10px ;
+margin: 30px 80px 30px ;
 padding: 20px 24px;
 background-color: #FFA52F;
 border-radius: 4px;
@@ -177,13 +177,98 @@ margin: 5px;
 
 label.control{
 position : relative;
-top : 10px;
-left : 100px;
-margin: 18px 0px 0px 0px;
+top : 15px;
+left : 0px;
+margin: 0px 0px 0px 0px;
 }
 
 input.control{
 position : relative;
 top : 100px;
 left : 100px;
+}
+
+/*From Now on is required css code to complete New Create Quiz Page, please copy and paste at the end of main css file*/
+
+textarea.position_first{
+width : 400px;
+height : 100px;
+margin: 10px 0px 0px 100px;
+}
+
+textarea.position_second{
+width : 400px;
+height : 150px;
+margin: 10px 0px 0px 100px;
+}
+
+textarea.position_third{
+width : 400px;
+height : 200px;
+margin: 10px 0px 0px 100px;
+}
+
+label.first_position{
+position : absolute;
+top : 5px;
+left : 0px;
+}
+
+label.second_position{
+position : absolute;
+top : 115px;
+left : 0px;
+}
+
+label.third_position{
+position : absolute;
+top : 225px;
+left : 0px;
+}
+
+label.forth_position{
+position : absolute;
+top : 445px;
+left : 0px;
+}
+
+div.input_box{
+position : relative;
+top : 30px;
+left : 200px;
+}
+
+div.label_box{
+position : relative;
+top : 200px;
+left : 100px;
+}
+
+div.CQ_btn{
+position : relative;
+top : 5px;
+left : 310px;
+width : 100;
+font-size: 16px;
+}
+
+div.CQ_cancel_btn{
+position : relative;
+top : -33px;
+left : 435px;
+font-size: 14px;
+border-radius: 0px;
+}
+
+input.position{
+width : 400px;
+height : 40px;
+margin: 10px 0px 0px 100px;
+}
+
+input.up_pos1{
+position : relative;
+left : 100px ;
+margin : 10px 0px 5px 0px ;
+width : 400px;
 }

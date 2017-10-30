@@ -66,17 +66,11 @@
 		
 		<div class="container">
 		
-			<form class="form-horizontal" action="createassigment" method="POST">
+			<form class="form-horizontal" action="createassignment" method="POST">
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="a_name">Assignment name &emsp; :</label>
 				<div class="col-sm-2">
 					<input type="text" class="form-control" id="a_name" placeholder="Assignment name" name="a_name">
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="control-label col-sm-2" for="Scoring">Assignment description &emsp; :</label>
-				<div class="col-sm-4">
-					<textarea rows = 4 placeholder = "Assignment description" name="a_about" id = "a_about" required></textarea>
 				</div>
 			</div>
 			<div class="form-group">
@@ -126,8 +120,8 @@
 			</div>
 			<div class="form-group">        
 				<div class="col-sm-offset-2 col-sm-10">
-					<button type="submit" class="btn btn-secondary" value="Back" >Cancel</button>
-					<button type="submit" class="btn btn-secondary">Create assignment</button>
+					<button type="button" value = "Back" class="btn btn-secondary" onclick="window.location.href='/load_class'">Cancel</button>
+					<button type="submit" value = "submit" class="btn btn-secondary">Create</button>
 				</div>
 				
 			</div>

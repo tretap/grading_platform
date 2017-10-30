@@ -6,8 +6,8 @@ import os
 from sqlalchemy.orm import sessionmaker
 #from tabledef import *
 #from create_user import *
-
-from gpps_db import * 
+from create_quiz import create_quiz
+from gpps_db import *
 from create_class_file import *
 
 #wait for new version
@@ -18,6 +18,7 @@ app = Flask(__name__)
 
 username_gobal = ""
 class_now = ""
+assignment_now = ""
 
 #-------------------------#
 # This Sector for Login & Logout System and Home Page 
@@ -97,7 +98,7 @@ def do_login():
 		username_gobal = POST_USERNAME
 		return home_page(POST_USERNAME)
 	else :
-		return render_template('login.html',s_w_html = "OMG Something wrong !")
+		return render_template('login.html',s_w_html = "OMG Something wrong,Wrong username !")
 
 @app.route('/logout')
 def logout():
@@ -106,6 +107,7 @@ def logout():
 	global class_name
 	username_gobal = ""
 	class_now = ""
+	assignment_now = ""
 	return home()
 
 #-------------------------#
@@ -115,7 +117,7 @@ def classboard_loading():
 
 @app.route("/classboard")
 def home_page(username):
-	
+
 	metadata = MetaData(engine)
 	ac = Table('account', metadata, autoload = True)
 
@@ -168,13 +170,13 @@ def do_class():
 
 
 	if class_name == "" or class_name == " " or about_class == "" or about_class == " ":
-		return render_template('createclass.html', error_msn = "Sorry sir, name or about can't be void!") 
+		return render_template('createclass.html', error_msn = "Sorry sir, name or about can't be blank!") 
 
 	#if POST_USERNAME.lower() not in 'abcdefghijklmnopqrstuvwxyz1234567890' or POST_PASSWORD.lower() not in 'abcdefghijklmnopqrstuvwxyz1234567890':
 		#return render_template('register.html', error_msn = "you can use only Eng Charecter and Diginumber")
 
 	if len(about_class) < 10 :
-		return render_template('createclass.html', error_msn = "Something wrong in about area!")
+		return render_template('createclass.html', error_msn = "Description must be 10 or more characters")
 
 	query = s.query(Classroom).filter(Classroom.name_class.in_([class_name]))
 	result = query.first()
@@ -224,7 +226,7 @@ def loadingclass(class_name):
 			code = row.code
 			role = row.role
 
-	class_a = Table('assigment',metadata, autoload = True)
+	class_a = Table('assignment',metadata, autoload = True)
 	dt_a = class_a.select().execute()
 
 	list_html = []
@@ -260,19 +262,19 @@ def do_assigment():
 
 
 	if assig_name == "" or assig_name == " " or about_assig == "" or about_assig == " ":
-		return render_template('assignmentcreate.html', error_msn = "Sorry sir, name or about can't be void!") 
+		return render_template('assignmentcreate.html', error_msn = "Sorry sir, name or about can't be blank!") 
 
 	#if POST_USERNAME.lower() not in 'abcdefghijklmnopqrstuvwxyz1234567890' or POST_PASSWORD.lower() not in 'abcdefghijklmnopqrstuvwxyz1234567890':
 		#return render_template('register.html', error_msn = "you can use only Eng Charecter and Diginumber")
 
 	if len(about_assig) < 10 :
-		return render_template('assignmentcreate.html', error_msn = "Something wrong in about area!")
+		return render_template('assignmentcreate.html', error_msn = "Description must be 10 or more characters!")
 
-	query = s.query(Assigment_db).filter(Assigment_db.name.in_([assig_name]))
+	query = s.query(Assignment_db).filter(Assignment_db.name.in_([assig_name]))
 	result = query.first()
 
 	if result :
-		return render_template('assignmentcreate.html', error_msn = "This assigment has already in system .")
+		return render_template('assignmentcreate.html', error_msn = "This assignment has already in system .")
 
 	#--------------------------#
 
@@ -292,9 +294,110 @@ def do_assigment():
 
 	return loadingclass(class_now)
 
+
+
 @app.route('/quiz_load')
-def quiz_create_page():
-	return render_template('quizboard.html') #Just bug , but it can work short time.
+def quiz_board_page_load():
+	return loadingquiz(assignment_now) #Just bug , but it can work short time.
+
+@app.route("/quiz_load/<string:quiz_name>")
+def loadingquiz(quiz_name):
+	global assignment_now
+	assignment_now = quiz_name
+
+	metadata = MetaData(engine)
+
+	#######
+	ac = Table('account', metadata, autoload=True)
+
+	dt_ac = ac.select().execute()
+
+	code = ""
+	role = ""
+
+	for row in dt_ac:
+		if username_gobal == row.username:
+			code = row.code
+			role = row.role
+
+	#######
+
+	class_a = Table('quiz', metadata, autoload=True)
+	dt_a = class_a.select().execute()
+
+	list_html = []
+	dict_html = {}
+
+	for row in dt_a:
+		# row.name,row.owner
+		if row.id_assign == assignment_now:
+			dict_html['problem'] = row.problem
+			#dict_html['rank'] = None
+
+			list_html.append(dict_html)
+
+			dict_html = {}
+
+	print(list_html)
+
+	return render_template('quizboard.html', list_html=list_html, code=code, role=role)
+
+
+@app.route('/create_quiz')
+def load_quiz_create_page():
+	return render_template('createquiz.html')
+
+@app.route('/createquiz', methods=['POST'])
+def do_quiz():
+
+	Session = sessionmaker(bind=engine)
+	s = Session()
+
+	problem = str(request.form['problem'])
+	solution = str(request.form['solution'])
+	example = str(request.form['example'])
+	test_case = str(request.form['test-case'])
+	id_assignm = assignment_now
+	#rank = str(request.form['rank'])
+
+	if problem == "" or solution == "" or example == "" or test_case == "":
+		return render_template('createquiz.html', error_msn = "Sorry sir, name or about can't be blank!")
+
+	query = s.query(Quiz_db).filter(Quiz_db.problem.in_([problem]))
+	result = query.first()
+
+	if result :
+		return render_template('assignmentcreate.html', error_msn = "This assigment has already in system .")
+
+	metadata = MetaData(engine)
+	ac = Table('quiz', metadata, autoload=True)
+
+	dt_ac = ac.select().execute()
+
+	problem = ""
+
+	for row in dt_ac:
+		if(assignment_now == row.problem):
+			problem = row.problem
+
+	create_quiz(problem, solution, example, test_case, id_assignm)
+
+	"""quiz_html = []
+	store_html = {}
+
+	for row in dt_ac:
+		# row.name,row.owner
+		store_html['problem'] = row.problem
+		store_html['rank'] = row.rank
+
+		quiz_html = store_html
+		store_html = {}"""
+
+	return quiz_board_page_load()
+
+	"""for row in dt_ac:
+		if problem == row.problem:"""
+
 
 """
 @app.route("/load_post/<int:post_id>")

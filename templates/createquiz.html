@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Create Quiz</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/static/css/simple-sidebar.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+				<li>
+                    <a>---</a>
+                </li>
+                <li class="sidebar-brand">
+                    <a href="#">
+                        Grading Platform
+                    </a>
+                </li>
+                <li>
+                    <a href="#">Classboard</a>
+                </li>
+                <li>
+                    <a href="#">Assignment</a>
+                </li>
+                <li>
+                    <a href="#">Log out</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+				<nav class="fixed-top" id="mainNav">
+					<a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Menu</a>
+				</nav>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+		<!-- /ใส่เว็บตรงนี้ -->
+        <h1 class = "head">Create Quiz</h1>
+        <font color="red"><h3>{{error_msn}}</h3></font>
+			<form action="createquiz" method="POST">
+                <div class = "input_box">
+                    <div>
+                        <label class = "first_position">Problem : </label>
+                        <textarea  class = "position_first form-control" type = text placeholder="Problem" id="problem" name = "problem" value ="problem" required></textarea>
+                    </div>
+                    <div>
+                        <label class = "second_position">Solution : </label>
+                        <textarea  class = "position_first form-control" type = text placeholder="Solution" id="solution" name = "solution" required></textarea>
+                    </div>
+                    <div>
+                        <label class = "third_position">Example : </label>
+                        <textarea class = "position_second form-control" type = text placeholder="Example" id = "example" name = "example"></textarea>
+                    </div>
+                    <div>
+                        <input class="up_pos1 btn btn-secondary" id="example-picker" type="file" name="file" multiple>
+                    </div>
+                    <div>
+                        <label class = "forth_position">Test Case : </label>
+                        <textarea  class = "position_third form-control" type = text placeholder="Test Case" id = "test-case" name = "test-case"></textarea>
+                    </div>
+                    <div>
+                        <input class="up_pos1 btn btn-secondary" id="test-case-picker" type="file" name="file" multiple>
+                    </div>
+                    <div class = "CQ_btn">
+                        <input class="btn btn-secondary" type = "submit" value = "Create Quiz">
+                    </div>
+                    <div class = "CQ_cancel_btn">
+                        <input class="btn btn-secondary" type = "reset" value = "Reset">
+                    </div>
+                </div>
+
+			</form>
+	</div>
+
+
+    <!-- /#wrapper -->
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="/static/vendor/jquery/jquery.min.js"></script>
+    <script src="/static/vendor/popper/popper.min.js"></script>
+    <script src="/static/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Menu Toggle Script -->
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
+
+</body>
+
+</html>
