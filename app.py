@@ -336,9 +336,10 @@ def do_quiz():
 
 	return quiz_board_page_load()
 
-@app.route('/quizpage_load', methods=['POST'])
+@app.route('/quizpage_load')
 def quiz_page_load():
-	pass
+    quiz_info_html = {}
+    return render_template('submission.html',quiz_info = quiz_info_html)
 
 if __name__ == '__main__':
 	app.debug = True
