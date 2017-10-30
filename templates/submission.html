@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% if session['logged_in'] %}
 <html lang="en">
 
 <head>
@@ -14,15 +15,16 @@
     <link href="/static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
+
     <link href="/static/css/Submit.css" rel="stylesheet">
 
 </head>
 
 <body>
 
-    <div id="wrapper">
+    <div id="wrapper" >
 
-        <!-- Sidebar -->
+          <!-- Sidebar -->
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
 				<li>
@@ -37,7 +39,7 @@
                     <a href="/classboard_load">Classboard</a>
                 </li>
                 <li>
-                    <a href="#">Assignment</a>
+                    <a href="/load_class">Assignment</a>
                 </li>
                 <li>
                     <a href="/logout">Log out</a>
@@ -45,16 +47,20 @@
             </ul>
         </div>
         <!-- /#sidebar-wrapper -->
-		
+
         <!-- Page Content -->
         <div id="page-content-wrapper">
             <div class="container-fluid">
 				<nav class="fixed-top" id="mainNav">
 					<a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Menu</a>
+					{% if role == "teacher" or role == "admin" %}
+					<a href="/create_quiz" class="btn btn-secondary" id="menu-toggle">Create Quiz</a>
+					{% endif %}
 				</nav>
             </div>
         </div>
-        <!-- /#page-content-wrapper -->
+
+
 		<!-- /ใส่เว็บตรงนี้ -->
 		<h1 class="head">Quiz</h1>
 		<h2 class="head">{{quiz_info.problem}}{{quiz_info.solution}}{{quiz_info.example}}</h2> <!-- /ข้อมูลที่กรกอกใน create quiz ต้องมาอยู -->
@@ -76,12 +82,12 @@
     </div>
     <!-- /#wrapper -->
 
-    <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/popper/popper.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 
-    <!-- Menu Toggle Script -->
+    <!-- Bootstrap core JavaScript -->
+    <script src="/static/vendor/jquery/jquery.min.js"></script>
+    <script src="/static/vendor/popper/popper.min.js"></script>
+    <script src="/static/vendor/bootstrap/js/bootstrap.min.js"></script>
+
     <!-- Menu Toggle Script -->
     <script>
     $("#menu-toggle").click(function(e) {
@@ -93,3 +99,15 @@
 </body>
 
 </html>
+{% else %}
+<html>
+    <head>
+        <script type="text/javascript">
+            window.location.href='/';
+        </script>
+    </head>
+    <body>
+        <div id="content"></div>
+    </body>
+</html>
+{% endif %}
