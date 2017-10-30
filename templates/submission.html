@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% if session['logged_in'] %}
 <html lang="en">
 
 <head>
@@ -14,13 +15,14 @@
     <link href="/static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
+
     <link href="/static/css/Submit.css" rel="stylesheet">
 
 </head>
 
 <body>
 
-    <div id="wrapper">
+    <div id="wrapper" >
 
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
@@ -37,7 +39,7 @@
                     <a href="/classboard_load">Classboard</a>
                 </li>
                 <li>
-                    <a href="#">Assignment</a>
+                    <a href="/load_class">Assignment</a>
                 </li>
                 <li>
                     <a href="/logout">Log out</a>
@@ -50,6 +52,7 @@
         <div id="page-content-wrapper">
             <div class="container-fluid">
 				<nav class="fixed-top" id="mainNav">
+
 					<a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Menu</a>
 				</nav>
             </div>
@@ -93,3 +96,15 @@
 </body>
 
 </html>
+{% else %}
+<html>
+    <head>
+        <script type="text/javascript">
+            window.location.href='/';
+        </script>
+    </head>
+    <body>
+        <div id="content"></div>
+    </body>
+</html>
+{% endif %}

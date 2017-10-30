@@ -327,7 +327,7 @@ def do_quiz():
 
 @app.route('/quizpage_load')
 def quiz_page_load():
-    quiz_info_html = {}
+    quiz_info_html = {'problem':'problem data','solution':'solution data','example':'example data'}
     return render_template('submission.html',quiz_info = quiz_info_html)
 
 if __name__ == '__main__':
