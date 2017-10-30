@@ -53,7 +53,7 @@ def do_login():
 		username_gobal = POST_USERNAME
 		return home_page(POST_USERNAME)
 	else :
-		return render_template('login.html',s_w_html = "OMG Something wrong,Wrong username !")
+		return render_template('login.html',s_w_html = "OMG Something wrong!")
 
 @app.route('/logout')
 def logout():
@@ -284,14 +284,14 @@ def loadingquiz(quiz_name):
 	for row in dt_a:
 		# row.name,row.owner
 		if row.id_assign == assignment_now:
-			dict_html['problem'] = row.problem
+			dict_html['problem'] = row.problem.split(":")[0]
 			#dict_html['rank'] = None
 
 			list_html.append(dict_html)
 
 			dict_html = {}
 
-	print(list_html)
+	#print(list_html)
 
 	return render_template('quizboard.html', list_html=list_html, code=code, role=role)
 
@@ -315,26 +315,15 @@ def do_quiz():
 	if problem == "" or solution == "" or example == "" or test_case == "":
 		return render_template('createquiz.html', error_msn = "Sorry sir, name or about can't be blank!")
 
-	query = s.query(Quiz_db).filter(Quiz_db.problem.in_([problem]))
+	query = s.query(Quiz_db).filter(Quiz_db.problem.in_([problem.split(":")[0]]))
 	result = query.first()
 
 	if result :
-		return render_template('assignmentcreate.html', error_msn = "This assigment has already in system .")
-
-	metadata = MetaData(engine)
-	ac = Table('quiz', metadata, autoload=True)
-
-	dt_ac = ac.select().execute()
-
-	problem = ""
-
-	for row in dt_ac:
-		if(assignment_now == row.problem):
-			problem = row.problem
+		return render_template('createquiz.html', error_msn = "This Quiz has already in system .")
 
 	create_quiz(problem, solution, example, test_case, id_assignm)
 
-	return quiz_board_page_load()
+	return loadingquiz(assignment_now)
 
 @app.route('/quizpage_load')
 def quiz_page_load():

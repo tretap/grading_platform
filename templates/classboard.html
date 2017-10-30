@@ -101,5 +101,14 @@
 
 </html>
 {% else %}
-<h1><font color="Red">You don't have permission to enter this page.!</font></h1>
+<html>
+    <head>
+        <script type="text/javascript">
+            window.location.href='/';
+        </script>
+    </head>
+    <body>
+        <div id="content"></div>
+    </body>
+</html>
 {% endif %}
