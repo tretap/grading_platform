@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% if session['logged_in'] %}
 <html lang="en">
 
 <head>
@@ -34,13 +35,13 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">Classboard</a>
+                    <a href="/classboard_load">Classboard</a>
                 </li>
                 <li>
-                    <a href="#">Assignment</a>
+                    <a href="/load_class">Assignment</a>
                 </li>
                 <li>
-                    <a href="#">Log out</a>
+                    <a href="/logout">Log out</a>
                 </li>
             </ul>
         </div>
@@ -112,3 +113,15 @@
 </body>
 
 </html>
+{% else %}
+<html>
+    <head>
+        <script type="text/javascript">
+            window.location.href='/';
+        </script>
+    </head>
+    <body>
+        <div id="content"></div>
+    </body>
+</html>
+{% endif %}
