@@ -330,6 +330,23 @@ def quiz_page_load():
     quiz_info_html = {'problem':'problem data','solution':'solution data','example':'example data'}
     return render_template('submission.html',quiz_info = quiz_info_html)
 
+@app.route('/submission_answer', methods=['POST'])
+def submission_answer():
+	quiz_info_html = {'problem': 'problem data', 'solution': 'solution data', 'example': 'example data'}
+
+	f = request.form['file']
+	if (f != None and f != ''):
+		with open(f) as file_data:
+			x = file_data.readlines()
+		print("choosen file")
+		print(x)
+	else:
+		print("no file choosen")
+
+		return render_template('submission.html', quiz_info=quiz_info_html)
+
+	return render_template('submission.html', quiz_info=quiz_info_html)
+	pass
 if __name__ == '__main__':
 	app.debug = True
 	app.secret_key = os.urandom(12)
