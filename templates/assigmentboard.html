@@ -54,7 +54,9 @@
             <div class="container-fluid">
 				<nav class="fixed-top" id="mainNav">
 					<a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Menu</a>
+					{% if role == "teacher" or role == "admin" %}
 					<a href="/cam_load" class="btn btn-secondary" id="menu-toggle">Create Assignment</a>
+					{% endif %}
 				</nav>
             </div>
         </div>
@@ -66,7 +68,7 @@
 			<thead>
 				<tr>
 					<th>Assignment</th>
-					<th></th><th></th>
+					<th></th>{% if role == "teacher" or role == "admin" %}<th></th>{% endif %}
 					<th>Description</th>
 					
 				</tr>
@@ -75,7 +77,7 @@
 				<tbody>
 					<tr>
 						<td>{{assign.name}}</td>
-						<td><button type="submit" class="btn btn-secondary">edit</button></td>
+						{% if role == "teacher" or role == "admin" %}<td><button type="submit" class="btn btn-secondary">edit</button></td>{% endif %}
 						<td><button type="button" class="btn btn-secondary" onclick="window.location.href='/quiz_load/{{assign.name}}'">enter</button></td>
 						<td>{{assign.about}}</td>
 					</tr>
@@ -107,5 +109,14 @@
 </html>
 
 {% else %}
-<h1><font color="Red">You don't have permission to enter this page.!</font></h1>
+<html>
+    <head>
+        <script type="text/javascript">
+            window.location.href='/';
+        </script>
+    </head>
+    <body>
+        <div id="content"></div>
+    </body>
+</html>
 {% endif %}
