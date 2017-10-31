@@ -307,10 +307,24 @@ def do_quiz():
 
 	problem = str(request.form['problem'])
 	solution = str(request.form['solution'])
-	example = str(request.form['example'])
 	test_case = str(request.form['test-case'])
 	id_assignm = assignment_now
 	#rank = str(request.form['rank'])
+	f = request.form['file1']
+	if (f != None and f != ''):
+		with open(f) as file_data:
+			x = file_data.readlines()
+		example = (("".join(x)).replace("\n","")).replace("\t","")
+	else:
+		example = str(request.form['example'])
+
+	f = request.form['file2']
+	if (f != None and f != ''):
+		with open(f) as file_data:
+			x = file_data.readlines()
+		test_case = (("".join(x)).replace("\n","")).replace("\t","")
+	else:
+		test_case = str(request.form['test-case'])
 
 	if problem == "" or solution == "" or example == "" or test_case == "":
 		return render_template('createquiz.html', error_msn = "Sorry sir, name or about can't be blank!")
@@ -356,7 +370,6 @@ def submission_answer():
 		print(x)
 	else:
 		print("no file choosen")
-
 		return render_template('submission.html', quiz_info=quiz_info_html)
 
 	return render_template('submission.html', quiz_info=quiz_info_html)
