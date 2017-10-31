@@ -3,7 +3,8 @@ from flask import Flask, flash, redirect , render_template, request,session ,abo
 
 import os
 import importlib
-
+import sys
+sys.path.append("/Users/mac/Documents/GitHub/grading_platform/images/")
 from sqlalchemy.orm import sessionmaker
 #from tabledef import *
 #from create_user import *
@@ -356,7 +357,7 @@ def submission_answer(quiz_name):
     for file in request.files.getlist("file"):
 
         filename = file.filename
-        destination = "/".join([target, filename])
+        destination = "".join([target, filename])
 
         file.save(destination)
 
@@ -364,10 +365,10 @@ def submission_answer(quiz_name):
         print('py file = '+pyfile )
         print(filename[:len(filename)-3])
 
-
+        prob = importlib.import_module(filename[:len(filename) - 3])
         error = True
         try:
-            prob = importlib.import_module(filename[:len(filename) - 3])
+            #prob = importlib.import_module(filename[:len(filename) - 3])
             out = eval('prob.hello_world ()')
             print(out)
             if out == "Hello world":#assert
