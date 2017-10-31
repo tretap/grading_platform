@@ -363,10 +363,11 @@ def submission_answer(quiz_name):
         pyfile = destination
         print('py file = '+pyfile )
         print(filename[:len(filename)-3])
-        prob = importlib.import_module(filename[:len(filename)-3])
+
 
         error = True
         try:
+            prob = importlib.import_module(filename[:len(filename) - 3])
             out = eval('prob.hello_world ()')
             print(out)
             if out == "Hello world":#assert
