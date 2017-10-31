@@ -328,7 +328,7 @@ def do_quiz():
 	return loadingquiz(assignment_now)
 
 @app.route('/quizpage_load/<string:quiz_name>')
-def quiz_page_load(quiz_name):
+def quiz_page_load(quiz_name,error = "",code = ""):
 	#quiz_info_html = {'problem':'problem data','solution':'solution data','example':'example data'}
 	
 	metadata = MetaData(engine)
@@ -344,7 +344,7 @@ def quiz_page_load(quiz_name):
 			quiz_info_html = {'name':row.problem.split(":")[0],'problem':row.problem.split(":")[1],'solution':row.solution,'example':row.example}
 			#dict_html['rank'] = None
 
-	return render_template('submission.html',quiz_info = quiz_info_html)
+	return render_template('submission.html',quiz_info = quiz_info_html,error = error,code = code)
 
 @app.route('/submission_answer/<string:quiz_name>', methods=['POST'])
 def submission_answer(quiz_name):
@@ -377,11 +377,9 @@ def submission_answer(quiz_name):
 
         if not error:
             print("Congrate!!")
+            return quiz_page_load(quiz_name,"Congrate!!")
 
-
-
-
-    return quiz_page_load(quiz_name)
+        return quiz_page_load(quiz_name,"Fail!!")
 
 
 

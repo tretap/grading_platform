@@ -66,10 +66,10 @@
 		<h2 class="head">{{quiz_info.problem}}{{quiz_info.solution}}{{quiz_info.example}}</h2> <!-- /ข้อมูลที่กรกอกใน create quiz ต้องมาอยู -->
 
             <div>
-                <textarea  class = "position_first form-control" type = text placeholder="Enter code here!" name = "problem" value ="problem" required></textarea>
+                <textarea  class = "position_first form-control" type = text placeholder="Enter code here!" name = "problem" value ="problem" required>{{code}}</textarea>
             </div>
 
-			<h3 class="head">testcase</h3>
+			<h3 class="head">{{error}}</h3>
 			<form id="upload-form" action="/submission_answer/{{quiz_info.name}}" method="POST" enctype="multipart/form-data">
                 <div class = "input_box">
                     <div>
