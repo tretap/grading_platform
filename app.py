@@ -15,6 +15,7 @@ from create_class_file import *
 engine = create_engine('sqlite:///gpps_db.db', echo=False)
 
 app = Flask(__name__)
+APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 
 username_gobal = ""
 class_now = ""
@@ -346,20 +347,19 @@ def quiz_page_load(quiz_name):
 
 @app.route('/submission_answer/<string:quiz_name>', methods=['POST'])
 def submission_answer(quiz_name):
+    target = os.path.join(APP_ROOT, 'images/')
 
-	f = request.form['file']
-	if (f != None and f != ''):
-		with open(f) as file_data:
-			x = file_data.readlines()
-		print("choosen file")
-		print(x)
-	else:
-		print("no file choosen")
+    if not os.path.isdir(target):
+        os.mkdir(target)
 
-		return quiz_page_load(quiz_name)
+    for file in request.files.getlist("file"):
+        print(file)
+        filename = file.filename
+        destination = "/".join([target, filename])
+        print(destination)
+        file.save(destination)
 
-	return quiz_page_load(quiz_name)
-	pass
+    return quiz_page_load(quiz_name)
 if __name__ == '__main__':
 	app.debug = True
 	app.secret_key = os.urandom(12)
