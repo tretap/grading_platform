@@ -339,14 +339,13 @@ def quiz_page_load(quiz_name):
 	for row in dt_a:
 		# row.name,row.owner
 		if row.problem.split(":")[0] == quiz_name:
-			quiz_info_html = {'problem':row.problem.split(":")[1],'solution':row.solution,'example':row.example}
+			quiz_info_html = {'name':row.problem.split(":")[0],'problem':row.problem.split(":")[1],'solution':row.solution,'example':row.example}
 			#dict_html['rank'] = None
 
 	return render_template('submission.html',quiz_info = quiz_info_html)
 
-@app.route('/submission_answer', methods=['POST'])
-def submission_answer():
-	quiz_info_html = {'problem': 'problem data', 'solution': 'solution data', 'example': 'example data'}
+@app.route('/submission_answer/<string:quiz_name>', methods=['POST'])
+def submission_answer(quiz_name):
 
 	f = request.form['file']
 	if (f != None and f != ''):
@@ -357,9 +356,9 @@ def submission_answer():
 	else:
 		print("no file choosen")
 
-		return render_template('submission.html', quiz_info=quiz_info_html)
+		return quiz_page_load(quiz_name)
 
-	return render_template('submission.html', quiz_info=quiz_info_html)
+	return quiz_page_load(quiz_name)
 	pass
 if __name__ == '__main__':
 	app.debug = True
