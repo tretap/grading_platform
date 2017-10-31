@@ -2,6 +2,7 @@ from flask import Flask
 from flask import Flask, flash, redirect , render_template, request,session ,abort
 
 import os
+import importlib
 
 from sqlalchemy.orm import sessionmaker
 #from tabledef import *
@@ -351,15 +352,39 @@ def submission_answer(quiz_name):
 
     if not os.path.isdir(target):
         os.mkdir(target)
-
+    print(request.files.getlist("file"))
     for file in request.files.getlist("file"):
-        print(file)
+
         filename = file.filename
         destination = "/".join([target, filename])
-        print(destination)
+
         file.save(destination)
 
+        pyfile = destination
+        print('py file = '+pyfile )
+        print(filename[:len(filename)-3])
+        prob = importlib.import_module(filename[:len(filename)-3])
+
+        error = True
+        try:
+            out = eval('prob.hello_world ()')
+            print(out)
+            if out == "Hello world":#assert
+                error = False
+
+        except:
+            pass
+
+        if not error:
+            print("Congrate!!")
+
+
+
+
     return quiz_page_load(quiz_name)
+
+
+
 if __name__ == '__main__':
 	app.debug = True
 	app.secret_key = os.urandom(12)
