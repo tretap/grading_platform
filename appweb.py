@@ -18,6 +18,7 @@ engine = create_engine('sqlite:///gpps_db.db', echo=False)
 
 app = Flask(__name__)
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
+#os.system('flask run --host=192.168.56.1')
 
 username_gobal = ""
 class_now = ""
@@ -50,6 +51,7 @@ def do_login():
 
 	if result:
 		session['logged_in'] = True
+		session['id'] = POST_USERNAME
 
 		global username_gobal
 
@@ -110,7 +112,7 @@ def home_page(username):
 
 			dict_html = {}
 
-	return render_template('classboard.html',list_html = list_html,role = role)
+	return render_template('classboard.html',list_html = list_html,role = role,name = session.get('id'))
 
 @app.route('/createclass_load')
 def class_create_page():
@@ -386,6 +388,6 @@ def submission_answer(quiz_name):
 
 
 if __name__ == '__main__':
-	app.debug = True
+	app.debug = False
 	app.secret_key = os.urandom(12)
-	app.run(host='localhost', port=8000)
+	app.run(host='0.0.0.0', port=80)
