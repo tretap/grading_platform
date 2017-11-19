@@ -2,7 +2,7 @@ from flask import Flask, flash, redirect , render_template, request,session ,abo
 from sqlalchemy import *
 import os
 import importlib
-from create_class_file import *
+from CPO_create_class import *
 
 from sqlalchemy.orm import sessionmaker
 engine = create_engine('sqlite:///gpps_db.db', echo=False)
@@ -31,7 +31,7 @@ def login():
     query = s.query(Account).filter(Account.username.in_([POST_USERNAME]), Account.password.in_([POST_PASSWORD]))
     result = query.first()
     print("query = ")
-    print(result.username)
+
     if result:
         login_account = account_load(result.user_id)
         session['logged_in'] = True
@@ -64,17 +64,19 @@ def home_page():
     for row in class_data :
 
         list_student_id_st = row.member.split(",")
-        list_student_id_th = row.teacher_student_id.split(",")
+        list_student_id_th = row.teacher_id.split(",")
 
-        if user_account.student_id in list_student_id_st or user_account.student_id in list_student_id_th:
+        if (user_account.student_id in list_student_id_st )or (str(user_account.user_id) in list_student_id_th or user_account.role == 'admin'):
+
             dict_html['id'] = row.id
             dict_html['name'] = row.name_class
             dict_html['name_teacher'] = row.teacher
-            dict_html['about'] = row.discription
+            dict_html['about'] = row.description
             list_html.append(dict_html)
             dict_html = {}
-    print( user_account.username)
+    print( list_student_id_th)
     return render_template('classboard.html',list_html = list_html,role = user_account.role,name = user_account.username)
+
 def classboard_loading():
 	return home_page()
 
@@ -87,7 +89,7 @@ def do_class():
 
     Session = sessionmaker(bind = engine)
     s = Session()
-
+    user_account = account_load(session['user_id'])
     class_name = str(request.form['classname'])
     about_class = str(request.form['classdescription'])
     member = str(request.form['member'])
@@ -104,11 +106,15 @@ def do_class():
 
     if result :
         return render_template('createclass.html', error_msn = "This class has already in system .")
-    create_class(class_name,about_class,member)
+    create_class(user_account.user_id,class_name,about_class,member)
+    #def create_class(class_name, class_description, class_member):
 
     return classboard_loading()
+@app.route('/classboard_load')
+def classboard_loading():
+	return home_page()
 
 if __name__ == '__main__':
 	app.debug = False
 	app.secret_key = os.urandom(12)
-	app.run(host='localhost', port=8000)
+	app.run(host='0.0.0.0', port=8000)

@@ -31,18 +31,18 @@ class Classroom(Base):
     id = Column(Integer, primary_key=True)
     name_class = Column(String)
     teacher = Column(String)
-    teacher_code = Column(String)
-    discription = Column(String)
+    teacher_id = Column(String)
+    description = Column(String)
     member = Column(String)
     assigment = Column(String)
 
     # ----------------------------------------------------------------------
-    def __init__(self, name_class, teacher, teacher_code, discription, member="", assignment=""):
+    def __init__(self, name_class, teacher, teacher_code, description, member="", assignment=""):
         """"""
         self.name_class = name_class
         self.teacher = teacher
-        self.teacher_code = teacher_code
-        self.discription = discription
+        self.teacher_id = teacher_code
+        self.description = description
         self.member = member
         self.assignment = assignment
 
@@ -54,15 +54,15 @@ class Assignment_db(Base):
     id = Column(Integer, primary_key=True)
     name = Column(String)
     classowner = Column(String)
-    discription = Column(String)
+    description = Column(String)
     quiz = Column(String)
 
     # ----------------------------------------------------------------------
-    def __init__(self, name, classowner, discription, quiz=""):
+    def __init__(self, name, classowner, description, quiz=""):
         """"""
         self.name = name
         self.classowner = classowner
-        self.discription = discription
+        self.description = description
         self.quiz = quiz
 
 
@@ -89,7 +89,7 @@ class Quiz_db(Base):
         self.id_assign = id_assign
 
 
-#Base.metadata.create_all(engine)
+Base.metadata.create_all(engine)
 
 class account_load():
     user_id = None
