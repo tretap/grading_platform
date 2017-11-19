@@ -78,7 +78,8 @@
 					<tr>
 						<td>{{assign.name}}</td>
 						{% if role == "teacher" or role == "admin" %}<td><button type="submit" class="btn btn-secondary">edit</button></td>{% endif %}
-						<td><button type="button" class="btn btn-secondary" onclick="window.location.href='/quiz_load/{{assign.name}}'">enter</button></td>
+						<td><button type="submit" class="btn btn-secondary">delete</button></td>
+                        <td><button type="submit" class="btn btn-secondary" onclick="window.location.href='/quiz_load/{{assign.name}}'">enter</button></td>
 						<td>{{assign.about}}</td>
 					</tr>
 				</tbody>

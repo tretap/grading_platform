@@ -15,12 +15,12 @@ from cpo_db import *
 
 @app.route("/")
 def home():
-	if not session.get('logged_in'):
-		return render_template('login.html')
+    if not session.get('logged_in'):
+        return render_template('login.html')
 
-	else :
+    else :
 
-		return home_page()
+        return home_page()
 
 @app.route('/login', methods=['POST'])
 def login():
@@ -36,6 +36,7 @@ def login():
         login_account = account_load(result.user_id)
         session['logged_in'] = True
         session['user_id'] = login_account.user_id
+        session['class'] = None
         print('login sucessfuly')
         return home_page()
     else :
@@ -45,9 +46,10 @@ def login():
 
 @app.route('/logout')
 def logout():
-	session['logged_in'] = False
-
-	return home()
+    session['logged_in'] = False
+    session['user_id'] = None
+    session['class'] = None
+    return home()
 
 @app.route("/classboard") #main page
 def home_page():
@@ -78,14 +80,14 @@ def home_page():
     return render_template('classboard.html',list_html = list_html,role = user_account.role,name = user_account.username)
 
 def classboard_loading():
-	return home_page()
+    return home_page()
 
 @app.route('/createclass')
 def class_create_page():
-	return render_template('createclass.html')
+    return render_template('createclass.html')
 
 @app.route('/createclass', methods=['POST'])
-def do_class():
+def make_class():
 
     Session = sessionmaker(bind = engine)
     s = Session()
@@ -112,9 +114,151 @@ def do_class():
     return classboard_loading()
 @app.route('/classboard_load')
 def classboard_loading():
-	return home_page()
+    return home_page()
+
+@app.route("/load_class/<string:class_name>")
+def loadingclass(class_name):
+
+    user_account = account_load(session['user_id'])
+    session['class'] = class_name
+
+    metadata = MetaData(engine)
+
+
+
+
+    class_a = Table('assignment',metadata, autoload = True)
+    dt_a = class_a.select().execute()
+
+    list_html = []
+    dict_html = {}
+
+    for row in dt_a :
+        #row.name,row.owner
+        if row.classowner == class_name :
+            dict_html['name'] = row.name
+            dict_html['about'] = row.description 
+
+            list_html.append(dict_html)
+
+            dict_html = {}
+
+    print(list_html)
+
+    if user_account.role == 'admin':
+        return render_template('assigmentboard.html', list_html=list_html, code='admin', role='admin')
+    return render_template('assigmentboard.html',list_html = list_html,code = user_account.student_id,role = user_account.role)
+
+@app.route('/cam_load')
+def assigment_create_page():
+    return render_template('assignmentcreate.html')
+
+
+
+@app.route('/createassigment', methods=['POST'])
+def do_assigment():
+
+    Session = sessionmaker(bind = engine)
+    s = Session()
+
+    assig_name = str(request.form['a_name'])
+    about_assig = str(request.form['a_about'])
+
+
+    if assig_name == "" or assig_name == " " or about_assig == "" or about_assig == " ":
+        return render_template('assignmentcreate.html', error_msn = "Sorry sir, name or about can't be blank!")
+
+    if len(about_assig) < 10 :
+        return render_template('assignmentcreate.html', error_msn = "Description must be 10 or more characters!")
+
+    query = s.query(Assignment_db).filter(Assignment_db.name.in_([assig_name]))
+    result = query.first()
+
+    if result :
+        return render_template('assignmentcreate.html', error_msn = "This assignment has already in system .")
+
+    #--------------------------#
+
+    metadata = MetaData(engine)
+
+
+
+
+
+
+    create_assigment(assig_name, session['class'], about_assig)
+
+    return loadingclass(session['class'])
+
+@app.route('/quiz_load')
+def quiz_board_page_load():
+	return loadingquiz(assignment_now) #Just bug , but it can work short time.
+
+@app.route("/quiz_load/<string:quiz_name>")
+def loadingquiz(quiz_name):
+	global assignment_now
+	assignment_now = quiz_name
+
+	metadata = MetaData(engine)
+
+	#######
+	ac = Table('account', metadata, autoload=True)
+
+	dt_ac = ac.select().execute()
+
+	code = ""
+	role = ""
+
+	for row in dt_ac:
+		if username_gobal == row.username:
+			code = row.code
+			role = row.role
+
+	#######
+
+	class_a = Table('quiz', metadata, autoload=True)
+	dt_a = class_a.select().execute()
+
+	list_html = []
+	dict_html = {}
+
+	for row in dt_a:
+		# row.name,row.owner
+		if row.id_assign == assignment_now:
+			dict_html['problem'] = row.problem.split(":")[0]
+			#dict_html['rank'] = None
+
+			list_html.append(dict_html)
+
+			dict_html = {}
+
+	#print(list_html)
+
+	return render_template('quizboard.html', list_html=list_html, code=code, role=role)
+
+
+@app.route('/quizpage_load/<string:quiz_name>')
+def quiz_page_load(quiz_name, error="", code=""):
+    # quiz_info_html = {'problem':'problem data','solution':'solution data','example':'example data'}
+
+    metadata = MetaData(engine)
+
+    class_a = Table('quiz', metadata, autoload=True)
+    dt_a = class_a.select().execute()
+
+    quiz_info_html = {}
+
+    for row in dt_a:
+        # row.name,row.owner
+        if row.problem.split(":")[0] == quiz_name:
+            quiz_info_html = {'name': row.problem.split(":")[0], 'problem': row.problem.split(":")[1],
+                              'solution': row.solution, 'example': row.example}
+            # dict_html['rank'] = None
+
+    return render_template('submission.html', quiz_info=quiz_info_html, error=error, code=code)
+
 
 if __name__ == '__main__':
-	app.debug = False
-	app.secret_key = os.urandom(12)
-	app.run(host='0.0.0.0', port=8000)
+    app.debug = False
+    app.secret_key = os.urandom(12)
+    app.run(host='0.0.0.0', port=8000)
