@@ -4,7 +4,7 @@ from flask import Flask, flash, redirect , render_template, request,session ,abo
 import os
 import importlib
 import sys
-sys.path.append("/Users/mac/Documents/GitHub/grading_platform/images/")
+
 from sqlalchemy.orm import sessionmaker
 #from tabledef import *
 #from create_user import *
@@ -390,4 +390,4 @@ def submission_answer(quiz_name):
 if __name__ == '__main__':
 	app.debug = False
 	app.secret_key = os.urandom(12)
-	app.run(host='0.0.0.0', port=80)
+	app.run(host='0.0.0.0', port=8000)
