@@ -50,7 +50,7 @@
 					<nav class="fixed-top" id="mainNav">
 						<a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Menu</a>
 						{% if role == "teacher" or role == "admin" %}
-						<a href="/createclass_load" class="btn btn-secondary" id="create-calss">Add class</a>
+						<a href="/createclass" class="btn btn-secondary" id="create-class">Add class</a>
 						{% endif %}
 					</nav>
 				</div>
@@ -60,7 +60,7 @@
 			
 			<div class="container">
 			<!-- Page Heading -->
-			<h1 class="my-4">Classroom Board
+			<h1 class="my-4">Classroom Board . welcome {{name}}
 			</h1>
 			<div class="row">
 			{% for class in list_html %}
@@ -101,5 +101,14 @@
 
 </html>
 {% else %}
-<h1><font color="Red">You don't have permission to enter this page.!</font></h1>
+<html>
+    <head>
+        <script type="text/javascript">
+            window.location.href='/';
+        </script>
+    </head>
+    <body>
+        <div id="content"></div>
+    </body>
+</html>
 {% endif %}

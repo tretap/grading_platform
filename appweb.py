@@ -1,11 +1,13 @@
-from flask import Flask 
+from flask import Flask
+
 from flask import Flask, flash, redirect , render_template, request,session ,abort
 
 import os
+import importlib
+import sys
 
 from sqlalchemy.orm import sessionmaker
-#from tabledef import *
-#from create_user import *
+
 from create_quiz import create_quiz
 from gpps_db import *
 from create_class_file import *
@@ -15,6 +17,8 @@ from create_class_file import *
 engine = create_engine('sqlite:///gpps_db.db', echo=False)
 
 app = Flask(__name__)
+APP_ROOT = os.path.dirname(os.path.abspath(__file__))
+#os.system('flask run --host=192.168.56.1')
 
 username_gobal = ""
 class_now = ""
@@ -47,13 +51,14 @@ def do_login():
 
 	if result:
 		session['logged_in'] = True
+		session['id'] = POST_USERNAME
 
 		global username_gobal
 
 		username_gobal = POST_USERNAME
 		return home_page(POST_USERNAME)
 	else :
-		return render_template('login.html',s_w_html = "OMG Something wrong,Wrong username !")
+		return render_template('login.html',s_w_html = "OMG Something wrong!")
 
 @app.route('/logout')
 def logout():
@@ -107,7 +112,7 @@ def home_page(username):
 
 			dict_html = {}
 
-	return render_template('classboard.html',list_html = list_html,role = role)
+	return render_template('classboard.html',list_html = list_html,role = role,name = session.get('id'))
 
 @app.route('/createclass_load')
 def class_create_page():
@@ -284,14 +289,14 @@ def loadingquiz(quiz_name):
 	for row in dt_a:
 		# row.name,row.owner
 		if row.id_assign == assignment_now:
-			dict_html['problem'] = row.problem
+			dict_html['problem'] = row.problem.split(":")[0]
 			#dict_html['rank'] = None
 
 			list_html.append(dict_html)
 
 			dict_html = {}
 
-	print(list_html)
+	#print(list_html)
 
 	return render_template('quizboard.html', list_html=list_html, code=code, role=role)
 
@@ -315,33 +320,74 @@ def do_quiz():
 	if problem == "" or solution == "" or example == "" or test_case == "":
 		return render_template('createquiz.html', error_msn = "Sorry sir, name or about can't be blank!")
 
-	query = s.query(Quiz_db).filter(Quiz_db.problem.in_([problem]))
+	query = s.query(Quiz_db).filter(Quiz_db.problem.in_([problem.split(":")[0]]))
 	result = query.first()
 
 	if result :
-		return render_template('assignmentcreate.html', error_msn = "This assigment has already in system .")
-
-	metadata = MetaData(engine)
-	ac = Table('quiz', metadata, autoload=True)
-
-	dt_ac = ac.select().execute()
-
-	problem = ""
-
-	for row in dt_ac:
-		if(assignment_now == row.problem):
-			problem = row.problem
+		return render_template('createquiz.html', error_msn = "This Quiz has already in system .")
 
 	create_quiz(problem, solution, example, test_case, id_assignm)
 
-	return quiz_board_page_load()
+	return loadingquiz(assignment_now)
 
-@app.route('/quizpage_load')
-def quiz_page_load():
+@app.route('/quizpage_load/<string:quiz_name>')
+def quiz_page_load(quiz_name,error = "",code = ""):
+	#quiz_info_html = {'problem':'problem data','solution':'solution data','example':'example data'}
+	
+	metadata = MetaData(engine)
+
+	class_a = Table('quiz', metadata, autoload=True)
+	dt_a = class_a.select().execute()
+
 	quiz_info_html = {}
-	return render_template('submission.html',quiz_info = quiz_info_html)
+
+	for row in dt_a:
+		# row.name,row.owner
+		if row.problem.split(":")[0] == quiz_name:
+			quiz_info_html = {'name':row.problem.split(":")[0],'problem':row.problem.split(":")[1],'solution':row.solution,'example':row.example}
+			#dict_html['rank'] = None
+
+	return render_template('submission.html',quiz_info = quiz_info_html,error = error,code = code)
+
+@app.route('/submission_answer/<string:quiz_name>', methods=['POST'])
+def submission_answer(quiz_name):
+    target = os.path.join(APP_ROOT, 'images/')
+
+    if not os.path.isdir(target):
+        os.mkdir(target)
+    print(request.files.getlist("file"))
+    for file in request.files.getlist("file"):
+
+        filename = file.filename
+        destination = "".join([target, filename])
+
+        file.save(destination)
+
+        pyfile = destination
+        print('py file = '+pyfile )
+        print(filename[:len(filename)-3])
+
+        prob = importlib.import_module(filename[:len(filename) - 3])
+        error = True
+        try:
+            #prob = importlib.import_module(filename[:len(filename) - 3])
+            out = eval('prob.hello_world ()')
+            print(out)
+            if out == "Hello world":#assert
+                error = False
+
+        except:
+            pass
+
+        if not error:
+            print("Congrate!!")
+            return quiz_page_load(quiz_name,"Congrate!!")
+
+        return quiz_page_load(quiz_name,"Fail!!")
+
+
 
 if __name__ == '__main__':
-	app.debug = True
+	app.debug = False
 	app.secret_key = os.urandom(12)
-	app.run(host='localhost', port=8000)
+	app.run(host='0.0.0.0', port=8000)

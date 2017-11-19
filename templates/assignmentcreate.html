@@ -42,7 +42,7 @@
                     <a href="/classboard_load">Classboard</a>
                 </li>
                 <li>
-                    <a href="#">Assignment</a>
+                    <a href="/load_class">Assignment</a>
                 </li>
                 <li>
                     <a href="/logout">Log out</a>
@@ -126,7 +126,7 @@
 			</div>
 			<div class="form-group">        
 				<div class="col-sm-offset-2 col-sm-10">
-					<button type="submit" class="btn btn-secondary" value="Back" >Cancel</button>
+					<button type="button" class="btn btn-secondary" value="Back" onclick="window.location.href='/load_class'">Cancel</button>
 					<button type="submit" class="btn btn-secondary">Create assignment</button>
 				</div>
 				
@@ -151,5 +151,14 @@
 
 </html>
 {% else %}
-<h1><font color="Red">You don't have permission to enter this page.!</font></h1>
+<html>
+    <head>
+        <script type="text/javascript">
+            window.location.href='/';
+        </script>
+    </head>
+    <body>
+        <div id="content"></div>
+    </body>
+</html>
 {% endif %}

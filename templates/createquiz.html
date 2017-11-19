@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% if session['logged_in'] %}
 <html lang="en">
 
 <head>
@@ -34,13 +35,13 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">Classboard</a>
+                    <a href="/classboard_load">Classboard</a>
                 </li>
                 <li>
-                    <a href="#">Assignment</a>
+                    <a href="/load_class">Assignment</a>
                 </li>
                 <li>
-                    <a href="#">Log out</a>
+                    <a href="/logout">Log out</a>
                 </li>
             </ul>
         </div>
@@ -73,20 +74,20 @@
                         <textarea class = "position_second form-control" type = text placeholder="Example" id = "example" name = "example"></textarea>
                     </div>
                     <div>
-                        <input class="up_pos1 btn btn-secondary" id="example-picker" type="file" name="file" multiple>
+                        <input class="up_pos1 btn btn-secondary" id="example-picker" type="file" name="file1" multiple accept="py/*"/>
                     </div>
                     <div>
                         <label class = "forth_position">Test Case : </label>
                         <textarea  class = "position_third form-control" type = text placeholder="Test Case" id = "test-case" name = "test-case"></textarea>
                     </div>
                     <div>
-                        <input class="up_pos1 btn btn-secondary" id="test-case-picker" type="file" name="file" multiple>
+                        <input class="up_pos1 btn btn-secondary" id="test-case-picker" type="file" name="file2" multiple accept="py/*"/>
                     </div>
                     <div class = "CQ_btn">
                         <input class="btn btn-secondary" type = "submit" value = "Create Quiz">
                     </div>
                     <div class = "CQ_cancel_btn">
-                        <input class="btn btn-secondary" type = "reset" value = "Reset">
+                        <input class="btn btn-secondary" type = "button" value = "Back" onclick="window.location.href='/load_class'">
                     </div>
                 </div>
 
@@ -112,3 +113,15 @@
 </body>
 
 </html>
+{% else %}
+<html>
+    <head>
+        <script type="text/javascript">
+            window.location.href='/';
+        </script>
+    </head>
+    <body>
+        <div id="content"></div>
+    </body>
+</html>
+{% endif %}
