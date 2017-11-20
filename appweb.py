@@ -5,36 +5,30 @@ import os
 import importlib
 import sys
 
+from functional import *
 from sqlalchemy.orm import sessionmaker
-#from tabledef import *
-#from create_user import *
-from create_quiz import create_quiz
 from gpps_db import *
-from create_class_file import *
+from db_function import *
 
-#wait for new version
+sys.path.append("/Users/mac/Documents/GitHub/grading_platform/images/")
 
 engine = create_engine('sqlite:///gpps_db.db', echo=False)
 
 app = Flask(__name__)
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
-#os.system('flask run --host=192.168.56.1')
 
-username_gobal = ""
-class_now = ""
-assignment_now = ""
+
 
 #-------------------------#
 # This Sector for Login & Logout System and Home Page 
 
-@app.route("/")
+@app.route ("/")
 def home():
 	if not session.get('logged_in'):
-		return render_template('login.html')#,s_w_html = s_w)
+		return render_template('login.html')
 
 	else :
-		#return render_template('home.html')
-		return home_page(username_gobal)
+		return home_page()
 
 @app.route('/login', methods=['POST'])
 def do_login():
@@ -42,315 +36,223 @@ def do_login():
 	POST_USERNAME = str(request.form['username'])
 	POST_PASSWORD = str(request.form['password'])
 
-	#-----------------------------------# For Check in database
-	Session = sessionmaker(bind = engine)
-	s = Session()
-	query = s.query(Account).filter(Account.username.in_([POST_USERNAME]), Account.password.in_([POST_PASSWORD]))
-	result = query.first()
-	#-----------------------------------#
+	result = get_login(POST_USERNAME, POST_PASSWORD)
 
 	if result:
 		session['logged_in'] = True
-		session['id'] = POST_USERNAME
+		session['id'] = result.id
 
-		global username_gobal
-
-		username_gobal = POST_USERNAME
-		return home_page(POST_USERNAME)
+		return home_page()
 	else :
-		return render_template('login.html',s_w_html = "OMG Something wrong!")
+		return render_template('login.html',s_w_html = "Can't to access to system.!")
 
 @app.route('/logout')
 def logout():
 	session['logged_in'] = False
-	global username_gobal
-	global class_name
-	username_gobal = ""
-	class_now = ""
-	assignment_now = ""
+	session['id'] = None
+
 	return home()
 
-#-------------------------#
+#--------------------------------------------------------#
+
+# This Section for Class Board #
+
 @app.route('/classboard_load')
 def classboard_loading():
-	return home_page(username_gobal)
+	return home_page()
 
 @app.route("/classboard")
-def home_page(username):
-
-	metadata = MetaData(engine)
-	ac = Table('account', metadata, autoload = True)
-
-	dt_ac = ac.select().execute()
-
-	code = ""
-	role = ""
-
-	for row in dt_ac:
-		if username == row.username :
-			code = row.code
-			role = row.role
-
-	class_r = Table('classroom',metadata, autoload = True)
-	dt = class_r.select().execute()
-
+def home_page():
+	
 	list_html = []
 	dict_html = {}
 
-	for row in dt :
-		#row.name,row.owner
-		list_code_st = row.member.split(",") 
-		list_code_th = row.teacher_code.split(",")
+	_class = get_allClassID(session.get('id'))
 
-		if code in list_code_st or code in list_code_th:
-			dict_html['id'] = row.id
-			dict_html['name'] = row.name_class
-			dict_html['name_teacher'] = row.teacher
-			dict_html['about'] = row.discription
+	session['class'] = None
+	session['assignment'] = None
 
-			list_html.append(dict_html)
+	for one_class in  _class:
+		_info = get_ClassInfo(one_class)
 
-			dict_html = {}
+		dict_html['id'] = _info.id
+		dict_html['name'] = _info.name
+		dict_html['about'] = _info.description
 
-	return render_template('classboard.html',list_html = list_html,role = role,name = session.get('id'))
+		list_html.append(dict_html)
+
+		dict_html = {}
+
+
+	return render_template('classboard.html',list_html = list_html,role = get_role(session.get('id')),name = get_username(session.get('id')))
 
 @app.route('/createclass_load')
 def class_create_page():
 	return render_template('createclass.html')
 
 @app.route('/createclass', methods=['POST'])
-def do_class():
+def create_class():
 
-	Session = sessionmaker(bind = engine)
-	s = Session()
+	if get_role(session.get('id')) == "student":
+		return home_page()
 
 	class_name = str(request.form['classname'])
 	about_class = str(request.form['classdescription'])
-	member = str(request.form['member'])
 
 
-	if class_name == "" or class_name == " " or about_class == "" or about_class == " ":
+	if class_name == ""  or about_class == "" :
 		return render_template('createclass.html', error_msn = "Sorry sir, name or about can't be blank!") 
 
-	#if POST_USERNAME.lower() not in 'abcdefghijklmnopqrstuvwxyz1234567890' or POST_PASSWORD.lower() not in 'abcdefghijklmnopqrstuvwxyz1234567890':
-		#return render_template('register.html', error_msn = "you can use only Eng Charecter and Diginumber")
 
-	if len(about_class) < 10 :
-		return render_template('createclass.html', error_msn = "Description must be 10 or more characters")
+	create_classroom(class_name, about_class, session.get('id'))
 
-	query = s.query(Classroom).filter(Classroom.name_class.in_([class_name]))
-	result = query.first()
-
-	if result :
-		return render_template('createclass.html', error_msn = "This class has already in system .")
-
-	#--------------------------#
-
-	metadata = MetaData(engine)
-	ac = Table('account', metadata, autoload = True)
-
-	dt_ac = ac.select().execute()
-
-	code = ""
-	role = ""
-
-	for row in dt_ac:
-		if username_gobal == row.username :
-			code = row.code
-
-	create_class(username_gobal,code,class_name,about_class,member)
-
-	return classboard_loading()
+	return home_page()
 
 @app.route("/load_class")
 def auto_load_class():
-	return loadingclass(class_now)
+	return loadingclass(session.get('class'))
 
-@app.route("/load_class/<string:class_name>")
-def loadingclass(class_name):
+@app.route("/load_class/<string:id_class>")
+def loadingclass(id_class):
 
-	global class_now
-	class_now = class_name
+	#----------------------CHECK---------------------#
 
-	metadata = MetaData(engine)
+	list_secure = get_allClassID(session.get('id'))
 
-	ac = Table('account', metadata, autoload = True)
+	if int(id_class) not in list_secure:
+		return home_page()
 
-	dt_ac = ac.select().execute()
+	#-------------------------------------------------#
 
-	code = ""
-	role = ""
-
-	for row in dt_ac:
-		if username_gobal == row.username :
-			code = row.code
-			role = row.role
-
-	class_a = Table('assignment',metadata, autoload = True)
-	dt_a = class_a.select().execute()
+	session['class'] = int(id_class)
+	session['assignment'] = None
 
 	list_html = []
 	dict_html = {}
+	role = get_role(session.get('id'))
 
-	for row in dt_a :
-		#row.name,row.owner
-		if row.classowner == class_name :
-			dict_html['name'] = row.name
-			dict_html['about'] = row.discription 
+	list_assignment = get_allAssignmentID(int(id_class))
 
-			list_html.append(dict_html)
+	for single_assignment in list_assignment :
+		
+		_info = get_AssignmentInfo(single_assignment)
 
-			dict_html = {}
+		if (check_datetime_withNow(_info.open_time) == True) or role != "student":
+			if (check_datetime_withNow(_info.close_time) == False) or role != "student":
 
-	print(list_html)
+				dict_html['id'] = _info.id
+				dict_html['name'] = _info.name
+				dict_html['about'] = _info.description
+
+				list_html.append(dict_html)
+
+				dict_html = {}
 
 
-	return render_template('assigmentboard.html',list_html = list_html,code = code,role = role)
+	return render_template('assigmentboard.html',list_html = list_html, role = get_role(session.get('id')),name = get_username(session.get('id')))
 
-@app.route('/cam_load')
+@app.route('/create_assignment_load')
 def assigment_create_page():
 	return render_template('assignmentcreate.html')
 
 @app.route('/createassigment', methods=['POST'])
 def do_assigment():
 
-	Session = sessionmaker(bind = engine)
-	s = Session()
-
 	assig_name = str(request.form['a_name'])
 	about_assig = str(request.form['a_about'])
+	assignment_score = str(request.form['score'])
+	opentime = str(request.form['start1']) + "/" + str(request.form['start2']).replace(":","/")
+	closetime = str(request.form['end1']) + "/" + str(request.form['end2']).replace(":","/")
 
 
-	if assig_name == "" or assig_name == " " or about_assig == "" or about_assig == " ":
+	if assig_name == ""  or about_assig == "" :
 		return render_template('assignmentcreate.html', error_msn = "Sorry sir, name or about can't be blank!") 
-
-	#if POST_USERNAME.lower() not in 'abcdefghijklmnopqrstuvwxyz1234567890' or POST_PASSWORD.lower() not in 'abcdefghijklmnopqrstuvwxyz1234567890':
-		#return render_template('register.html', error_msn = "you can use only Eng Charecter and Diginumber")
-
-	if len(about_assig) < 10 :
-		return render_template('assignmentcreate.html', error_msn = "Description must be 10 or more characters!")
-
-	query = s.query(Assignment_db).filter(Assignment_db.name.in_([assig_name]))
-	result = query.first()
-
-	if result :
-		return render_template('assignmentcreate.html', error_msn = "This assignment has already in system .")
-
 	#--------------------------#
 
-	metadata = MetaData(engine)
-	ac = Table('account', metadata, autoload = True)
+	create_assigment(session.get('class'), assig_name, about_assig, "auto", assignment_score, opentime, closetime)
 
-	dt_ac = ac.select().execute()
+	return loadingclass(session.get('class'))
 
-	code = ""
-	role = ""
+@app.route("/load_assignment/<string:id_assignment>")
+def loadingassignment(id_assignment):
 
-	for row in dt_ac:
-		if username_gobal == row.username :
-			code = row.code
+	id_assignment = int(id_assignment)
 
-	create_assigment(assig_name, class_now, about_assig)
+	#-------------------CHECK ------------------------------#
+	
+	list_secure = get_allAssignmentID(session.get('class'))
 
-	return loadingclass(class_now)
+	if id_assignment not in list_secure:
+		return loadingclass(session.get('class'))
 
-@app.route('/quiz_load')
-def quiz_board_page_load():
-	return loadingquiz(assignment_now) #Just bug , but it can work short time.
+	#-------------------------------------------------------#
 
-@app.route("/quiz_load/<string:quiz_name>")
-def loadingquiz(quiz_name):
-	global assignment_now
-	assignment_now = quiz_name
-
-	metadata = MetaData(engine)
-
-	#######
-	ac = Table('account', metadata, autoload=True)
-
-	dt_ac = ac.select().execute()
-
-	code = ""
-	role = ""
-
-	for row in dt_ac:
-		if username_gobal == row.username:
-			code = row.code
-			role = row.role
-
-	#######
-
-	class_a = Table('quiz', metadata, autoload=True)
-	dt_a = class_a.select().execute()
+	session['assignment'] = id_assignment
 
 	list_html = []
 	dict_html = {}
 
-	for row in dt_a:
-		# row.name,row.owner
-		if row.id_assign == assignment_now:
-			dict_html['problem'] = row.problem.split(":")[0]
-			#dict_html['rank'] = None
+	list_quiz = get_allQuizID(id_assignment)
 
-			list_html.append(dict_html)
+	for single_quiz in list_quiz:
 
-			dict_html = {}
+		_info = get_QuizInfo(single_quiz)
 
-	#print(list_html)
+		dict_html['id'] = _info.id
+		dict_html['name'] = _info.name
 
-	return render_template('quizboard.html', list_html=list_html, code=code, role=role)
+		list_html.append(dict_html)
+
+		dict_html = {}
+
+	return render_template('quizboard.html', list_html=list_html, role = get_role(session.get('id')),name  = get_username(session.get('id')))
+	
+
+@app.route("/quizpage_load/<string:id_quiz>")
+def loadingquiz(id_quiz):
+
+	id_quiz = int(id_quiz)
+
+	#-------------------CHECK ------------------------------#
+	
+	list_secure = get_allQuizID(session.get('assignment'))
+
+	if id_quiz not in list_secure:
+		return loadingassignment(session.get('assignment'))
+
+	#-------------------------------------------------------#
+
+	_info = get_QuizInfo(id_quiz)
+	quiz_info_html = {'name':_info.name,'problem':_info.description,'example':_info.example}
+
+	return render_template('submission.html', quiz_info = quiz_info_html, error = "", role = get_role(session.get('id')),name  = get_username(session.get('id')))
 
 @app.route('/create_quiz')
 def load_quiz_create_page():
 	return render_template('createquiz.html')
 
 @app.route('/createquiz', methods=['POST'])
-def do_quiz():
+def create_quiz():
 
-	Session = sessionmaker(bind=engine)
-	s = Session()
+	if get_role(session.get('id')) == "student":
+		return home_page()
 
+	name = str(request.form['name'])
 	problem = str(request.form['problem'])
 	solution = str(request.form['solution'])
 	example = str(request.form['example'])
-	test_case = str(request.form['test-case'])
-	id_assignm = assignment_now
-	#rank = str(request.form['rank'])
+	testcase = str(request.form['test-case'])
 
-	if problem == "" or solution == "" or example == "" or test_case == "":
+	if problem == "" or solution == "" or example == "" or testcase == "":
 		return render_template('createquiz.html', error_msn = "Sorry sir, name or about can't be blank!")
 
-	query = s.query(Quiz_db).filter(Quiz_db.problem.in_([problem.split(":")[0]]))
-	result = query.first()
+	create_quiz_db(session.get('assignment'), name, problem, solution, example, testcase)
 
-	if result :
-		return render_template('createquiz.html', error_msn = "This Quiz has already in system .")
-
-	create_quiz(problem, solution, example, test_case, id_assignm)
-
-	return loadingquiz(assignment_now)
-
-@app.route('/quizpage_load/<string:quiz_name>')
-def quiz_page_load(quiz_name,error = "",code = ""):
-	#quiz_info_html = {'problem':'problem data','solution':'solution data','example':'example data'}
-	
-	metadata = MetaData(engine)
-
-	class_a = Table('quiz', metadata, autoload=True)
-	dt_a = class_a.select().execute()
-
-	quiz_info_html = {}
-
-	for row in dt_a:
-		# row.name,row.owner
-		if row.problem.split(":")[0] == quiz_name:
-			quiz_info_html = {'name':row.problem.split(":")[0],'problem':row.problem.split(":")[1],'solution':row.solution,'example':row.example}
-			#dict_html['rank'] = None
-
-	return render_template('submission.html',quiz_info = quiz_info_html,error = error,code = code)
+	return loadingassignment(session.get('assignment'))
 
 @app.route('/submission_answer/<string:quiz_name>', methods=['POST'])
 def submission_answer(quiz_name):
+	"""
     target = os.path.join(APP_ROOT, 'images/')
 
     if not os.path.isdir(target):
@@ -384,10 +286,9 @@ def submission_answer(quiz_name):
             return quiz_page_load(quiz_name,"Congrate!!")
 
         return quiz_page_load(quiz_name,"Fail!!")
-
-
+	"""
 
 if __name__ == '__main__':
 	app.debug = False
 	app.secret_key = os.urandom(12)
-	app.run(host='0.0.0.0', port=8000)
+	app.run(host='0.0.0.0', port=80)

@@ -61,6 +61,10 @@
         <font color="red"><h3>{{error_msn}}</h3></font>
 			<form action="createquiz" method="POST">
                 <div class = "input_box">
+					<div>
+                        <label class = "first_position">Name : </label>
+                        <textarea  class = "position_first form-control" type = text placeholder="Name" id="name" name = "name" value ="name" required></textarea>
+                    </div>
                     <div>
                         <label class = "first_position">Problem : </label>
                         <textarea  class = "position_first form-control" type = text placeholder="Problem" id="problem" name = "problem" value ="problem" required></textarea>

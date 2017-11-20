@@ -55,7 +55,7 @@
 				<nav class="fixed-top" id="mainNav">
 					<a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Menu</a>
 					{% if role == "teacher" or role == "admin" %}
-					<a href="/cam_load" class="btn btn-secondary" id="menu-toggle">Create Assignment</a>
+					<a href="/create_assignment_load" class="btn btn-secondary" id="menu-toggle">Create Assignment</a>
 					{% endif %}
 				</nav>
             </div>
@@ -78,7 +78,7 @@
 					<tr>
 						<td>{{assign.name}}</td>
 						{% if role == "teacher" or role == "admin" %}<td><button type="submit" class="btn btn-secondary">edit</button></td>{% endif %}
-						<td><button type="button" class="btn btn-secondary" onclick="window.location.href='/quiz_load/{{assign.name}}'">enter</button></td>
+						<td><button type="button" class="btn btn-secondary" onclick="window.location.href='/load_assignment/{{assign.id}}'">enter</button></td>
 						<td>{{assign.about}}</td>
 					</tr>
 				</tbody>
