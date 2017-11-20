@@ -16,6 +16,7 @@
 
     <!-- Custom styles for this template -->
     <link href="/static/css/simple-sidebar.css" rel="stylesheet">
+    <link href="/static/css/createclass.css" rel="stylesheet">
 
 </head>
 
@@ -56,7 +57,7 @@
 		<!-- /ใส่เว็บตรงนี้ -->
         <h1 class = "head">Create Class</h1>
 		<font color="red"><h3>{{error_msn}}</h3></font>
-            <div>
+            <div class="label-control">
                 <label class = "control">Class name : </label><br></br>
                 <label class = "control">Class Description : </label><br></br>
                 <label class = "control">Member : </label><br>
@@ -70,14 +71,14 @@
 							<input class = "deco form-control" type = "text" placeholder="classdescription" name = "classdescription">
 						</div>
 						<div>
-							<input class = "deco_2 form-control" type = "text" placeholder="member" name="member">
+							<input class = "deco form-control" type = "text" placeholder="member" name="member">
 						</div>
 				</div>
 				<br></br>
-				<div class = "cancel_btn">
+				<div class = "cancel-btn">
 					<input class="btn btn-secondary" type = "button" value = "Back" onclick="window.location.href='/classboard_load'">
 				</div>
-				<div class = "btn">
+				<div class = "submit-btn">
 					<input type="submit" value="submit" class="btn btn-secondary" >
 				</div>
 			</form>

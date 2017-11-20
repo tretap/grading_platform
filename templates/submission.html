@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 {% if session['logged_in'] %}
-
 <html lang="en">
 
 <head>
@@ -10,22 +9,22 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Assignment Board</title>
+    <title>Submit test</title>
 
     <!-- Bootstrap core CSS -->
     <link href="/static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="/static/css/simple-sidebar.css" rel="stylesheet">
-	
-	
+
+    <link href="/static/css/Submit.css" rel="stylesheet">
+
 </head>
 
 <body>
 
-    <div id="wrapper">
+    <div id="wrapper" >
 
-        <!-- Sidebar -->
+          <!-- Sidebar -->
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
 				<li>
@@ -40,7 +39,7 @@
                     <a href="/classboard_load">Classboard</a>
                 </li>
                 <li>
-                    <a href="#">Assignment</a>
+                    <a href="/load_class">Assignment</a>
                 </li>
                 <li>
                     <a href="/logout">Log out</a>
@@ -48,48 +47,53 @@
             </ul>
         </div>
         <!-- /#sidebar-wrapper -->
-		
+
         <!-- Page Content -->
         <div id="page-content-wrapper">
             <div class="container-fluid">
 				<nav class="fixed-top" id="mainNav">
 					<a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Menu</a>
 					{% if role == "teacher" or role == "admin" %}
-					<a href="/cam_load" class="btn btn-secondary" id="menu-toggle">Create Assignment</a>
+					<a href="/create_quiz" class="btn btn-secondary" id="menu-toggle">Create Quiz</a>
 					{% endif %}
 				</nav>
             </div>
         </div>
-        <!-- /#page-content-wrapper -->
-		<h1 class="head">Assignment Board</h1>    
-		<div class="container">
-		
-			<table class="table">
-			<thead>
-				<tr>
-					<th>Assignment</th>
-					<th></th>{% if role == "teacher" or role == "admin" %}<th></th>{% endif %}
-					<th>Description</th>
-					
-				</tr>
-			</thead>
-			{% for assign in list_html %}
-				<tbody>
-					<tr>
-						<td>{{assign.name}}</td>
-						{% if role == "teacher" or role == "admin" %}<td><button type="submit" class="btn btn-secondary">edit</button></td>{% endif %}
-						<td><button type="button" class="btn btn-secondary" onclick="window.location.href='/load_assignment/{{assign.id}}'">enter</button></td>
-						<td>{{assign.about}}</td>
-					</tr>
-				</tbody>
-			{% endfor %}
-			</table>
-		</div>
 
-    </div>
+
+		<!-- /ใส่เว็บตรงนี้ -->
+		<h1 class="head">Quiz</h1>
+		<h2 class="head">{{quiz_info.problem}}{{quiz_info.example}}</h2> <!-- /ข้อมูลที่กรกอกใน create quiz ต้องมาอยู -->
+
+            <div>
+                <textarea  class = "position_first form-control" type = text placeholder="Enter code here!" name = "problem" value ="problem" required>
+                    #Promblem 1 : Hello world<br>
+                    '''
+                    สร้างฟังกชันชื่อ hello_world โดยรีเทิร์นเป็นสตริง "Hello world"<br>
+                    เช่น
+                    hello_world()
+                    >>"Hello world"
+
+                    '''
+
+                </textarea>
+            </div>
+
+			<h3 class="head">{{error}}</h3>
+			<form id="upload-form" action="/submission_answer/{{quiz_info.name}}" method="POST" enctype="multipart/form-data">
+                <div class = "input_box">
+                    <div>
+                        <input class="up_pos1 btn btn-secondary" id="example-picker" type="file" name="file" accept="py/*"/>
+                        <input class="up_pos1 btn" type="submit" value="Submit" id="submit-button">
+                    </div>
+                 </div>
+		    </form>
+
+
 
     </div>
     <!-- /#wrapper -->
+
 
     <!-- Bootstrap core JavaScript -->
     <script src="/static/vendor/jquery/jquery.min.js"></script>
@@ -107,7 +111,6 @@
 </body>
 
 </html>
-
 {% else %}
 <html>
     <head>

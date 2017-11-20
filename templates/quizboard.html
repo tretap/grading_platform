@@ -15,7 +15,7 @@
     <link href="/static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="/static/css/simple-sidebar.css" rel="stylesheet">
+    <link href="/static/css/Submit.css" rel="stylesheet">
 	
 	
 </head>
@@ -73,9 +73,9 @@
 			{% for quiz in list_html %}
 				<tbody>
 					<tr>
-						<td>{{quiz.problem}}</td>
+						<td>{{quiz.name}}</td>
 						{% if role == "teacher" or role == "admin" %}<td><button type="submit" value="submit" class="btn btn-secondary">edit</button></td>{% endif %}
-						<td><button type="button" class="btn btn-secondary" onclick="window.location.href='/quizpage_load'">enter</button></td>
+						<td><button type="button" class="btn btn-secondary" onclick="window.location.href='/quizpage_load/{{quiz.id}}'">enter</button></td>
 						<!--<td>{{quiz.rank}}</td>-->
 					</tr>
 				</tbody>

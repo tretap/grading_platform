@@ -15,84 +15,134 @@ class Account(Base):
     id = Column(Integer, primary_key=True)
     username = Column(String)
     password = Column(String)
-    code = Column(String)
-    role = Column(String)
     #----------------------------------------------------------------------
-    def __init__(self, username, password, code, role):
+    def __init__(self, username, password):
         """"""
         self.username = username
         self.password = password
-        self.code = code
-        self.role = role
  
-# create tables
-Base.metadata.create_all(engine)
 
-class Classroom(Base):
+########################################################################
+class Student_information(Base):
     """"""
-    __tablename__ = "classroom"
- 
-    id = Column(Integer, primary_key=True)
-    name_class = Column(String)
-    teacher = Column(String)
-    teacher_code = Column(String)
-    discription = Column(String)
-    member = Column(String)
-    assigment = Column(String)
- 
-    #----------------------------------------------------------------------
-    def __init__(self, name_class, teacher, teacher_code, discription, member = "", assignment = ""):
-        """"""
-        self.name_class = name_class
-        self.teacher = teacher
-        self.teacher_code = teacher_code
-        self.discription = discription
-        self.member = member
-        self.assignment = assignment
- 
-# create tables
-Base.metadata.create_all(engine)
-
-class Assignment_db(Base):
-    """"""
-    __tablename__ = "assignment"
+    __tablename__ = "student_information"
  
     id = Column(Integer, primary_key=True)
     name = Column(String)
-    classowner = Column(String)
-    discription = Column(String)
-    quiz = Column(String)
- 
+    lastname = Column(String)
+    student_id = Column(String)
+    role = Column(String)
     #----------------------------------------------------------------------
-    def __init__(self, name, classowner, discription, quiz = ""):
+    def __init__(self, name, lastname, student_id, role):
         """"""
         self.name = name
-        self.classowner = classowner
-        self.discription = discription
-        self.quiz = quiz
- 
-# create tables
-Base.metadata.create_all(engine)
+        self.lastname = lastname
+        
+        self.student_id = student_id
+        self.role = role
 
-class Quiz_db(Base):
+########################################################################
+class Classboard(Base):
+    """"""
+    __tablename__ = "classboard"
+ 
+    id = Column(Integer, primary_key=True)
+    name = Column(String)
+    description = Column(String)
+    #----------------------------------------------------------------------
+    def __init__(self, name, description):
+        """"""
+        self.name = name
+        self.description = description
+ 
+
+########################################################################
+class Classboard_member(Base):
+    """"""
+    __tablename__ = "classboard_member"
+ 
+    id = Column(Integer, primary_key=True)
+    _id = Column(Integer)
+    member = Column(Integer)
+    #----------------------------------------------------------------------
+    def __init__(self, _id, member):
+        """"""
+        self._id = _id
+        self.member = member
+
+
+########################################################################
+class Classboard_db_assignment(Base):
+    """"""
+    __tablename__ = "classboard_listof_assignment"
+ 
+    id = Column(Integer,primary_key=True)
+    _id = Column(Integer)
+    assignment = Column(Integer)
+    #----------------------------------------------------------------------
+    def __init__(self, _id, assignment):
+        """"""
+        self._id = _id
+        self.assignment = assignment
+
+
+########################################################################
+class Assignment(Base):
+    """"""
+    __tablename__ = "assignment"
+ 
+    id = Column(Integer,primary_key=True)
+    name = Column(String)
+    description = Column(String)
+    scoring_type = Column(String)
+    assignment_score = Column(Integer)
+    open_time = Column(String)
+    close_time = Column(String)
+    #----------------------------------------------------------------------
+    def __init__(self, name, description, scoring_type, assignment_score, open_time, close_time):
+        """"""
+        self.name = name
+        self.description = description
+        self.scoring_type = scoring_type
+        self.assignment_score = assignment_score
+        self.open_time = open_time
+        self.close_time = close_time
+
+
+########################################################################
+class Assignment_db_quiz(Base):
+    """"""
+    __tablename__ = "assignment_listof_quiz"
+ 
+    id = Column(Integer,primary_key=True)
+    _id = Column(Integer)
+    quiz = Column(Integer)
+    #----------------------------------------------------------------------
+    def __init__(self, _id, quiz):
+        """"""
+        self._id = _id
+        self.quiz = quiz
+
+
+########################################################################
+class Quiz(Base):
     """"""
     __tablename__ = "quiz"
-
-    #problem = Column(String, primary_key=True)
-    id = Column(Integer, primary_key=True)
-    problem = Column(String)
+ 
+    id = Column(Integer,primary_key=True)
+    name = Column(String)
+    description = Column(String)
     solution = Column(String)
     example = Column(String)
-    test_case = Column(String)
-    id_assign  = Column(String)
-
-    def __init__(self, problem, solution, example, test_case,id_assign):
-
-        self.problem = problem
+    testcase = Column(String)
+    #----------------------------------------------------------------------
+    def __init__(self, name, description, solution, example, testcase):
+        """"""
+        self.name = name
+        self.description = description
         self.solution = solution
         self.example = example
-        self.test_case = test_case
-        self.id_assign = id_assign
-
+        self.testcase = testcase
+ 
 # create tables
 Base.metadata.create_all(engine)
