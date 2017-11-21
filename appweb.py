@@ -50,6 +50,8 @@ def do_login():
 def logout():
 	session['logged_in'] = False
 	session['id'] = None
+	session['assignment'] = None
+	session['class'] = None
 
 	return home()
 
@@ -234,59 +236,188 @@ def load_quiz_create_page():
 @app.route('/createquiz', methods=['POST'])
 def create_quiz():
 
-	if get_role(session.get('id')) == "student":
-		return home_page()
-
 	name = str(request.form['name'])
 	problem = str(request.form['problem'])
 	solution = str(request.form['solution'])
 	example = str(request.form['example'])
 	testcase = str(request.form['test-case'])
+	n = []
+	p = []
+	sol = []
+	e = []
+	tc = []
 
-	if problem == "" or solution == "" or example == "" or testcase == "":
-		return render_template('createquiz.html', error_msn = "Sorry sir, name or about can't be blank!")
+	if name == "" or problem == "" or solution == "" or example == "" or testcase == "":
+		
+		target = os.path.join(APP_ROOT, 'images/')
+		
+		if not os.path.isdir(target):
+			os.mkdir(target)
+		
+		#print(request.files.getlist("file"))
+		
+		for file in request.files.getlist("file"):
+			
+			filename = file.filename
+			
+			if ".py" not in filename:
+				return render_template('createquiz.html', error_msn="Sorry sir, name or about can't be blank!")
+			
+			destination = "".join([target, filename])
+			
+			file.save(destination)
+
+			pyfile = destination
+			
+			print('py file = ' + pyfile)
+			#print(filename[:len(filename) - 3])
+			
+			"""prob = importlib.import_module(filename[:len(filename) - 3])"""
+			f = open(pyfile, 'r')
+			j = 0
+			i = 0
+			name_mode = False
+			prob_mode = False
+			solu_mode = False
+			exam_mode = False
+			test_mode = False
+
+			for line in f:
+				if name_mode:
+					if("# Problem" not in line):
+						n.append(line)
+
+				if "# Name" in line:
+					name_mode = True
+					test_mode = False
+					solu_mode = False
+					exam_mode = False
+					prob_mode = False
+
+				if prob_mode:
+					if ("# Solution" not in line):
+						p.append(line)
+
+				if "# Problem" in line:
+					name_mode = False
+					test_mode = False
+					solu_mode = False
+					exam_mode = False
+					prob_mode = True
+					i = i + 1
+					j = 0
+
+				if solu_mode:
+					if ("# Example" not in line):
+						sol.append(line)
+
+				if "# Solution" in line:
+					name_mode = False
+					test_mode = False
+					solu_mode = True
+					exam_mode = False
+					prob_mode = False
+
+				if exam_mode:
+					if ("# Test cases" not in line):
+						e.append(line)
+
+				if "# Example" in line:
+					name_mode = False
+					test_mode = False
+					solu_mode = False
+					exam_mode = True
+					prob_mode = False
+
+				if test_mode:
+					tc.append(line)
+					try:
+						out = eval(command[:-2])
+						out = str(out) + "\n"
+
+						"""testcase = out"""
+						
+					except:
+						continue
+				if "# Test cases" in line:
+					name_mode = False
+					test_mode = True
+					solu_mode = False
+					exam_mode = False
+					prob_mode = False
+		destination = destination.replace('/','\\')
+		f.close()
+		os.remove(destination)
+					
+
+		name = "".join(n);
+		name = name.replace('\"\"\"', '')
+		name = name.replace('\'\'\'', '')
+		problem = "".join(p);
+		solution = "".join(sol);
+		example = "".join(e);
+		testcase = "".join(tc);
+		#print(problem, solution, example);
 
 	create_quiz_db(session.get('assignment'), name, problem, solution, example, testcase)
 
 	return loadingassignment(session.get('assignment'))
 
-@app.route('/submission_answer/<string:quiz_name>', methods=['POST'])
-def submission_answer(quiz_name):
-	"""
-    target = os.path.join(APP_ROOT, 'images/')
+@app.route('/submission_answer/<string:id_quiz>', methods=['POST'])
+def submission_answer(id_quiz):
+	target = os.path.join(APP_ROOT, 'images/')
+	if not os.path.isdir(target):
+		os.mkdir(target)
+	print(request.files.getlist("file"))
 
-    if not os.path.isdir(target):
-        os.mkdir(target)
-    print(request.files.getlist("file"))
-    for file in request.files.getlist("file"):
+	for file in request.files.getlist("file"):
 
-        filename = file.filename
-        destination = "".join([target, filename])
+		filename = file.filename
+		destination = "".join([target, filename])
+		if ".py" not in file.filename:
+			return render_template('submission.html', quiz_info=id_quiz, error="",role=get_role(session.get('id')), name=get_username(session.get('id')))
+		file.save(destination)
 
-        file.save(destination)
+		pyfile = destination
+		print('py file = ' + pyfile)
+		print(filename[:len(filename) - 3])
+		#prob = importlib.import_module(filename[:len(filename) - 3])
+		f = open(pyfile, 'r')
+		j = 0
+		i = 0
+		write_mode = False
+		"""print(f.read())"""
 
-        pyfile = destination
-        print('py file = '+pyfile )
-        print(filename[:len(filename)-3])
+		for line in f:
+			# print(line)
+			if "# Problem" in line:
+				write_mode = False
+				i = i + 1
+				j = 0
+			if write_mode:
+				j = j + 1
+				command = line.replace('print(', 'prob.')
+				try:
+					out = eval(command[:-2])
+					out = str(out) + "\n"
 
-        prob = importlib.import_module(filename[:len(filename) - 3])
-        error = True
-        try:
-            #prob = importlib.import_module(filename[:len(filename) - 3])
-            out = eval('prob.hello_world ()')
-            print(out)
-            if out == "Hello world":#assert
-                error = False
+					fin = open(filename + "_" + str(i) + str(j) + '_input.txt', 'w')
+					fin.write(line)
 
-        except:
-            pass
+					fout = open(filename + "_" + str(i) + str(j) + '_output.txt', 'w')
+					fout.write(out)
+				except:
+					continue
 
-        if not error:
-            print("Congrate!!")
-            return quiz_page_load(quiz_name,"Congrate!!")
+			if "# Test cases" in line:
+				write_mode = True
 
-        return quiz_page_load(quiz_name,"Fail!!")
-	"""
+		destination = destination.replace('/','\\')
+		f.close()
+		os.remove(destination)
+				
+		return render_template('submission.html', quiz_info=id_quiz, error="",role=get_role(session.get('id')), name=get_username(session.get('id')))
+
 
 if __name__ == '__main__':
 	app.debug = False
