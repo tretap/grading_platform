@@ -9,15 +9,15 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Quiz Board</title>
+    <title>Edit Class</title>
 
     <!-- Bootstrap core CSS -->
     <link href="/static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="/static/css/Submit.css" rel="stylesheet">
-	
-	
+    <link href="/static/css/simple-sidebar.css" rel="stylesheet">
+    <link href="/static/css/createclass.css" rel="stylesheet">
+
 </head>
 
 <body>
@@ -39,9 +39,6 @@
                     <a href="/classboard_load">Classboard</a>
                 </li>
                 <li>
-                    <a href="/load_class">Assignment</a>
-                </li>
-                <li>
                     <a href="/logout">Log out</a>
                 </li>
             </ul>
@@ -53,40 +50,40 @@
             <div class="container-fluid">
 				<nav class="fixed-top" id="mainNav">
 					<a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Menu</a>
-					{% if role == "teacher" or role == "admin" %}
-					<a href="/create_quiz" class="btn btn-secondary" id="menu-toggle">Create Quiz</a>
-					{% endif %}
 				</nav>
             </div>
         </div>
         <!-- /#page-content-wrapper -->
-		<h1 class="head">Quiz Board</h1> 
-		<div class="container">
-			<table class="table">
-			<thead>
-				<tr>
-					<th>Quizname</th>
-					<th></th>{% if role == "teacher" or role == "admin" %}<th></th>{% endif %}
+        <br>{% for class in list_html %}
+		<li> Name : <font color="Blue">{{class.name}}</a></font> Description : <font color="Green">{{class.about}}</font></li>
 
-				</tr>
-			</thead>
-			{% for quiz in list_html %}
-				<tbody>
-					<tr>
-						<td>{{quiz.name}}</td>
-						{% if role == "teacher" or role == "admin" %}<td><button type="submit" value="submit" class="btn btn-secondary">edit</button>
-                        <button type="submit" class="btn btn-secondary">delete</button></td>
-                        {% endif %}
-						<td><button type="button" class="btn btn-secondary" onclick="window.location.href='/quizpage_load/{{quiz.id}}'">enter</button></td>
-						<!--<td>{{quiz.rank}}</td>-->
-					</tr>
-				</tbody>
-			{% endfor %}
-			</table>
-		</div>
-
-    </div>
-
+		{% endfor %}</br>
+		<!-- /ใส่เว็บตรงนี้ -->
+        <h1 class = "head">Edit Class</h1>
+		<font color="red"><h3>{{error_msn}}</h3></font>
+            <div class="label-control">
+                <label class = "control">Class name : </label><br></br>
+                <label class = "control">Class Description : </label><br></br>
+                <label class = "control">Member : </label><br>
+            </div>
+			<form action="/createclass" method="POST">
+				<div class ="box">
+						<div>
+                            <textarea class = "deco form-control" type = "text" placeholder = "classname" name="classname" required>{{class.name}}</textarea>
+						</div>
+						<div>
+                            <textarea class = "deco form-control" type = "text" placeholder = "classdescription" name="classdescription" required>{{class.about}}</textarea>
+						</div>
+				</div>
+				<br></br>
+				<div class = "cancel-btn">
+					<input class="btn btn-secondary" type = "button" value = "Back" onclick="window.location.href='/classboard_load'">
+				</div>
+				<div class = "submit-btn">
+					<input type="submit" value="submit" class="btn btn-secondary" >
+				</div>
+			</form>
+	</div>
     <!-- /#wrapper -->
 
     <!-- Bootstrap core JavaScript -->

@@ -73,6 +73,9 @@
 								<a href="/load_class/{{class.id}}">{{class.name}}</a>
 							</h4>
 							<p class="card-text">{{class.about}}</p>
+							{% if role == "teacher" or role == "admin" %}<td><button type="submit" class="btn btn-secondary">edit</button>
+                        	<button type="submit" class="btn btn-secondary">delete</button>
+                        	</td>{% endif %}
 						</div>
 					</div>
 				</div>  

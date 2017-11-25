@@ -77,7 +77,9 @@
 				<tbody>
 					<tr>
 						<td>{{assign.name}}</td>
-						{% if role == "teacher" or role == "admin" %}<td><button type="submit" class="btn btn-secondary">edit</button></td>{% endif %}
+						{% if role == "teacher" or role == "admin" %}<td><button type="submit" class="btn btn-secondary">edit</button>
+                        <button type="submit" class="btn btn-secondary">delete</button>
+                        </td>{% endif %}
 						<td><button type="button" class="btn btn-secondary" onclick="window.location.href='/load_assignment/{{assign.id}}'">enter</button></td>
 						<td>{{assign.about}}</td>
 					</tr>
