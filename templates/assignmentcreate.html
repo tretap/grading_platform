@@ -18,13 +18,31 @@
     <!-- Custom styles for this template -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link href="/static/css/simple-sidebar.css" rel="stylesheet">
-	
-	
+	<link href="/static/css/scrolling-nav.css" rel="stylesheet">
+
+
 
 </head>
 
+    <nav class="nav navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand js-scroll-triggerda font_size" href="#page-top">Grading Platform</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="#about">{{name}}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
 <body>
 
+<div class="assign-content">
     <div id="wrapper">
 
         <!-- Sidebar -->
@@ -34,9 +52,7 @@
                     <a>---</a>
                 </li>
                 <li class="sidebar-brand">
-                    <a href="#">
-                        Grading Platform
-                    </a>
+                    <a>-</a>
                 </li>
                 <li>
                     <a href="/classboard_load">Classboard</a>
@@ -50,90 +66,92 @@
             </ul>
         </div>
         <!-- /#sidebar-wrapper -->
-		
+
         <!-- Page Content -->
         <div id="page-content-wrapper">
             <div class="container-fluid">
-				<nav class="fixed-top" id="mainNav">
-					<a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Menu</a>
-					
+				<nav class="fix-top" id="mainNav">
+					<a href="#menu-toggle" class="btn btn-space old-menu-nav" id="menu-toggle">Menu</a>
+
 				</nav>
             </div>
         </div>
         <!-- /#page-content-wrapper -->
 		<h1 class="head">Create Assignment</h1>
 		<font color="red"><h3>{{error_msn}}</h3></font>
-		
-		<div class="container">
-		
-			<form class="form-horizontal" action="createassigment" method="POST">
-			<div class="form-group">
-				<label class="control-label col-sm-2" for="a_name">Assignment name &emsp; :</label>
-				<div class="col-sm-2">
-					<input type="text" class="form-control" id="a_name" placeholder="Assignment name" name="a_name">
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="control-label col-sm-2" for="Scoring">Assignment description &emsp; :</label>
-				<div class="col-sm-4">
-					<textarea rows = 4 placeholder = "Assignment description" name="a_about" id = "a_about" required></textarea>
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="control-label col-sm-2" for="Scoring">Scoring Type &emsp; :</label>
-				<div class="col-sm-4">          
-					<select name = "select" style="height:30px; width:150px; ">
-						<option value="Auto Scoring"><font size=3>Auto Scoring</font></option>
-						<option value="Teacher Scoring"><font size=3>Teacher Scoring</font></option>
-					</select>
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="control-label col-sm-2" for="score">Assignment score  &emsp; :</label>
-				<div class="col-sm-1">
-					<input type="text" class="form-control" id="score" placeholder="Score" name="score">
-				</div>
-			</div>
-			
-			<div class="form-group">
-				<label class="control-label col-sm-2" for="start">Open Time &emsp; :</label>
-				<div class="col-sm-4">          
-					<input type="datetime" class="form-control" id="start1" placeholder="DD/MM/YY" name="start1">
-				</div>
-				<div class="col-sm-2">          
-					<input type="datetime" class="form-control" id="start2" placeholder="HH:mm" name="start2">
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="control-label col-sm-2" for="end">Close Time &emsp; :</label>
-				<div class="col-sm-4">          
-					<input type="datetime" class="form-control" id="end1" placeholder="DD/MM/YY" name="end1">
-				</div>
-				<div class="col-sm-2">          
-					<input type="datetime" class="form-control" id="end2" placeholder="HH:mm" name="end2">
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="control-label col-sm-2" for="hours">Score Deduction &emsp; :</label>
-				<div class="col-sm-2">          
-					<input type="datetime" class="form-control" id="hours" placeholder="late hours" name="hours">
-				</div>
-				<div class="col-sm-2">     
-					<input type="percent" class="form-control" id="percent" placeholder="percent deduction" name="percent">
-				</div>
-				<button type="submit" class="btn btn-secondary">+</button>
-				
-			</div>
-			<div class="form-group">        
-				<div class="col-sm-offset-2 col-sm-10">
-					<button type="button" class="btn btn-secondary" value="Back" onclick="window.location.href='/load_class'">Cancel</button>
-					<button type="submit" class="btn btn-secondary">Create assignment</button>
-				</div>
-				
-			</div>
-		
-    <!-- /#wrapper -->
 
+		<div class="container">
+
+			<form class="form-horizontal" action="createassigment" method="POST">
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="a_name">Assignment name &emsp; :</label>
+					<div class="col-sm-2">
+						<input type="text" class="form-control" id="a_name" placeholder="Assignment name" name="a_name">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="Scoring">Assignment description &emsp; :</label>
+					<div class="col-sm-4">
+						<textarea rows = 4 placeholder = "Assignment description" name="a_about" id = "a_about" required></textarea>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="Scoring">Scoring Type &emsp; :</label>
+					<div class="col-sm-4">
+						<select name = "select" style="height:30px; width:150px; ">
+							<option value="Auto Scoring"><font size=3>Auto Scoring</font></option>
+							<option value="Teacher Scoring"><font size=3>Teacher Scoring</font></option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="score">Assignment score  &emsp; :</label>
+					<div class="col-sm-1">
+						<input type="text" class="form-control" id="score" placeholder="Score" name="score">
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="start">Open Time &emsp; :</label>
+					<div class="col-sm-4">
+						<input type="datetime" class="form-control" id="start1" placeholder="DD/MM/YY" name="start1">
+					</div>
+					<div class="col-sm-2">
+						<input type="datetime" class="form-control" id="start2" placeholder="HH:mm" name="start2">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="end">Close Time &emsp; :</label>
+					<div class="col-sm-4">
+						<input type="datetime" class="form-control" id="end1" placeholder="DD/MM/YY" name="end1">
+					</div>
+					<div class="col-sm-2">
+						<input type="datetime" class="form-control" id="end2" placeholder="HH:mm" name="end2">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="hours">Score Deduction &emsp; :</label>
+					<div class="col-sm-2">
+						<input type="datetime" class="form-control" id="hours" placeholder="late hours" name="hours">
+					</div>
+					<div class="col-sm-2">
+						<input type="percent" class="form-control" id="percent" placeholder="percent deduction" name="percent">
+					</div>
+					<button type="submit" class="btn btn-secondary">+</button>
+
+				</div>
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<button type="button" class="btn btn-secondary" value="Back" onclick="window.location.href='/load_class'">Cancel</button>
+						<button type="submit" class="btn btn-secondary">Create assignment</button>
+					</div>
+
+				</div>
+			</form>
+    <!-- /#wrapper -->
+		</div>
+	</div>
+</div>
     <!-- Bootstrap core JavaScript -->
     <script src="/static/vendor/jquery/jquery.min.js"></script>
     <script src="/static/vendor/popper/popper.min.js"></script>

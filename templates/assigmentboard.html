@@ -17,9 +17,26 @@
 
     <!-- Custom styles for this template -->
     <link href="/static/css/simple-sidebar.css" rel="stylesheet">
+    <link href="/static/css/scrolling-nav.css" rel="stylesheet">
 	
 	
 </head>
+
+    <nav class="nav navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand js-scroll-triggerda font_size" href="#page-top">Grading Platform</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="#about">{{name}}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
 <body>
 
@@ -32,9 +49,7 @@
                     <a>---</a>
                 </li>
                 <li class="sidebar-brand">
-                    <a href="#">
-                        Grading Platform
-                    </a>
+                    <a>-</a>
                 </li>
                 <li>
                     <a href="/classboard_load">Classboard</a>
@@ -48,15 +63,17 @@
             </ul>
         </div>
         <!-- /#sidebar-wrapper -->
-		
+    <div class="content">
         <!-- Page Content -->
         <div id="page-content-wrapper">
             <div class="container-fluid">
-				<nav class="fixed-top" id="mainNav">
-					<a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Menu</a>
-					{% if role == "teacher" or role == "admin" %}
-					<a href="/create_assignment_load" class="btn btn-secondary" id="menu-toggle">Create Assignment</a>
-					{% endif %}
+				<nav class="fix-top" id="mainNav">
+                    <div class="inline">
+                        <a href="#menu-toggle" class="btn btn-space old-menu-nav" id="menu-toggle">Menu</a>
+                        {% if role == "teacher" or role == "admin" %}
+                        <a href="/create_assignment_load" class="btn btn-space old-menu-nav" id="menu-toggle">Create Assignment</a>
+                        {% endif %}
+                    </div>
 				</nav>
             </div>
         </div>
@@ -79,7 +96,9 @@
 						<td>{{assign.name}}</td>
 						{% if role == "teacher" or role == "admin" %}<td><button type="submit" class="btn btn-secondary">edit</button>
                         <button type="submit" class="btn btn-secondary">delete</button>
-                        </td>{% endif %}
+                        <button type="button" class="btn btn-secondary" onclick="Score page link">Check</button>
+                        {% endif %}
+                        </td>
 						<td><button type="button" class="btn btn-secondary" onclick="window.location.href='/load_assignment/{{assign.id}}'">enter</button></td>
 						<td>{{assign.about}}</td>
 					</tr>

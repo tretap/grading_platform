@@ -4,20 +4,7 @@ top : 0px;
 left : 100px;
 }
 
-div.submit-btn{
-position : relative;
-top : -183px;
-right : 435px;
-font-size: 16px;
-text-align: center;
-text-decoration: none;
-border-radius: 4px;
+div.cc-btn{
+left : 300px;
 }
 
-div.cancel-btn{
-position : relative;
-top : -145px;
-left : 410px;
-font-size: 14px;
-border-radius: 4px;
-}

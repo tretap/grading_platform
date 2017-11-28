@@ -16,9 +16,24 @@
 
     <!-- Custom styles for this template -->
     <link href="/static/css/simple-sidebar.css" rel="stylesheet">
+    <link href="/static/css/scrolling-nav.css" rel="stylesheet">
 
 </head>
-
+    <nav class="nav navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand js-scroll-triggerda font_size" href="#page-top">Grading Platform</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="#about">{{name}}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 	<body>
 
 		<div id="wrapper">
@@ -30,10 +45,10 @@
 						<a>---</a>
 					</li>
 					<li class="sidebar-brand">
-						<a href="#">
-							Grading Platform
+						<a>
+							Platform
 						</a>
-					</li>
+                	</li>
 					<li>
 						<a href="/classboard_load">Classboard</a>
 					</li>
@@ -45,23 +60,26 @@
 			<!-- /#sidebar-wrapper -->
 			
 			<!-- Page Content -->
+	<div class="content">
+
 			<div id="page-content-wrapper">
 				<div class="container-fluid">
-					<nav class="fixed-top" id="mainNav">
-						<a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Menu</a>
+					<nav class="fix-top" id="mainNav">
+						<div class="inline">
+						<a href="#menu-toggle" class = "btn btn-space old-menu-nav" id="menu-toggle">Menu</a>
 						{% if role == "teacher" or role == "admin" %}
-						<a href="/createclass_load" class="btn btn-secondary" id="create-calss">Add class</a>
+						<a href="/createclass_load" class="btn btn-space old-menu-nav" id="create-calss">Add class</a>
 						{% endif %}
+						</div>
 					</nav>
 				</div>
 			</div>
 			<!-- /#page-content-wrapper -->
 			<!-- /ใส่เว็บตรงนี้ -->
-			
+		<h1 class="head">Welcome to Classroom Board, {{name}}</h1>
 			<div class="container">
 			<!-- Page Heading -->
-			<h1 class="my-4">Classroom Board . welcome {{name}}
-			</h1>
+
 			<div class="row">
 			{% for class in list_html %}
 			

@@ -16,8 +16,25 @@
 
     <!-- Custom styles for this template -->
     <link href="/static/css/createquiz.css" rel="stylesheet">
+    <link href="/static/css/scrolling-nav.css" rel="stylesheet">
 
 </head>
+
+    <nav class="nav navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand js-scroll-triggerda font_size" href="#page-top">Grading Platform</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="#about">{{name}}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
 <body>
 
@@ -30,9 +47,7 @@
                     <a>---</a>
                 </li>
                 <li class="sidebar-brand">
-                    <a href="#">
-                        Grading Platform
-                    </a>
+                    <a>-</a>
                 </li>
                 <li>
                     <a href="/classboard_load">Classboard</a>
@@ -46,12 +61,12 @@
             </ul>
         </div>
         <!-- /#sidebar-wrapper -->
-
+    <div class="content">
         <!-- Page Content -->
         <div id="page-content-wrapper">
             <div class="container-fluid">
-				<nav class="fixed-top" id="mainNav">
-					<a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Menu</a>
+				<nav class="fix-top" id="mainNav">
+					<a href="#menu-toggle" class="btn btn-space old-menu-nav" id="menu-toggle">Menu</a>
 				</nav>
             </div>
         </div>
@@ -90,17 +105,15 @@
                         </textarea>
                     </div>
                     <input class="up_pos1 btn btn-secondary" id="example-picker" type="file" name="file" accept="py/*"/>
-
-
-
-                    <div class = "CQ_btn">
-                        <input class="btn btn-secondary" type = "submit" value = "Create Quiz">
-                    </div>
-                    <div class = "CQ_cancel_btn">
-                        <input class="btn btn-secondary" type = "button" value = "Back" onclick="window.location.href='/load_class'">
-                    </div>
+                    <div class="inline">
+                        <div>
+                            <input class="btn btn-secondary btn-space" type = "submit" value = "Create Quiz">
+                        </div>
+                        <div>
+                            <input class="btn btn-secondary btn-space" type = "button" value = "Back" onclick="window.location.href='/load_class'">
+                        </div>
+                     </div>
                 </div>
-
 			</form>
 	</div>
 
