@@ -12,7 +12,7 @@ engine = create_engine('sqlite:///gpps_db.db', echo=False)
 
 #------------------This Section for Create DB------------------------#
 
-def add_member(username, password, name, lastname, student_id, role):
+def add_account(username, password, name, lastname, student_id, role):
 	Session = sessionmaker(bind=engine)
 	session = Session()
 
@@ -121,6 +121,19 @@ def get_allClassID(id_member):
 
 	return result
 
+def get_allmemberClassID(id_class):
+
+	metadata = MetaData(engine)
+	all_class = Table('classboard_member', metadata, autoload = True).select().execute()
+
+	result  = []
+
+	for row in all_class:
+		if row._id == id_class:
+			result.append(row.member)
+
+	return result
+
 def get_ClassInfo(id_class):
 
 	Session = sessionmaker(bind = engine)
@@ -176,3 +189,84 @@ def get_QuizInfo(id_quiz):
 	result = query.first()
 
 	return result 
+
+
+#-----------------------------------------------------------------------------------------------#
+
+#----------------------This Section for EDIT INFORMATION FORM DB --------------------------------#
+
+
+
+#-----------------------------------------------------------------------------------------------#
+
+#----------------------This Section for DELETE INFORMATION FORM DB --------------------------------#
+def delete_classroom(id_class):
+	Session = sessionmaker(bind=engine)
+	session = Session()
+
+	_class = session.query(Classboard).filter(Classboard.id.in_([id_class])).first()
+	session.delete(_class)
+	session.commit()
+
+	#-------------------DELETE ASSIGNMENT IN CLASS------------#
+
+	list_of_assignment = get_allAssignmentID(id_class)
+	print(list_of_assignment)
+
+	for i in list_of_assignment:
+		delete_assigment(id_class, int(i))
+
+	#-------------------DELETE MEMBER IN CLASS----------------#
+
+	list_of_member = get_allmemberClassID(id_class)
+	print(list_of_member)
+
+	for i in list_of_member:
+		delete_member(id_class, int(i))
+
+	#---------------------------------------------------------#
+
+def delete_member(id_class, id_member):
+	Session = sessionmaker(bind=engine)
+	session = Session()
+
+	class_ = session.query(Classboard_member).filter(Classboard_member._id.in_([id_class]),Classboard_member.member.in_([id_member])).first()
+	session.delete(class_)
+
+	session.commit()
+
+
+def delete_assigment(id_class, id_assignment):
+	Session = sessionmaker(bind=engine)
+	session = Session()
+
+	_assignment = session.query(Assignment).filter(Assignment.id.in_([id_assignment])).first()
+	session.delete(_assignment)
+	session.commit()
+
+	result = session.query(Classboard_db_assignment).filter(Classboard_db_assignment._id.in_([id_class]),Classboard_db_assignment.assignment.in_([id_assignment])).first()
+	session.delete(result)
+	session.commit()
+
+	list_of_quiz = get_allQuizID(id_assignment)
+
+	for i in list_of_quiz:
+		delete_quiz_db(id_assignment, int(i))
+
+
+def delete_quiz_db(id_assignment, id_quiz):
+	id_quiz = int(id_quiz)
+
+	Session = sessionmaker(bind=engine)
+	session = Session()
+
+	query = session.query(Quiz).filter(Quiz.id.in_([id_quiz]))
+	_quiz = query.first()
+	session.delete(_quiz)
+	session.commit()
+
+	result = session.query(Assignment_db_quiz).filter(Assignment_db_quiz._id.in_([id_assignment]),Assignment_db_quiz.quiz.in_([id_quiz])).first()
+	session.delete(result)
+	session.commit()
+
+	#For more about Quiz student db delete

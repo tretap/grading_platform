@@ -95,7 +95,7 @@
 					<tr>
 						<td>{{assign.name}}</td>
 						{% if role == "teacher" or role == "admin" %}<td><button type="submit" class="btn btn-secondary">edit</button>
-                        <button type="submit" class="btn btn-secondary">delete</button>
+                        <button type="submit" class="btn btn-secondary" onclick="window.location.href='/delete_assignment/{{assign.id}}'">delete</button>
                         <button type="button" class="btn btn-secondary" onclick="Score page link">Check</button>
                         {% endif %}
                         </td>

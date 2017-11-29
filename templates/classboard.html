@@ -92,7 +92,7 @@
 							</h4>
 							<p class="card-text">{{class.about}}</p>
 							{% if role == "teacher" or role == "admin" %}<td><button type="submit" class="btn btn-secondary">edit</button>
-                        	<button type="submit" class="btn btn-secondary">delete</button>
+                        	<button type="submit" class="btn btn-secondary" onclick="window.location.href='/delete_class/{{class.id}}'">delete</button>
                         	</td>{% endif %}
 						</div>
 					</div>

@@ -153,6 +153,27 @@ def loadingclass(id_class):
 
 	return render_template('assigmentboard.html',list_html = list_html, role = get_role(session.get('id')),name = get_username(session.get('id')))
 
+@app.route('/delete_class/<string:id_class>')
+def delete_class(id_class):
+
+	#---------------------------- Protection System ------------------------#
+
+	role = get_role(session.get('id'))
+
+	if role == "student":
+		return home_page()
+
+	for i in id_class:
+		if i not in "0123456789":
+			return home_page()
+
+	#---------------------------- Protection system-------------------------#
+
+	delete_classroom(int(id_class))
+
+	return home_page()
+
+
 @app.route('/create_assignment_load')
 def assigment_create_page():
 	return render_template('assignmentcreate.html')
@@ -172,6 +193,27 @@ def do_assigment():
 	#--------------------------#
 
 	create_assigment(session.get('class'), assig_name, about_assig, "auto", assignment_score, opentime, closetime)
+
+	return loadingclass(session.get('class'))
+
+
+@app.route('/delete_assignment/<string:id_assignment>')
+def delete_assignment(id_assignment):
+
+	#---------------------------- Protection System ------------------------#
+
+	role = get_role(session.get('id'))
+
+	if role == "student":
+		return loadingclass(session.get('class'))
+
+	for i in id_assignment:
+		if i not in "0123456789":
+			return loadingclass(session.get('class'))
+
+	#---------------------------- Protection system-------------------------#
+
+	delete_assigment(session.get('class'), int(id_assignment))
 
 	return loadingclass(session.get('class'))
 
@@ -198,6 +240,7 @@ def loadingassignment(id_assignment):
 
 	for single_quiz in list_quiz:
 
+		print(single_quiz)
 		_info = get_QuizInfo(single_quiz)
 
 		dict_html['id'] = _info.id
@@ -208,7 +251,6 @@ def loadingassignment(id_assignment):
 		dict_html = {}
 
 	return render_template('quizboard.html', list_html=list_html, role = get_role(session.get('id')),name  = get_username(session.get('id')))
-	
 
 @app.route("/quizpage_load/<string:id_quiz>")
 def loadingquiz(id_quiz):
@@ -350,16 +392,36 @@ def create_quiz():
 		os.remove(destination)
 					
 
-		name = "".join(n);
+		name = "".join(n)
 		name = name.replace('\"\"\"', '')
 		name = name.replace('\'\'\'', '')
-		problem = "".join(p);
-		solution = "".join(sol);
-		example = "".join(e);
-		testcase = "".join(tc);
+		problem = "".join(p)
+		solution = "".join(sol)
+		example = "".join(e)
+		testcase = "".join(tc)
 		#print(problem, solution, example);
 
 	create_quiz_db(session.get('assignment'), name, problem, solution, example, testcase)
+
+	return loadingassignment(session.get('assignment'))
+
+@app.route('/delete_quiz/<string:id_quiz>')
+def delete_quiz(id_quiz):
+
+	#---------------------------- Protection System ------------------------#
+
+	role = get_role(session.get('id'))
+
+	if role == "student":
+		return loadingassignment(session.get('assignment'))
+
+	for i in id_quiz:
+		if i not in "0123456789":
+			return loadingassignment(session.get('assignment'))
+
+	#---------------------------- Protection system-------------------------#
+
+	delete_quiz_db(session.get('assignment'), int(id_quiz))
 
 	return loadingassignment(session.get('assignment'))
 
