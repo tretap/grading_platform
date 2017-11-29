@@ -361,7 +361,9 @@ def load_quiz_create_page():
 
 @app.route('/createquiz', methods=['POST'])
 def create_quiz():
-
+    id = session.get('id')
+    id_class = session.get('class')
+    id_assignment = session.get('assignment')
     name = str(request.form['name'])
     problem = str(request.form['problem'])
     solution = str(request.form['solution'])
@@ -372,23 +374,24 @@ def create_quiz():
     sol = []
     e = []
     get_test_case = ''
+    data_name = 'solution' + '_' + str(id) + '_' + str(id_class) + '_' + str(id_assignment)
+    target = os.path.join(APP_ROOT, 'solution\\')
+    if not os.path.isdir(target):
+        os.mkdir(target)
 
     if name == "" or problem == "" or solution == "" or example == "" or testcase == "":
-        target = os.path.join(APP_ROOT, 'images/')
-        if not os.path.isdir(target):
-            os.mkdir(target)
         print(request.files.getlist("file"))
         for file in request.files.getlist("file"):
             filename = file.filename
             if ".py" not in filename:
                 return render_template('createquiz.html', error_msn="Sorry sir, name or about can't be blank!")
-            destination = "".join([target, filename])
+            destination = target + data_name + '.py'
             file.save(destination)
 
             pyfile = destination
             print('py file = ' + pyfile)
             print(filename[:len(filename) - 3])
-            prob = importlib.import_module(filename[:len(filename) - 3])
+            prob = importlib.import_module('solution.'+data_name)
             f = open(pyfile, 'r')
             j = 0
             i = 0
@@ -464,6 +467,10 @@ def create_quiz():
         example = "".join(e)
         testcase = get_test_case
         print(problem, solution, example)
+    else:
+        sol = open(target + data_name + '.py', 'w')
+        sol.write(solution)
+        sol.close()
 
     create_quiz_db(session.get('assignment'), name, problem, solution, example, testcase)
 
@@ -507,7 +514,7 @@ def submission_answer(id_quiz):
     filename = file.filename
 
     #print(destination)
-    data_name = str(id) + '_' + str(id_class) + '_' + str(id_assignment)
+    data_name = 'submission' + '_' + str(id) + '_' + str(id_class) + '_' + str(id_assignment)
     if ".py" not in file.filename:#not file upload or invalid file
         #print("Get data")
         answer = str(request.form['answer'])
