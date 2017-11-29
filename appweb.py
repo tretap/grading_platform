@@ -439,6 +439,7 @@ def create_quiz():
                     prob_mode = False
                 if test_mode:
                     j = j + 1
+                    get_test_case = line
                     command = line.replace('print(', 'prob.')
                     try:
                         out = eval(command[:-2])
@@ -459,6 +460,7 @@ def create_quiz():
         problem = problem.replace('\"\"\"', '')
         solution = "".join(sol)
         example = "".join(e)
+        testcase = get_test_case
         print(problem, solution, example)
 
     create_quiz_db(session.get('assignment'), name, problem, solution, example, testcase)
@@ -496,14 +498,51 @@ def submission_answer(id_quiz):
 
         filename = file.filename
         destination = "".join([target, filename])
+        print(destination)
         if ".py" not in file.filename:
-            return render_template('submission.html', quiz_info=id_quiz, error="",role=get_role(session.get('id')), name=get_username(session.get('id')))
+            print("Get data")
+            problem = str(request.form['problem'])
+            print(problem)
+            if (problem != ""):
+                g_s = ''
+                test = []
+                for line in problem:
+                    if (line != '\r' and line != '\n'):
+                        g_s += line
+                    if (line == '\n'):
+                        test.append(g_s + '\n')
+                        g_s = ''
+                test.append(g_s)
+                print('data')
+                test = "".join(test)
+                print(test)
+                save_file = 'C:/Users/USER\Documents\GitHub\grading_platform'
+                # save_file = save_file[:len(save_file) - 3]
+                fin = open(save_file + '/' + 'Answer_input.py', 'w')
+                fin.write(test)
+                fin.close()
+                data_name = 'Answer_input'
+                print("1")
+                prob = importlib.import_module(data_name)
+                print("2")
+                f_test = open(save_file + '/' + 'Answer_input.py', 'r')
+                # print(f_test.read())
+                for i in f_test:
+                    command_data = i.replace('print(', 'prob.')
+                    try:
+                        get_out = eval(command_data[:-1])
+                        get_out = str(get_out) + "\n"
+                        print("Answer = " + get_out)
+                    except:
+                        continue
+                return render_template('submission.html', quiz_info=id_quiz, error="Get data",role=get_role(session.get('id')), name=get_username(session.get('id')))
+            return render_template('submission.html', quiz_info=id_quiz, error="", role=get_role(session.get('id')),name=get_username(session.get('id')))
         file.save(destination)
 
         pyfile = destination
         print('py file = ' + pyfile)
         print(filename[:len(filename) - 3])
-        #prob = importlib.import_module(filename[:len(filename) - 3])
+        prob = importlib.import_module(filename[:len(filename) - 3])
         f = open(pyfile, 'r')
         j = 0
         i = 0
@@ -517,28 +556,20 @@ def submission_answer(id_quiz):
                 i = i + 1
                 j = 0
             if write_mode:
+                print("Test mode")
                 j = j + 1
                 command = line.replace('print(', 'prob.')
                 try:
                     out = eval(command[:-2])
                     out = str(out) + "\n"
 
-                    fin = open(filename + "_" + str(i) + str(j) + '_input.txt', 'w')
-                    fin.write(line)
 
-                    fout = open(filename + "_" + str(i) + str(j) + '_output.txt', 'w')
-                    fout.write(out)
                 except:
                     continue
 
             if "# Test cases" in line:
                 write_mode = True
-
-        destination = destination.replace('/','\\')
-        f.close()
-        os.remove(destination)
-                
-        return render_template('submission.html', quiz_info=id_quiz, error="",role=get_role(session.get('id')), name=get_username(session.get('id')))
+        return render_template('submission.html', quiz_info=id_quiz, error="", role=get_role(session.get('id')),name=get_username(session.get('id')))
 
 
 if __name__ == '__main__':
