@@ -20,8 +20,8 @@
       <file leaf-file-name="appweb.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/appweb.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="422">
-              <caret line="583" column="44" lean-forward="false" selection-start-line="583" selection-start-column="44" selection-end-line="583" selection-end-column="44" />
+            <state relative-caret-position="304">
+              <caret line="562" column="68" lean-forward="false" selection-start-line="562" selection-start-column="68" selection-end-line="562" selection-end-column="68" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
               </folding>
@@ -52,10 +52,10 @@
       <file leaf-file-name="submission.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/submission.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="174">
-              <caret line="98" column="62" lean-forward="true" selection-start-line="98" selection-start-column="62" selection-end-line="98" selection-end-column="62" />
+            <state relative-caret-position="424">
+              <caret line="123" column="18" lean-forward="false" selection-start-line="123" selection-start-column="18" selection-end-line="123" selection-end-column="18" />
               <folding>
-                <marker date="1511987258921" expanded="true" signature="4189:4621" ph="..." />
+                <marker date="1511988468085" expanded="true" signature="4213:4645" ph="..." />
               </folding>
             </state>
           </provider>
@@ -92,8 +92,9 @@
       <find>exam</find>
       <find>quizpag</find>
       <find>submission</find>
-      <find>id_quiz</find>
       <find>eval</find>
+      <find>find</find>
+      <find>id_quiz</find>
     </findStrings>
     <replaceStrings>
       <replace>quiz_name</replace>
@@ -116,8 +117,8 @@
         <option value="$PROJECT_DIR$/templates/createquiz.html" />
         <option value="$PROJECT_DIR$/../grading_platform_SKY_OLD_version/appweb.py" />
         <option value="$PROJECT_DIR$/gpps_db.py" />
-        <option value="$PROJECT_DIR$/templates/submission.html" />
         <option value="$PROJECT_DIR$/db_function.py" />
+        <option value="$PROJECT_DIR$/templates/submission.html" />
         <option value="$PROJECT_DIR$/appweb.py" />
       </list>
     </option>
@@ -391,7 +392,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2857143" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2857143" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -771,16 +772,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/submission.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="174">
-          <caret line="98" column="62" lean-forward="true" selection-start-line="98" selection-start-column="62" selection-end-line="98" selection-end-column="62" />
-          <folding>
-            <marker date="1511987258921" expanded="true" signature="4189:4621" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/db_function.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="569">
@@ -789,10 +780,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/templates/submission.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="424">
+          <caret line="123" column="18" lean-forward="false" selection-start-line="123" selection-start-column="18" selection-end-line="123" selection-end-column="18" />
+          <folding>
+            <marker date="1511988468085" expanded="true" signature="4213:4645" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/appweb.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="422">
-          <caret line="583" column="44" lean-forward="false" selection-start-line="583" selection-start-column="44" selection-end-line="583" selection-end-column="44" />
+        <state relative-caret-position="304">
+          <caret line="562" column="68" lean-forward="false" selection-start-line="562" selection-start-column="68" selection-end-line="562" selection-end-column="68" />
           <folding>
             <element signature="e#0#23#0" expanded="true" />
           </folding>

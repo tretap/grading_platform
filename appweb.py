@@ -337,7 +337,7 @@ def loadingassignment(id_assignment):
     return render_template('quizboard.html', list_html=list_html, role = get_role(session.get('id')),name  = get_username(session.get('id')))
 
 @app.route("/quizpage_load/<string:id_quiz>")
-def loadingquiz(id_quiz,error = ""):
+def loadingquiz(id_quiz,error = "",result = ''):
 
     id_quiz = int(id_quiz)
 
@@ -353,7 +353,7 @@ def loadingquiz(id_quiz,error = ""):
     _info = get_QuizInfo(id_quiz)
     quiz_info_html = {'id':_info.id,'name':_info.name,'problem':_info.description,'example':_info.example}
 
-    return render_template('submission.html', quiz_info = quiz_info_html, error = error, role = get_role(session.get('id')),name  = get_username(session.get('id')))
+    return render_template('submission.html', quiz_info = quiz_info_html, error = error, role = get_role(session.get('id')),name  = get_username(session.get('id')),result = result)
 
 @app.route('/create_quiz')
 def load_quiz_create_page():
@@ -497,6 +497,7 @@ def submission_answer(id_quiz):
     # id_testcase = get_testcase(id_quiz)
     # print(id_testcase)
     target = os.path.join(APP_ROOT, 'images/')
+    result = 'result:\n'
     if not os.path.isdir(target):
         os.mkdir(target)
     print(request.files.getlist("file"))
@@ -547,9 +548,9 @@ def submission_answer(id_quiz):
                 print('find solution')
                 print(get_solution(id_quiz))
 
-                return loadingquiz(int(id_quiz),"Get data")
+                return loadingquiz(int(id_quiz),"Get data",result)
 
-            return loadingquiz(int(id_quiz), "nope")
+            return loadingquiz(int(id_quiz), "nope",result)
         file.save(destination)
 
         pyfile = destination
@@ -581,7 +582,7 @@ def submission_answer(id_quiz):
             except:
                 continue
 
-        return loadingquiz(int(id_quiz), "got file")
+        return loadingquiz(int(id_quiz), "got file",result)
 
 if __name__ == '__main__':
     app.debug = False
