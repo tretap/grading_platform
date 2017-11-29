@@ -525,16 +525,16 @@ def submission_answer(id_quiz):
 
 
     ####edit
-    prob = importlib.import_module(data_name)
+    prob = importlib.import_module('submission.'+data_name)
     f_answer = open(target +data_name+  '.py', 'r')
     for i in f_answer:
         if 'print(' in i:
             command_data = i.replace('print(', 'prob.')
 
-            print("command_data : "+command_data[:-1])
+            print("command_data : "+command_data[:-2])
             get_out = 'error'
             try:
-                get_out = str(eval(command_data[:-1]))
+                get_out = str(eval(command_data[:-2]))
 
 
             except:
