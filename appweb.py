@@ -224,6 +224,9 @@ def do_assigment():
 	assig_name = str(request.form['a_name'])
 	about_assig = str(request.form['a_about'])
 	assignment_score = str(request.form['score'])
+	if "/" not in request.form['start1'] or ":" not in request.form['start2'] or "/" not in request.form['end1'] or ":" not in request.form['end2']:
+		return render_template('assignmentcreate.html', error_msn="Time platform Error!")
+
 	opentime = str(request.form['start1']) + "/" + str(request.form['start2']).replace(":","/")
 	closetime = str(request.form['end1']) + "/" + str(request.form['end2']).replace(":","/")
 
