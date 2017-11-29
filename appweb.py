@@ -491,6 +491,11 @@ def delete_quiz(id_quiz):
 
 @app.route('/submission_answer/<string:id_quiz>', methods=['POST'])
 def submission_answer(id_quiz):
+    id = session.get('id')
+    id_class = session.get('class')
+    id_assignment = session.get('assignment')
+    # id_testcase = get_testcase(id_quiz)
+    # print(id_testcase)
     target = os.path.join(APP_ROOT, 'images/')
     if not os.path.isdir(target):
         os.mkdir(target)
@@ -520,12 +525,12 @@ def submission_answer(id_quiz):
                 print(test)
                 save_file = 'C:/Users/USER\Documents\GitHub\grading_platform'
                 # save_file = save_file[:len(save_file) - 3]
-                fin = open(save_file + '/' + 'Answer_input.py', 'w')
+                fin = open(save_file + '/' + str(id) + '_' + str(id_class) + '_' + str(id_assignment) + '.py', 'w')
                 fin.write(test)
                 fin.close()
                 data_name = 'Answer_input'
                 prob = importlib.import_module(data_name)
-                f_test = open(save_file + '/' + 'Answer_input.py', 'r')
+                f_test = open(save_file + '/' + str(id) + '_' + str(id_class) + '_' + str(id_assignment) + '.py', 'r')
                 # print(f_test.read())
                 for i in f_test:
                     command_data = i.replace('print(', 'prob.')
@@ -544,20 +549,22 @@ def submission_answer(id_quiz):
         print(filename[:len(filename) - 3])
         prob = importlib.import_module(filename[:len(filename) - 3])
         f = open(pyfile, 'r')
-        j = 0
-        i = 0
         write_mode = False
         """print(f.read())"""
+        save_file = 'C:/Users/USER\Documents\GitHub\grading_platform'
+        data_sent = open(save_file + '/' + str(id) + '_' + str(id_class) + '_' + str(id_assignment) + '.py', 'w')
+        data_sent.write(f.read())
+        f.close()
+        data_sent.close()
+        data_use = open(save_file + '/' + str(id) + '_' + str(id_class) + '_' + str(id_assignment) + '.py', 'r')
 
-        for line in f:
+        for line in data_use:
             # print(line)
             if "# Problem" in line:
                 write_mode = False
-                i = i + 1
-                j = 0
+
             if write_mode:
                 print("Test mode")
-                j = j + 1
                 command = line.replace('print(', 'prob.')
                 try:
                     out = eval(command[:-2])
