@@ -337,7 +337,7 @@ def loadingassignment(id_assignment):
     return render_template('quizboard.html', list_html=list_html, role = get_role(session.get('id')),name  = get_username(session.get('id')))
 
 @app.route("/quizpage_load/<string:id_quiz>")
-def loadingquiz(id_quiz):
+def loadingquiz(id_quiz,error = ""):
 
     id_quiz = int(id_quiz)
 
@@ -353,7 +353,7 @@ def loadingquiz(id_quiz):
     _info = get_QuizInfo(id_quiz)
     quiz_info_html = {'id':_info.id,'name':_info.name,'problem':_info.description,'example':_info.example}
 
-    return render_template('submission.html', quiz_info = quiz_info_html, error = "", role = get_role(session.get('id')),name  = get_username(session.get('id')))
+    return render_template('submission.html', quiz_info = quiz_info_html, error = error, role = get_role(session.get('id')),name  = get_username(session.get('id')))
 
 @app.route('/create_quiz')
 def load_quiz_create_page():
@@ -528,7 +528,7 @@ def submission_answer(id_quiz):
                 fin = open(save_file + '/' + str(id) + '_' + str(id_class) + '_' + str(id_assignment) + '.py', 'w')
                 fin.write(test)
                 fin.close()
-                data_name = 'Answer_input'
+                data_name = str(id) + '_' + str(id_class) + '_' + str(id_assignment)
                 prob = importlib.import_module(data_name)
                 f_test = open(save_file + '/' + str(id) + '_' + str(id_class) + '_' + str(id_assignment) + '.py', 'r')
                 # print(f_test.read())
@@ -540,11 +540,16 @@ def submission_answer(id_quiz):
 
                     except:
                         continue
-                print('find testcase')
+
                 print(id_quiz)
+                print('find testcase')
                 print(get_testcase(id_quiz))
-                return render_template('submission.html', quiz_info=id_quiz, error="Get data",role=get_role(session.get('id')), name=get_username(session.get('id')))
-            return render_template('submission.html', quiz_info=id_quiz, error="", role=get_role(session.get('id')),name=get_username(session.get('id')))
+                print('find solution')
+                print(get_solution(id_quiz))
+
+                return loadingquiz(int(id_quiz),"Get data")
+
+            return loadingquiz(int(id_quiz), "nope")
         file.save(destination)
 
         pyfile = destination
@@ -563,24 +568,20 @@ def submission_answer(id_quiz):
 
         for line in data_use:
             # print(line)
-            if "# Problem" in line:
-                write_mode = False
-
-            if write_mode:
-                print("Test mode")
-                command = line.replace('print(', 'prob.')
-                try:
-                    out = eval(command[:-2])
-                    out = str(out) + "\n"
 
 
-                except:
-                    continue
 
-            if "# Test cases" in line:
-                write_mode = True
-        return render_template('submission.html', quiz_info=id_quiz, error="", role=get_role(session.get('id')),name=get_username(session.get('id')))
+            print("Test mode")
+            command = line.replace('print(', 'prob.')
+            try:
+                out = eval(command[:-2])
+                out = str(out) + "\n"
 
+
+            except:
+                continue
+
+        return loadingquiz(int(id_quiz), "got file")
 
 if __name__ == '__main__':
     app.debug = False

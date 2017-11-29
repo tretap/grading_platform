@@ -321,5 +321,12 @@ def get_testcase(id_quiz):
 
     return result.testcase
 
+def get_solution(id_quiz):
+    Session = sessionmaker(bind=engine)
+    s = Session()
 
+    query = s.query(Quiz).filter(Quiz.id.in_([int(id_quiz)]))
+    result = query.first()
+
+    return result.solution
 
