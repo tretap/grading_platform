@@ -67,25 +67,21 @@
             </div>
         </div>
         <!-- /#page-content-wrapper -->
-        <br>{% for class in list_html %}
-		<li> Name : <font color="Blue">{{class.name}}</a></font> Description : <font color="Green">{{class.about}}</font></li>
 
-		{% endfor %}</br>
 		<!-- /ใส่เว็บตรงนี้ -->
         <h1 class = "head">Edit Class</h1>
 		<font color="red"><h3>{{error_msn}}</h3></font>
             <div class="label-control">
                 <label class = "control">Class name : </label><br></br>
                 <label class = "control">Class Description : </label><br></br>
-                <label class = "control">Member : </label><br>
             </div>
-			<form action="/createclass" method="POST">
+			<form action="/editclass" method="POST">
 				<div class ="box">
                     <div>
-                        <textarea class = "deco form-control" type = "text" placeholder = "classname" name="classname" required>{{class.name}}</textarea>
+                        <textarea class = "deco form-control" type = "text" placeholder = "classname" name="classname" required>{{_class.name}}</textarea>
                     </div>
                     <div>
-                        <textarea class = "deco form-control" type = "text" placeholder = "classdescription" name="classdescription" required>{{class.about}}</textarea>
+                        <textarea class = "deco form-control" type = "text" placeholder = "classdescription" name="classdescription" required>{{_class.about}}</textarea>
                     </div>
                     <div class="inline cc-btn">
                         <div>

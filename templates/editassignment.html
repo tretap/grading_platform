@@ -81,18 +81,18 @@
 		
 		<div class="container">
 
-			<form class="form-horizontal" action="createassigment" method="POST">
+			<form class="form-horizontal" action="/editassignment" method="POST">
 
 				<div class="form-group">
 					<label class="control-label col-sm-2" for="a_name">Assignment name &emsp; :</label>
 					<div class="col-sm-2">
-						<input type="text" class="form-control" id="a_name" placeholder="Assignment name" name="a_name" value={{name}}>
+						<input type="text" class="form-control" id="a_name" placeholder="Assignment name" name="a_name" value=name>{{assig.name}}
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="control-label col-sm-2" for="Scoring">Assignment description &emsp; :</label>
 					<div class="col-sm-4">
-						<textarea style="resize:none" class="_5jgy" placeholder="Describe who you are" rows="4">{{about}}</textarea>
+						<textarea style="resize:none" class="_5jgy" placeholder="Describe who you are" rows="4" name="a_about">{{assig.description}}</textarea>
 					</div>
 				</div>
 				<div class="form-group">
@@ -107,43 +107,32 @@
 				<div class="form-group">
 					<label class="control-label col-sm-2" for="score">Assignment score  &emsp; :</label>
 					<div class="col-sm-1">
-						<input type="text" class="form-control" id="score" placeholder="Score" name="score" value={{score}}>
+						<input type="text" class="form-control" id="score" placeholder="Score" name="score" value={{assig.assignment_score}}>
 					</div>
 				</div>
 
 				<div class="form-group">
 					<label class="control-label col-sm-2" for="start">Open Time &emsp; :</label>
 					<div class="col-sm-4">
-						<input type="datetime" class="form-control" id="start" placeholder="DD/MM/YY" name="start" value="{{start_date}}">
+						<input type="datetime" class="form-control" id="start1" placeholder="DD/MM/YY" name="start" value="{{_time.open_time1}}">
 					</div>
 					<div class="col-sm-2">
-						<input type="datetime" class="form-control" id="start" placeholder="HH:mm" name="start" value="{{start_time}}">
+						<input type="datetime" class="form-control" id="start2" placeholder="HH:mm" name="start" value="{{_time.open_time2}}">
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="control-label col-sm-2" for="end">Close Time &emsp; :</label>
 					<div class="col-sm-4">
-						<input type="datetime" class="form-control" id="end" placeholder="DD/MM/YY" name="end" value="{{end_date}}">
+						<input type="datetime" class="form-control" id="end1" placeholder="DD/MM/YY" name="end" value="{{_time.close_time1}}">
 					</div>
 					<div class="col-sm-2">
-						<input type="datetime" class="form-control" id="end" placeholder="HH:mm" name="end" value="{{end_time}}">
+						<input type="datetime" class="form-control" id="end2" placeholder="HH:mm" name="end" value="{{_time.close_time2}}">
 					</div>
-				</div>
-				<div class="form-group">
-					<label class="control-label col-sm-2" for="hours">Score Deduction &emsp; :</label>
-					<div class="col-sm-2">
-						<input type="datetime" class="form-control" id="hours" placeholder="late hours" name="hours" value="{{latehour}}">
-					</div>
-					<div class="col-sm-2">
-						<input type="percent" class="form-control" id="percent" placeholder="percent deduction" name="percent" value="{{lateper}}">
-					</div>
-					<button type="submit" class="btn btn-secondary">+</button>
-
 				</div>
 				<div class="form-group">
 					<div class="col-sm-offset-2 col-sm-10">
 						<button type="button" class="btn btn-secondary" value="Back" onclick="window.location.href='/load_class'">Cancel</button>
-						<button type="submit" class="btn btn-secondary">Create assignment</button>
+						<button type="submit" class="btn btn-secondary" >Edit assignment</button>
 					</div>
 
 				</div>

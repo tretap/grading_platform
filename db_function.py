@@ -194,8 +194,33 @@ def get_QuizInfo(id_quiz):
 #-----------------------------------------------------------------------------------------------#
 
 #----------------------This Section for EDIT INFORMATION FORM DB --------------------------------#
+def edit_classroom(id_class,name,discription):
+	Session = sessionmaker(bind=engine)
+	session = Session()
 
+	id_class = int(id_class)
+	class_ = session.query(Classboard).filter(Classboard.id.in_([id_class])).first()
 
+	class_.name = name
+	class_.description = discription
+
+	session.commit()
+
+def edit_assignment_db(id_assignment, name, description, scoring_type, assignment_score, open_time, close_time):
+	Session = sessionmaker(bind=engine)
+	session = Session()
+
+	id_assignment = int(id_assignment)
+	class_ = session.query(Assignment).filter(Assignment.id.in_([id_assignment])).first()
+
+	class_.name = name
+	class_.description = description
+	class_.scoring_type = scoring_type
+	class_.assignment_score = assignment_score
+	class_.open_time = open_time
+	class_.close_time = close_time
+
+	session.commit()
 
 #-----------------------------------------------------------------------------------------------#
 

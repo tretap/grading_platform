@@ -153,6 +153,46 @@ def loadingclass(id_class):
 
 	return render_template('assigmentboard.html',list_html = list_html, role = get_role(session.get('id')),name = get_username(session.get('id')))
 
+@app.route('/load_editClass/<string:class_id>')
+def load_editclass(class_id,error_msn = ""):
+
+	#---------------------------- Protection System ------------------------#
+
+	if get_role(session.get('id')) == "student":
+		return home_page()
+
+	#---------------------------- Protection system-------------------------#
+
+	result = get_ClassInfo(class_id)
+
+	_class = {}
+
+	_class['id'] = result.id
+	_class['name'] = result.name
+	_class['about'] = result.description
+
+	session['class'] = int(class_id)
+
+	return render_template('editclass.html', error_msn = error_msn , _class = _class)
+
+
+@app.route('/editclass', methods=['POST'])
+def edit_class():
+
+	if get_role(session.get('id')) == "student":
+		return home_page()
+
+	class_name = str(request.form['classname'])
+	about_class = str(request.form['classdescription'])
+
+
+	if class_name == ""  or about_class == "" :
+		return load_editclass(session.get('class') , error_msn = "Sorry sir, name or about can't be blank!")
+
+	edit_classroom(session.get('class'),class_name,about_class)
+
+	return home_page()
+
 @app.route('/delete_class/<string:id_class>')
 def delete_class(id_class):
 
@@ -196,6 +236,48 @@ def do_assigment():
 
 	return loadingclass(session.get('class'))
 
+
+@app.route('/load_editAssignment/<string:id_assignment>')
+def load_editassignment(id_assignment,error_msn = ""):
+
+	#---------------------------- Protection System ------------------------#
+
+	if get_role(session.get('id')) == "student":
+		return home_page()
+
+	#---------------------------- Protection system-------------------------#
+
+	result = get_AssignmentInfo(int(id_assignment))
+	session['assignment'] = int(id_assignment)
+
+	time_split = result.open_time.split("/")
+	_time = {}
+	_time['open_time1'] = time_split[0] +"/" + time_split[1] +"/" + time_split[2]
+	_time['open_time2'] = time_split[3] +":" + time_split[4]
+
+	time_split = result.close_time.split("/")
+	_time['close_time1'] = time_split[0] + "/" + time_split[1] + "/" + time_split[2]
+	_time['close_time2'] = time_split[3] + ":" + time_split[4]
+
+	return render_template('editassignment.html', error_msn = error_msn , assig = result, _time = _time)
+
+
+@app.route('/editassignment', methods=['POST'])
+def edit_assignment():
+
+	assig_name = str(request.form['a_name'])
+	about_assig = str(request.form['a_about'])
+	assignment_score = str(request.form['score'])
+	opentime = str(request.form['start1']) + "/" + str(request.form['start2']).replace(":", "/")
+	closetime = str(request.form['end1']) + "/" + str(request.form['end2']).replace(":", "/")
+
+	if assig_name == "" or about_assig == "":
+		return load_editassignment(session.get('assignment'), error_msn="Sorry sir, name or about can't be blank!")
+	# --------------------------#
+
+	edit_assignment_db(session.get('assignment'), assig_name, about_assig, "auto", assignment_score, opentime, closetime)
+
+	return loadingclass(session.get('class'))
 
 @app.route('/delete_assignment/<string:id_assignment>')
 def delete_assignment(id_assignment):

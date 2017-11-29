@@ -91,7 +91,7 @@
 								<a href="/load_class/{{class.id}}">{{class.name}}</a>
 							</h4>
 							<p class="card-text">{{class.about}}</p>
-							{% if role == "teacher" or role == "admin" %}<td><button type="submit" class="btn btn-secondary">edit</button>
+							{% if role == "teacher" or role == "admin" %}<td><button type="submit" class="btn btn-secondary" onclick="window.location.href='/load_editClass/{{class.id}}'">edit</button>
                         	<button type="submit" class="btn btn-secondary" onclick="window.location.href='/delete_class/{{class.id}}'">delete</button>
                         	</td>{% endif %}
 						</div>
