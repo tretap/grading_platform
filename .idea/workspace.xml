@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5fa443ca-28c4-4842-8829-b1dcfc6e245c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="5fa443ca-28c4-4842-8829-b1dcfc6e245c" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -20,11 +18,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="appweb.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="appweb.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/appweb.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="146">
-              <caret line="246" column="26" selection-start-line="246" selection-start-column="26" selection-end-line="246" selection-end-column="26" />
+            <state relative-caret-position="36">
+              <caret line="337" column="31" lean-forward="true" selection-start-line="337" selection-start-column="31" selection-end-line="337" selection-end-column="31" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
               </folding>
@@ -32,11 +30,53 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="db_function.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="createquiz.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/createquiz.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="299">
+              <caret line="78" column="45" lean-forward="false" selection-start-line="78" selection-start-column="45" selection-end-line="78" selection-end-column="45" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="quizboard.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/quizboard.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="287">
+              <caret line="93" column="114" lean-forward="false" selection-start-line="93" selection-start-column="114" selection-end-line="93" selection-end-column="114" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="createquiz.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../grading_platform_SKY_OLD_version/templates/createquiz.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="515">
+              <caret line="95" column="19" lean-forward="false" selection-start-line="61" selection-start-column="12" selection-end-line="95" selection-end-column="19" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="appweb.py" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/Downloads/web/appweb.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="46">
+              <caret line="186" column="0" lean-forward="false" selection-start-line="186" selection-start-column="0" selection-end-line="289" selection-end-column="55" />
+              <folding>
+                <element signature="e#0#23#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="db_function.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/db_function.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="206">
-              <caret line="314" column="0" selection-start-line="314" selection-start-column="0" selection-end-line="314" selection-end-column="0" />
+            <state relative-caret-position="722">
+              <caret line="316" column="0" lean-forward="false" selection-start-line="316" selection-start-column="0" selection-end-line="316" selection-end-column="0" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
@@ -47,10 +87,11 @@
       <file leaf-file-name="gpps_db.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/gpps_db.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="230">
-              <caret line="176" column="47" selection-start-line="176" selection-start-column="23" selection-end-line="176" selection-end-column="47" />
+            <state relative-caret-position="3289">
+              <caret line="184" column="32" lean-forward="false" selection-start-line="184" selection-start-column="32" selection-end-line="184" selection-end-column="32" />
               <folding>
                 <element signature="e#0#24#0" expanded="true" />
+                <marker date="1511960187723" expanded="true" signature="4035:4589" ph="..." />
               </folding>
             </state>
           </provider>
@@ -59,13 +100,9 @@
       <file leaf-file-name="classboard.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/classboard.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="29" column="25" selection-start-line="29" selection-start-column="25" selection-end-line="29" selection-end-column="25" />
-              <folding>
-                <marker date="1511949485000" expanded="true" signature="69:597" ph="..." />
-                <marker date="1511949485000" expanded="true" signature="1057:1303" ph="..." />
-                <marker date="1511949485000" expanded="true" signature="1105:1284" ph="..." />
-              </folding>
+            <state relative-caret-position="989">
+              <caret line="43" column="25" lean-forward="false" selection-start-line="43" selection-start-column="25" selection-end-line="43" selection-end-column="25" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -93,7 +130,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/templates/createquiz.html" />
         <option value="$PROJECT_DIR$/static/css/simple-sidebar.css" />
         <option value="$PROJECT_DIR$/static/css/createquiz.css" />
         <option value="$PROJECT_DIR$/templates/editquiz.html" />
@@ -102,26 +138,18 @@
         <option value="$PROJECT_DIR$/templates/editclass.html" />
         <option value="$PROJECT_DIR$/templates/assigmentboard.html" />
         <option value="$PROJECT_DIR$/templates/editassignment.html" />
-        <option value="$PROJECT_DIR$/appweb.py" />
         <option value="$PROJECT_DIR$/gpps_db.py" />
         <option value="$PROJECT_DIR$/db_function.py" />
+        <option value="$PROJECT_DIR$/appweb.py" />
+        <option value="$PROJECT_DIR$/templates/createquiz.html" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="y" value="23" />
-    <option name="width" value="1280" />
-    <option name="height" value="677" />
-  </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
-    <OptionsSetting value="true" id="Add" />
-    <OptionsSetting value="true" id="Remove" />
-    <OptionsSetting value="true" id="Checkout" />
-    <OptionsSetting value="true" id="Update" />
-    <OptionsSetting value="true" id="Status" />
-    <OptionsSetting value="true" id="Edit" />
-    <ConfirmationsSetting value="0" id="Add" />
-    <ConfirmationsSetting value="0" id="Remove" />
+    <option name="x" value="-9" />
+    <option name="y" value="-9" />
+    <option name="width" value="1938" />
+    <option name="height" value="1048" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -138,6 +166,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -145,6 +174,10 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="grading_platform" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="grading_platform" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -156,10 +189,13 @@
               <option name="myItemId" value="grading_platform" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -185,24 +221,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.appweb">
-    <configuration default="false" name="appweb" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="grading_platform" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/appweb.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <method />
-    </configuration>
+  <component name="RunManager">
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -337,14 +356,6 @@
       <option name="USE_KEYWORD" value="false" />
       <method />
     </configuration>
-    <list size="1">
-      <item index="0" class="java.lang.String" itemvalue="Python.appweb" />
-    </list>
-    <recent_temporary>
-      <list size="1">
-        <item index="0" class="java.lang.String" itemvalue="Python.appweb" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
@@ -360,15 +371,15 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1280" height="677" extended-state="6" />
+    <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24921875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24895833" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32894737" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28649837" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -401,8 +412,47 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/appweb.py">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5658">
+          <caret line="246" column="26" lean-forward="false" selection-start-line="246" selection-start-column="26" selection-end-line="246" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db_function.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gpps_db.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3289">
+          <caret line="147" column="32" lean-forward="true" selection-start-line="147" selection-start-column="32" selection-end-line="147" selection-end-column="32" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
+            <marker date="1511960187723" expanded="true" signature="4035:4589" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/classboard.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="667">
+          <caret line="29" column="25" lean-forward="false" selection-start-line="29" selection-start-column="25" selection-end-line="29" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/appweb.py">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3870">
-          <caret line="268" column="46" selection-start-line="268" selection-start-column="46" selection-end-line="268" selection-end-column="46" />
+          <caret line="268" column="46" lean-forward="false" selection-start-line="268" selection-start-column="46" selection-end-line="268" selection-end-column="46" />
           <folding>
             <element signature="e#0#23#0" expanded="true" />
           </folding>
@@ -412,7 +462,7 @@
     <entry file="file://$PROJECT_DIR$/db_function.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2955">
-          <caret line="204" column="36" selection-start-line="204" selection-start-column="36" selection-end-line="204" selection-end-column="36" />
+          <caret line="204" column="36" lean-forward="false" selection-start-line="204" selection-start-column="36" selection-end-line="204" selection-end-column="36" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
           </folding>
@@ -422,30 +472,24 @@
     <entry file="file://$PROJECT_DIR$/templates/editassignment.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/assigmentboard.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1440">
-          <caret line="96" column="72" selection-start-line="96" selection-start-column="72" selection-end-line="96" selection-end-column="72" />
-          <folding>
-            <marker date="1511949484000" expanded="true" signature="3659:3725" ph="..." />
-            <marker date="1511949484000" expanded="true" signature="3659:3738" ph="..." />
-            <marker date="1511949484000" expanded="true" signature="3659:3766" ph="..." />
-            <marker date="1511949484000" expanded="true" signature="3659:3775" ph="..." />
-          </folding>
+          <caret line="96" column="72" lean-forward="false" selection-start-line="96" selection-start-column="72" selection-end-line="96" selection-end-column="72" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/gpps_db.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1350">
-          <caret line="94" column="4" selection-start-line="94" selection-start-column="4" selection-end-line="97" selection-end-column="32" />
+          <caret line="94" column="4" lean-forward="false" selection-start-line="94" selection-start-column="4" selection-end-line="97" selection-end-column="32" />
           <folding>
             <element signature="e#0#24#0" expanded="true" />
+            <marker date="1511960187723" expanded="true" signature="4035:4589" ph="..." />
           </folding>
         </state>
       </provider>
@@ -453,19 +497,15 @@
     <entry file="file://$PROJECT_DIR$/templates/classboard.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
-          <caret line="16" column="44" selection-start-line="16" selection-start-column="44" selection-end-line="16" selection-end-column="44" />
-          <folding>
-            <marker date="1511949485000" expanded="true" signature="69:597" ph="..." />
-            <marker date="1511949485000" expanded="true" signature="1057:1303" ph="..." />
-            <marker date="1511949485000" expanded="true" signature="1105:1284" ph="..." />
-          </folding>
+          <caret line="16" column="44" lean-forward="false" selection-start-line="16" selection-start-column="44" selection-end-line="16" selection-end-column="44" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/appweb.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4968">
-          <caret line="424" column="37" selection-start-line="424" selection-start-column="37" selection-end-line="424" selection-end-column="37" />
+          <caret line="424" column="37" lean-forward="false" selection-start-line="424" selection-start-column="37" selection-end-line="424" selection-end-column="37" />
           <folding>
             <element signature="e#0#23#0" expanded="true" />
           </folding>
@@ -475,68 +515,57 @@
     <entry file="file://$PROJECT_DIR$/templates/assigmentboard.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="972">
-          <caret line="81" column="31" selection-start-line="81" selection-start-column="31" selection-end-line="81" selection-end-column="31" />
-          <folding>
-            <marker date="1511949484000" expanded="true" signature="3659:3725" ph="..." />
-            <marker date="1511949484000" expanded="true" signature="3659:3738" ph="..." />
-            <marker date="1511949484000" expanded="true" signature="3659:3766" ph="..." />
-            <marker date="1511949484000" expanded="true" signature="3659:3775" ph="..." />
-          </folding>
+          <caret line="81" column="31" lean-forward="false" selection-start-line="81" selection-start-column="31" selection-end-line="81" selection-end-column="31" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/classboard.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="924">
-          <caret line="77" column="28" selection-start-line="77" selection-start-column="28" selection-end-line="77" selection-end-column="28" />
-          <folding>
-            <marker date="1511949485000" expanded="true" signature="69:597" ph="..." />
-            <marker date="1511949485000" expanded="true" signature="1057:1303" ph="..." />
-            <marker date="1511949485000" expanded="true" signature="1105:1284" ph="..." />
-          </folding>
+          <caret line="77" column="28" lean-forward="false" selection-start-line="77" selection-start-column="28" selection-end-line="77" selection-end-column="28" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/quizboard.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="912">
-          <caret line="76" column="39" selection-start-line="76" selection-start-column="39" selection-end-line="76" selection-end-column="39" />
+          <caret line="76" column="39" lean-forward="false" selection-start-line="76" selection-start-column="39" selection-end-line="76" selection-end-column="39" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/editclass.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="132">
-          <caret line="11" column="15" selection-start-line="11" selection-start-column="15" selection-end-line="11" selection-end-column="15" />
+          <caret line="11" column="15" lean-forward="false" selection-start-line="11" selection-start-column="15" selection-end-line="11" selection-end-column="15" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/editassignment.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="876">
-          <caret line="73" column="20" selection-start-line="73" selection-start-column="20" selection-end-line="73" selection-end-column="20" />
-          <folding />
+          <caret line="73" column="20" lean-forward="false" selection-start-line="73" selection-start-column="20" selection-end-line="73" selection-end-column="20" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/createquiz.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="780">
-          <caret line="65" column="39" selection-start-line="65" selection-start-column="24" selection-end-line="65" selection-end-column="39" />
+          <caret line="65" column="39" lean-forward="false" selection-start-line="65" selection-start-column="24" selection-end-line="65" selection-end-column="39" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/editquiz.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1056">
-          <caret line="88" column="25" selection-start-line="88" selection-start-column="25" selection-end-line="88" selection-end-column="25" />
+          <caret line="88" column="25" lean-forward="false" selection-start-line="88" selection-start-column="25" selection-end-line="88" selection-end-column="25" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/appweb.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="8694">
-          <caret line="424" column="37" selection-start-line="424" selection-start-column="37" selection-end-line="424" selection-end-column="37" />
+          <caret line="424" column="37" lean-forward="false" selection-start-line="424" selection-start-column="37" selection-end-line="424" selection-end-column="37" />
           <folding>
             <element signature="e#0#23#0" expanded="true" />
           </folding>
@@ -546,60 +575,43 @@
     <entry file="file://$PROJECT_DIR$/templates/assigmentboard.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1701">
-          <caret line="81" column="40" selection-start-line="79" selection-start-column="24" selection-end-line="81" selection-end-column="40" />
-          <folding>
-            <marker date="1511949484000" expanded="true" signature="3659:3725" ph="..." />
-            <marker date="1511949484000" expanded="true" signature="3659:3738" ph="..." />
-            <marker date="1511949484000" expanded="true" signature="3659:3766" ph="..." />
-            <marker date="1511949484000" expanded="true" signature="3659:3775" ph="..." />
-          </folding>
+          <caret line="81" column="40" lean-forward="false" selection-start-line="79" selection-start-column="24" selection-end-line="81" selection-end-column="40" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/classboard.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1617">
-          <caret line="77" column="28" selection-start-line="77" selection-start-column="28" selection-end-line="77" selection-end-column="28" />
-          <folding>
-            <marker date="1511949485000" expanded="true" signature="69:597" ph="..." />
-            <marker date="1511949485000" expanded="true" signature="1057:1303" ph="..." />
-            <marker date="1511949485000" expanded="true" signature="1105:1284" ph="..." />
-          </folding>
+          <caret line="77" column="28" lean-forward="false" selection-start-line="77" selection-start-column="28" selection-end-line="77" selection-end-column="28" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/editclass.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
-          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/quizboard.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1596">
-          <caret line="76" column="149" selection-start-line="76" selection-start-column="149" selection-end-line="76" selection-end-column="149" />
+          <caret line="76" column="149" lean-forward="false" selection-start-line="76" selection-start-column="149" selection-end-line="76" selection-end-column="149" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/static/css/simple-sidebar.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-463">
-          <caret line="210" column="21" selection-start-line="210" selection-start-column="21" selection-end-line="210" selection-end-column="21" />
+          <caret line="210" column="21" lean-forward="false" selection-start-line="210" selection-start-column="21" selection-end-line="210" selection-end-column="21" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/static/css/createquiz.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4263">
-          <caret line="203" column="25" selection-start-line="203" selection-start-column="25" selection-end-line="204" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/quizboard.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="92" column="127" selection-start-line="92" selection-start-column="72" selection-end-line="92" selection-end-column="127" />
+          <caret line="203" column="25" lean-forward="false" selection-start-line="203" selection-start-column="25" selection-end-line="204" selection-end-column="14" />
         </state>
       </provider>
     </entry>
@@ -607,104 +619,130 @@
     <entry file="file://$PROJECT_DIR$/templates/assignmentcreate.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-864">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/createquiz.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="268">
-          <caret line="79" column="65" selection-start-line="79" selection-start-column="65" selection-end-line="79" selection-end-column="65" />
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/login.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
-          <caret line="18" column="82" selection-start-line="18" selection-start-column="82" selection-end-line="18" selection-end-column="82" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/editquiz.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="116">
-          <caret line="75" column="55" selection-start-line="75" selection-start-column="55" selection-end-line="75" selection-end-column="55" />
+          <caret line="18" column="82" lean-forward="false" selection-start-line="18" selection-start-column="82" selection-end-line="18" selection-end-column="82" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/functional.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="96">
-          <caret line="8" column="36" selection-start-line="8" selection-start-column="36" selection-end-line="8" selection-end-column="36" />
+          <caret line="8" column="36" lean-forward="false" selection-start-line="8" selection-start-column="36" selection-end-line="8" selection-end-column="36" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/assigmentboard.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1440">
-          <caret line="117" column="72" selection-start-line="117" selection-start-column="72" selection-end-line="117" selection-end-column="72" />
-          <folding>
-            <marker date="1511949484000" expanded="true" signature="3659:3725" ph="..." />
-            <marker date="1511949484000" expanded="true" signature="3659:3738" ph="..." />
-            <marker date="1511949484000" expanded="true" signature="3659:3766" ph="..." />
-            <marker date="1511949484000" expanded="true" signature="3659:3775" ph="..." />
-          </folding>
+          <caret line="117" column="72" lean-forward="false" selection-start-line="117" selection-start-column="72" selection-end-line="117" selection-end-column="72" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/editclass.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
-          <caret line="84" column="26" selection-start-line="84" selection-start-column="26" selection-end-line="84" selection-end-column="26" />
+          <caret line="84" column="26" lean-forward="false" selection-start-line="84" selection-start-column="26" selection-end-line="84" selection-end-column="26" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/editassignment.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="337">
-          <caret line="138" column="12" selection-start-line="138" selection-start-column="12" selection-end-line="138" selection-end-column="12" />
-          <folding />
+          <caret line="138" column="12" lean-forward="false" selection-start-line="138" selection-start-column="12" selection-end-line="138" selection-end-column="12" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/classboard.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="29" column="25" selection-start-line="29" selection-start-column="25" selection-end-line="29" selection-end-column="25" />
-          <folding>
-            <marker date="1511949485000" expanded="true" signature="69:597" ph="..." />
-            <marker date="1511949485000" expanded="true" signature="1057:1303" ph="..." />
-            <marker date="1511949485000" expanded="true" signature="1105:1284" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/appweb.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="146">
-          <caret line="246" column="26" selection-start-line="246" selection-start-column="26" selection-end-line="246" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#23#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="989">
+          <caret line="43" column="25" lean-forward="false" selection-start-line="43" selection-start-column="25" selection-end-line="43" selection-end-column="25" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/gpps_db.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="176" column="47" selection-start-line="176" selection-start-column="23" selection-end-line="176" selection-end-column="47" />
+        <state relative-caret-position="3289">
+          <caret line="184" column="32" lean-forward="false" selection-start-line="184" selection-start-column="32" selection-end-line="184" selection-end-column="32" />
           <folding>
             <element signature="e#0#24#0" expanded="true" />
+            <marker date="1511960187723" expanded="true" signature="4035:4589" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/db_function.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="314" column="0" selection-start-line="314" selection-start-column="0" selection-end-line="314" selection-end-column="0" />
+        <state relative-caret-position="722">
+          <caret line="316" column="0" lean-forward="false" selection-start-line="316" selection-start-column="0" selection-end-line="316" selection-end-column="0" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Downloads/web/appweb.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="46">
+          <caret line="186" column="0" lean-forward="false" selection-start-line="186" selection-start-column="0" selection-end-line="289" selection-end-column="55" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/editquiz.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="116">
+          <caret line="75" column="55" lean-forward="false" selection-start-line="75" selection-start-column="55" selection-end-line="75" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../grading_platform_SKY_OLD_version/templates/createquiz.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="515">
+          <caret line="95" column="19" lean-forward="false" selection-start-line="61" selection-start-column="12" selection-end-line="95" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../grading_platform_SKY_OLD_version/templates/quizboard.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/createquiz.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="78" column="45" lean-forward="false" selection-start-line="78" selection-start-column="45" selection-end-line="78" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/quizboard.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="287">
+          <caret line="93" column="114" lean-forward="false" selection-start-line="93" selection-start-column="114" selection-end-line="93" selection-end-column="114" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/appweb.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="337" column="31" lean-forward="true" selection-start-line="337" selection-start-column="31" selection-end-line="337" selection-end-column="31" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
           </folding>
         </state>
       </provider>

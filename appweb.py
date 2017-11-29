@@ -370,34 +370,23 @@ def create_quiz():
     p = []
     sol = []
     e = []
-    tc = []
 
     if name == "" or problem == "" or solution == "" or example == "" or testcase == "":
-        
         target = os.path.join(APP_ROOT, 'images/')
-        
         if not os.path.isdir(target):
             os.mkdir(target)
-        
-        #print(request.files.getlist("file"))
-        
+        print(request.files.getlist("file"))
         for file in request.files.getlist("file"):
-            
             filename = file.filename
-            
             if ".py" not in filename:
                 return render_template('createquiz.html', error_msn="Sorry sir, name or about can't be blank!")
-            
             destination = "".join([target, filename])
-            
             file.save(destination)
 
             pyfile = destination
-            
             print('py file = ' + pyfile)
-            #print(filename[:len(filename) - 3])
-            
-            """prob = importlib.import_module(filename[:len(filename) - 3])"""
+            print(filename[:len(filename) - 3])
+            prob = importlib.import_module(filename[:len(filename) - 3])
             f = open(pyfile, 'r')
             j = 0
             i = 0
@@ -406,23 +395,22 @@ def create_quiz():
             solu_mode = False
             exam_mode = False
             test_mode = False
+            """print(f.read())"""
 
             for line in f:
+                print(line)
                 if name_mode:
                     if("# Problem" not in line):
                         n.append(line)
-
                 if "# Name" in line:
                     name_mode = True
                     test_mode = False
                     solu_mode = False
                     exam_mode = False
                     prob_mode = False
-
                 if prob_mode:
                     if ("# Solution" not in line):
                         p.append(line)
-
                 if "# Problem" in line:
                     name_mode = False
                     test_mode = False
@@ -431,37 +419,32 @@ def create_quiz():
                     prob_mode = True
                     i = i + 1
                     j = 0
-
                 if solu_mode:
                     if ("# Example" not in line):
                         sol.append(line)
-
                 if "# Solution" in line:
                     name_mode = False
                     test_mode = False
                     solu_mode = True
                     exam_mode = False
                     prob_mode = False
-
                 if exam_mode:
                     if ("# Test cases" not in line):
                         e.append(line)
-
                 if "# Example" in line:
                     name_mode = False
                     test_mode = False
                     solu_mode = False
                     exam_mode = True
                     prob_mode = False
-
                 if test_mode:
-                    tc.append(line)
+                    j = j + 1
+                    command = line.replace('print(', 'prob.')
                     try:
                         out = eval(command[:-2])
                         out = str(out) + "\n"
+                        print("Answer : " + out)
 
-                        """testcase = out"""
-                        
                     except:
                         continue
                 if "# Test cases" in line:
@@ -470,19 +453,13 @@ def create_quiz():
                     solu_mode = False
                     exam_mode = False
                     prob_mode = False
-        destination = destination.replace('/','\\')
-        f.close()
-        os.remove(destination)
-                    
-
         name = "".join(n)
         name = name.replace('\"\"\"', '')
-        name = name.replace('\'\'\'', '')
         problem = "".join(p)
+        problem = problem.replace('\"\"\"', '')
         solution = "".join(sol)
         example = "".join(e)
-        testcase = "".join(tc)
-        #print(problem, solution, example);
+        print(problem, solution, example)
 
     create_quiz_db(session.get('assignment'), name, problem, solution, example, testcase)
 
