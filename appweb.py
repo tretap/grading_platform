@@ -10,7 +10,7 @@ from sqlalchemy.orm import sessionmaker
 from gpps_db import *
 from db_function import *
 
-sys.path.append("/Users/mac/Documents/GitHub/grading_platform/images/")
+#sys.path.append("/Users/mac/Documents/GitHub/grading_platform/submission/")
 
 engine = create_engine('sqlite:///gpps_db.db', echo=False)
 
@@ -337,7 +337,7 @@ def loadingassignment(id_assignment):
     return render_template('quizboard.html', list_html=list_html, role = get_role(session.get('id')),name  = get_username(session.get('id')))
 
 @app.route("/quizpage_load/<string:id_quiz>")
-def loadingquiz(id_quiz,error = "",result = ''):
+def loadingquiz(id_quiz,error = "",result = []):
 
     id_quiz = int(id_quiz)
 
@@ -494,95 +494,64 @@ def submission_answer(id_quiz):
     id = session.get('id')
     id_class = session.get('class')
     id_assignment = session.get('assignment')
-    # id_testcase = get_testcase(id_quiz)
-    # print(id_testcase)
-    target = os.path.join(APP_ROOT, 'images/')
-    result = 'result:\n'
+
+    target = os.path.join(APP_ROOT, 'submission\\')
+    result =  []
+
     if not os.path.isdir(target):
         os.mkdir(target)
-    print(request.files.getlist("file"))
+    #print(request.files.getlist("file"))
 
-    for file in request.files.getlist("file"):
+    #get file
+    file = request.files.getlist("file")[0]
+    filename = file.filename
 
-        filename = file.filename
-        destination = "".join([target, filename])
-        print(destination)
-        if ".py" not in file.filename:
-            print("Get data")
-            problem = str(request.form['problem'])
-            print(problem)
-            if (problem != ""):
-                g_s = ''
-                test = []
-                for line in problem:
-                    if (line != '\r' and line != '\n'):
-                        g_s += line
-                    if (line == '\n'):
-                        test.append(g_s + '\n')
-                        g_s = ''
-                test.append(g_s)
-                print('data')
-                test = "".join(test)
-                print(test)
-                save_file = 'C:/Users/USER\Documents\GitHub\grading_platform'
-                # save_file = save_file[:len(save_file) - 3]
-                fin = open(save_file + '/' + str(id) + '_' + str(id_class) + '_' + str(id_assignment) + '.py', 'w')
-                fin.write(test)
-                fin.close()
-                data_name = str(id) + '_' + str(id_class) + '_' + str(id_assignment)
-                prob = importlib.import_module(data_name)
-                f_test = open(save_file + '/' + str(id) + '_' + str(id_class) + '_' + str(id_assignment) + '.py', 'r')
-                # print(f_test.read())
-                for i in f_test:
-                    command_data = i.replace('print(', 'prob.')
-                    try:
-                        get_out = eval(command_data[:-1])
-                        get_out = str(get_out) + "\n"
-
-                    except:
-                        continue
-
-                print(id_quiz)
-                print('find testcase')
-                print(get_testcase(id_quiz))
-                print('find solution')
-                print(get_solution(id_quiz))
-
-                return loadingquiz(int(id_quiz),"Get data",result)
-
-            return loadingquiz(int(id_quiz), "nope",result)
+    #print(destination)
+    data_name = str(id) + '_' + str(id_class) + '_' + str(id_assignment)
+    if ".py" not in file.filename:#not file upload or invalid file
+        #print("Get data")
+        answer = str(request.form['answer'])
+        print(answer)
+        if (answer != ""):#text field check
+            print(answer)
+            fin = open(target + data_name + '.py', 'w')
+            fin.write(answer)
+            fin.close()
+        else:
+            return loadingquiz(int(id_quiz), "no answer",result)
+    else:
+        destination = target + data_name + '.py'
         file.save(destination)
 
-        pyfile = destination
-        print('py file = ' + pyfile)
-        print(filename[:len(filename) - 3])
-        prob = importlib.import_module(filename[:len(filename) - 3])
-        f = open(pyfile, 'r')
-        write_mode = False
-        """print(f.read())"""
-        save_file = 'C:/Users/USER\Documents\GitHub\grading_platform'
-        data_sent = open(save_file + '/' + str(id) + '_' + str(id_class) + '_' + str(id_assignment) + '.py', 'w')
-        data_sent.write(f.read())
-        f.close()
-        data_sent.close()
-        data_use = open(save_file + '/' + str(id) + '_' + str(id_class) + '_' + str(id_assignment) + '.py', 'r')
 
-        for line in data_use:
-            # print(line)
+    ####edit
+    prob = importlib.import_module(data_name)
+    f_answer = open(target +data_name+  '.py', 'r')
+    for i in f_answer:
+        if 'print(' in i:
+            command_data = i.replace('print(', 'prob.')
 
-
-
-            print("Test mode")
-            command = line.replace('print(', 'prob.')
+            print("command_data : "+command_data[:-1])
+            get_out = 'error'
             try:
-                out = eval(command[:-2])
-                out = str(out) + "\n"
+                get_out = str(eval(command_data[:-1]))
 
 
             except:
-                continue
+                pass
+                #continue
+            print("get_out : " + get_out)
+            result.append(get_out)
+    print(id_quiz)
+    print('find testcase')
+    print(get_testcase(id_quiz))
+    print('find solution')
+    print(get_solution(id_quiz))
 
-        return loadingquiz(int(id_quiz), "got file",result)
+    ####compile
+
+
+    return loadingquiz(int(id_quiz), "got file",result)
 
 if __name__ == '__main__':
     app.debug = False

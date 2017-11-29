@@ -1,3 +1,4 @@
-def greeting():
-    return 'hello world'
-    
+def greeting():
+	a = ''
+	b = ''
+	c = ''
