@@ -522,9 +522,7 @@ def submission_answer(id_quiz):
                 fin.write(test)
                 fin.close()
                 data_name = 'Answer_input'
-                print("1")
                 prob = importlib.import_module(data_name)
-                print("2")
                 f_test = open(save_file + '/' + 'Answer_input.py', 'r')
                 # print(f_test.read())
                 for i in f_test:
@@ -532,7 +530,7 @@ def submission_answer(id_quiz):
                     try:
                         get_out = eval(command_data[:-1])
                         get_out = str(get_out) + "\n"
-                        print("Answer = " + get_out)
+
                     except:
                         continue
                 return render_template('submission.html', quiz_info=id_quiz, error="Get data",role=get_role(session.get('id')), name=get_username(session.get('id')))

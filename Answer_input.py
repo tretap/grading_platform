@@ -1,3 +1,3 @@
-def t():
-	return 'Hello'
-print(t())
+def hello():
+    return 'hello world'
+print(hello())
