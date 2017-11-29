@@ -312,6 +312,14 @@ def add_login_log(user_id,client_ip, time):
 
     session.add(log)
     session.commit()
+def get_testcase(id_quiz):
+    Session = sessionmaker(bind=engine)
+    s = Session()
+
+    query = s.query(Quiz).filter(Quiz.id.in_([int(id_quiz)]))
+    result = query.first()
+
+    return result.testcase
 
 
 

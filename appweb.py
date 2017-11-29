@@ -351,7 +351,7 @@ def loadingquiz(id_quiz):
     #-------------------------------------------------------#
 
     _info = get_QuizInfo(id_quiz)
-    quiz_info_html = {'name':_info.name,'problem':_info.description,'example':_info.example}
+    quiz_info_html = {'id':_info.id,'name':_info.name,'problem':_info.description,'example':_info.example}
 
     return render_template('submission.html', quiz_info = quiz_info_html, error = "", role = get_role(session.get('id')),name  = get_username(session.get('id')))
 
@@ -540,6 +540,9 @@ def submission_answer(id_quiz):
 
                     except:
                         continue
+                print('find testcase')
+                print(id_quiz)
+                print(get_testcase(id_quiz))
                 return render_template('submission.html', quiz_info=id_quiz, error="Get data",role=get_role(session.get('id')), name=get_username(session.get('id')))
             return render_template('submission.html', quiz_info=id_quiz, error="", role=get_role(session.get('id')),name=get_username(session.get('id')))
         file.save(destination)
