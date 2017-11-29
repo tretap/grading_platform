@@ -296,7 +296,7 @@ def delete_quiz_db(id_assignment, id_quiz):
 
     #For more about Quiz student db delete
 
-def add_Submission_log_log(class_id,assignment_id,quiz_id,answer_id,user_id,client_ip,time):
+def add_Submission_log(class_id,assignment_id,quiz_id,answer_id,user_id,client_ip,time):
     Session = sessionmaker(bind=engine)
     session = Session()
 
@@ -304,6 +304,13 @@ def add_Submission_log_log(class_id,assignment_id,quiz_id,answer_id,user_id,clie
     session.add(log)
     session.commit()
 
+def add_login_log(class_id,assignment_id,quiz_id,answer_id,user_id,client_ip,time):
+    Session = sessionmaker(bind=engine)
+    session = Session()
+
+    log =  Login_log(user_id,client_ip, time)
+    session.add(log)
+    session.commit()
 
 
 
