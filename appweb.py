@@ -370,6 +370,7 @@ def create_quiz():
     p = []
     sol = []
     e = []
+    get_test_case = ''
 
     if name == "" or problem == "" or solution == "" or example == "" or testcase == "":
         target = os.path.join(APP_ROOT, 'images/')
@@ -439,7 +440,7 @@ def create_quiz():
                     prob_mode = False
                 if test_mode:
                     j = j + 1
-                    get_test_case = line
+                    get_test_case += line
                     command = line.replace('print(', 'prob.')
                     try:
                         out = eval(command[:-2])
