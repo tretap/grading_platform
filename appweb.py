@@ -42,7 +42,8 @@ def do_login():
     if result:
         session['logged_in'] = True
         session['id'] = result.id
-
+        time_now = datetime.datetime.now().strftime("%d/%m/%y/%H/%M")
+        add_login_log(result.id,str(request.remote_addr),time_now)
         return home_page()
     else :
         return render_template('login.html',s_w_html = "Can't to access to system.!")

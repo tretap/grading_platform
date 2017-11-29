@@ -144,12 +144,12 @@ class Quiz(Base):
         self.example = example
         self.testcase = testcase
 ########################################################################
-class Submission_log():
+class Submission_log(Base):
     __tablename__ = "Submission_log"
 
     class_id = Column(Integer, primary_key=True)
-    assignment_id = Column(Integer, primary_key=True)
-    quiz_id = Column(Integer, primary_key=True)
+    assignment_id = Column(Integer)
+    quiz_id = Column(Integer)
     answer_id = Column(String)
     time = Column(String)
     user_id = Column(String)
@@ -166,12 +166,11 @@ class Submission_log():
         self.time = time
 
     ########################################################################
-class Login_log():
+class Login_log(Base):
     __tablename__ = "Login_log"
 
     log_index = Column(Integer, primary_key=True)
     user_id = Column(String)
-
     time = Column(String)
     client_ip  = Column(String)
     def __init__(self, user_id,client_ip, time):
