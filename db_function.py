@@ -204,6 +204,21 @@ def get_QuizInfo(id_quiz):
 #-----------------------------------------------------------------------------------------------#
 
 #----------------------This Section for EDIT INFORMATION FORM DB --------------------------------#
+def edit_quiz_db(id_quiz, name, problem, solution, example, testcase):
+	Session = sessionmaker(bind=engine)
+	s = Session()
+
+	query = s.query(Quiz).filter(Quiz.id.in_([id_quiz]))
+	result = query.first()
+
+	result.name = name
+	result.description = problem
+	result.solution = solution
+	result.example = example
+	result.testcase = testcase
+
+	s.commit()
+
 def edit_information_user(id_member, name, lastname, student_id, role):
 	Session = sessionmaker(bind=engine)
 	s = Session()
