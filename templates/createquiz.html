@@ -77,7 +77,7 @@
                 <div class = "input_box">
 					<div>
                         <label class = "fifth_position">Name : </label>
-                        <input class = "position_first form-control" type = text placeholder="Quiz name" id="quizname" name = "quizname">
+                        <textarea  onkeydown="if(event.keyCode===9){var v=this.value,s=this.selectionStart,e=this.selectionEnd;this.value=v.substring(0, s)+'    '+v.substring(e);this.selectionStart=this.selectionEnd=s+4;return false;}"class = "position_first form-control" type = text placeholder="Name" id="name" name = "name" value ="name"></textarea>
                     </div>
                     <div>
                         <label class = "first_position">Problem : </label>
@@ -95,18 +95,18 @@
                         <label class = "forth_position">Test Case : </label>
                         <textarea  onkeydown="if(event.keyCode===9){var v=this.value,s=this.selectionStart,e=this.selectionEnd;this.value=v.substring(0, s)+'    '+v.substring(e);this.selectionStart=this.selectionEnd=s+4;return false;}"class = "position_third form-control" type = text placeholder="Test Case" id = "test-case" name = "test-case"></textarea>
                     </div>
-                    <div>
-                        <input class="up_pos1 btn btn-secondary" id="example-picker" type="file" name="file" accept="py/*"/>
+                    <input class="up_pos1 btn btn-secondary" id="example-picker" type="file" name="file" accept="py/*"/>
+
+
+
+                    <div class = "CQ_btn">
+                        <input class="btn btn-secondary" type = "submit" value = "Create Quiz">
                     </div>
-                    <div class="inline CQ-btn">
-                        <div>
-                            <input class="btn btn-secondary btn-space" type = "submit" value = "Create Quiz">
-                        </div>
-                        <div>
-                            <input class="btn btn-secondary btn-space" type = "button" value = "Back" onclick="window.location.href='/load_class'">
-                        </div>
+                    <div class = "CQ_cancel_btn">
+                        <input class="btn btn-secondary" type = "button" value = "Back" onclick="window.location.href='/load_class'">
                     </div>
                 </div>
+
 			</form>
 	</div>
 

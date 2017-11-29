@@ -108,6 +108,16 @@ def get_username(id_member):
 
 	return result.username
 
+def get_information_user(id_member):
+	Session = sessionmaker(bind=engine)
+	s = Session()
+
+	query = s.query(Student_information).filter(Student_information.id.in_([id_member]))
+	result = query.first()
+
+	return result
+
+
 def get_allClassID(id_member):
 
 	metadata = MetaData(engine)
@@ -194,6 +204,21 @@ def get_QuizInfo(id_quiz):
 #-----------------------------------------------------------------------------------------------#
 
 #----------------------This Section for EDIT INFORMATION FORM DB --------------------------------#
+def edit_information_user(id_member, name, lastname, student_id, role):
+	Session = sessionmaker(bind=engine)
+	s = Session()
+
+	query = s.query(Student_information).filter(Student_information.id.in_([id_member]))
+	result = query.first()
+
+	result.name = name
+	result.lastname = lastname
+	result.student_id = student_id
+	result.role = role
+
+	s.commit()
+
+
 def edit_classroom(id_class,name,discription):
 	Session = sessionmaker(bind=engine)
 	session = Session()

@@ -5,6 +5,10 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gpps_db.db" afterPath="$PROJECT_DIR$/gpps_db.db" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/appweb.py" afterPath="$PROJECT_DIR$/appweb.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db_function.py" afterPath="$PROJECT_DIR$/db_function.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/assigmentboard.html" afterPath="$PROJECT_DIR$/templates/assigmentboard.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/classboard.html" afterPath="$PROJECT_DIR$/templates/classboard.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/createquiz.html" afterPath="$PROJECT_DIR$/templates/createquiz.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -15,11 +19,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="appweb.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="appweb.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/appweb.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="227" column="86" lean-forward="false" selection-start-line="227" selection-start-column="86" selection-end-line="227" selection-end-column="86" />
+            <state relative-caret-position="270">
+              <caret line="210" column="57" lean-forward="true" selection-start-line="210" selection-start-column="57" selection-end-line="210" selection-end-column="57" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
               </folding>
@@ -30,116 +34,10 @@
       <file leaf-file-name="db_function.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/db_function.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="184">
-              <caret line="204" column="36" lean-forward="false" selection-start-line="204" selection-start-column="36" selection-end-line="204" selection-end-column="36" />
+            <state relative-caret-position="312">
+              <caret line="146" column="17" lean-forward="false" selection-start-line="146" selection-start-column="4" selection-end-line="146" selection-end-column="17" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="editassignment.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/editassignment.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="229">
-              <caret line="129" column="26" lean-forward="true" selection-start-line="129" selection-start-column="26" selection-end-line="129" selection-end-column="26" />
-              <folding>
-                <element signature="e#2751#2757#0" expanded="true" />
-                <element signature="e#3052#3058#0" expanded="true" />
-                <element signature="n#style#0;n#textarea#0;n#div#0;n#div#1;n#form#0;n#div#2;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="e#3361#3367#0" expanded="true" />
-                <element signature="n#style#0;n#select#0;n#div#0;n#div#2;n#form#0;n#div#2;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="e#3775#3781#0" expanded="true" />
-                <element signature="e#4062#4068#0" expanded="true" />
-                <element signature="e#4518#4524#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="functional.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/functional.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="96">
-              <caret line="8" column="36" lean-forward="true" selection-start-line="8" selection-start-column="36" selection-end-line="8" selection-end-column="36" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="assigmentboard.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/assigmentboard.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="549">
-              <caret line="95" column="172" lean-forward="false" selection-start-line="95" selection-start-column="172" selection-end-line="95" selection-end-column="172" />
-              <folding>
-                <marker date="1511950234738" expanded="true" signature="1068:1314" ph="..." />
-                <marker date="1511950234738" expanded="true" signature="1116:1295" ph="..." />
-                <marker date="1511950234738" expanded="true" signature="1158:1273" ph="..." />
-                <marker date="1511950234738" expanded="true" signature="1348:4256" ph="..." />
-                <marker date="1511950234738" expanded="true" signature="1372:3799" ph="..." />
-                <marker date="1511950234738" expanded="true" signature="1433:1947" ph="..." />
-                <marker date="1511950234738" expanded="true" signature="1470:1932" ph="..." />
-                <marker date="1511950234738" expanded="true" signature="1479:1532" ph="..." />
-                <marker date="1511950234738" expanded="true" signature="1575:1626" ph="..." />
-                <marker date="1511950234738" expanded="true" signature="1647:1731" ph="..." />
-                <marker date="1511950234738" expanded="true" signature="1752:1821" ph="..." />
-                <marker date="1511950234738" expanded="true" signature="1842:1914" ph="..." />
-                <marker date="1511950234738" expanded="true" signature="2008:3787" ph="..." />
-                <marker date="1511950234738" expanded="true" signature="2078:2618" ph="..." />
-                <marker date="1511950234738" expanded="true" signature="2159:2584" ph="..." />
-                <marker date="1511950234738" expanded="true" signature="2200:2573" ph="..." />
-                <marker date="1511950234738" expanded="true" signature="2729:3775" ph="..." />
-                <marker date="1511950234738" expanded="true" signature="2757:3766" ph="..." />
-                <marker date="1511950234738" expanded="true" signature="2768:2936" ph="..." />
-                <marker date="1511950234738" expanded="true" signature="2777:2924" ph="..." />
-                <marker date="1511950234738" expanded="true" signature="2981:3738" ph="..." />
-                <marker date="1511950234738" expanded="true" signature="2991:3725" ph="..." />
-                <marker date="1511950234738" expanded="true" signature="3078:3540" ph="..." />
-                <marker date="1511950234738" expanded="true" signature="4109:4247" ph="..." />
-                <marker date="1511950234738" expanded="true" signature="4284:4467" ph="..." />
-                <marker date="1511950234738" expanded="true" signature="4295:4403" ph="..." />
-                <marker date="1511950234738" expanded="true" signature="4335:4391" ph="..." />
-                <marker date="1511950234738" expanded="true" signature="4414:4459" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="editclass.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/editclass.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="83" column="26" lean-forward="false" selection-start-line="83" selection-start-column="26" selection-end-line="83" selection-end-column="26" />
-              <folding>
-                <marker date="1511950234742" expanded="true" signature="1120:1366" ph="..." />
-                <marker date="1511950234742" expanded="true" signature="1168:1347" ph="..." />
-                <marker date="1511950234742" expanded="true" signature="1210:1325" ph="..." />
-                <marker date="1511950234742" expanded="true" signature="1399:4099" ph="..." />
-                <marker date="1511950234742" expanded="true" signature="1423:3666" ph="..." />
-                <marker date="1511950234742" expanded="true" signature="1484:1908" ph="..." />
-                <marker date="1511950234742" expanded="true" signature="1521:1893" ph="..." />
-                <marker date="1511950234742" expanded="true" signature="1530:1583" ph="..." />
-                <marker date="1511950234742" expanded="true" signature="1626:1677" ph="..." />
-                <marker date="1511950234742" expanded="true" signature="1698:1782" ph="..." />
-                <marker date="1511950234742" expanded="true" signature="1803:1875" ph="..." />
-                <marker date="1511950234742" expanded="true" signature="1969:3632" ph="..." />
-                <marker date="1511950234742" expanded="true" signature="2039:2254" ph="..." />
-                <marker date="1511950234742" expanded="true" signature="2120:2220" ph="..." />
-                <marker date="1511950234742" expanded="true" signature="2454:2624" ph="..." />
-                <marker date="1511950234742" expanded="true" signature="2668:3617" ph="..." />
-                <marker date="1511950234742" expanded="true" signature="2691:3597" ph="..." />
-                <marker date="1511950234742" expanded="true" signature="2717:2899" ph="..." />
-                <marker date="1511950234742" expanded="true" signature="2925:3122" ph="..." />
-                <marker date="1511950234742" expanded="true" signature="3170:3574" ph="..." />
-                <marker date="1511950234742" expanded="true" signature="3200:3384" ph="..." />
-                <marker date="1511950234742" expanded="true" signature="3414:3547" ph="..." />
-                <marker date="1511950234742" expanded="true" signature="3952:4090" ph="..." />
-                <marker date="1511950234742" expanded="true" signature="4126:4309" ph="..." />
-                <marker date="1511950234742" expanded="true" signature="4137:4245" ph="..." />
-                <marker date="1511950234742" expanded="true" signature="4177:4233" ph="..." />
-                <marker date="1511950234742" expanded="true" signature="4256:4301" ph="..." />
               </folding>
             </state>
           </provider>
@@ -148,8 +46,8 @@
       <file leaf-file-name="gpps_db.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/gpps_db.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="54">
-              <caret line="94" column="4" lean-forward="false" selection-start-line="94" selection-start-column="4" selection-end-line="99" selection-end-column="31" />
+            <state relative-caret-position="192">
+              <caret line="55" column="24" lean-forward="false" selection-start-line="55" selection-start-column="13" selection-end-line="55" selection-end-column="24" />
               <folding>
                 <element signature="e#0#24#0" expanded="true" />
               </folding>
@@ -157,42 +55,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="classboard.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/classboard.html">
+      <file leaf-file-name="assigmentboard.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/templates/assigmentboard.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="16" column="44" lean-forward="false" selection-start-line="16" selection-start-column="44" selection-end-line="16" selection-end-column="44" />
-              <folding>
-                <marker date="1511950234738" expanded="true" signature="1057:1303" ph="..." />
-                <marker date="1511950234738" expanded="true" signature="1105:1284" ph="..." />
-                <marker date="1511950234738" expanded="true" signature="1147:1262" ph="..." />
-                <marker date="1511950234738" expanded="true" signature="1337:3799" ph="..." />
-                <marker date="1511950234738" expanded="true" signature="1359:3792" ph="..." />
-                <marker date="1511950234738" expanded="true" signature="1410:1715" ph="..." />
-                <marker date="1511950234738" expanded="true" signature="1439:1705" ph="..." />
-                <marker date="1511950234738" expanded="true" signature="1449:1477" ph="..." />
-                <marker date="1511950234738" expanded="true" signature="1509:1569" ph="..." />
-                <marker date="1511950234738" expanded="true" signature="1519:1546" ph="..." />
-                <marker date="1511950234738" expanded="true" signature="1579:1638" ph="..." />
-                <marker date="1511950234738" expanded="true" signature="1648:1695" ph="..." />
-                <marker date="1511950234738" expanded="true" signature="1797:3371" ph="..." />
-                <marker date="1511950234738" expanded="true" signature="1833:2243" ph="..." />
-                <marker date="1511950234738" expanded="true" signature="1867:2233" ph="..." />
-                <marker date="1511950234738" expanded="true" signature="1907:2222" ph="..." />
-                <marker date="1511950234738" expanded="true" signature="1934:2210" ph="..." />
-                <marker date="1511950234738" expanded="true" signature="2393:3362" ph="..." />
-                <marker date="1511950234738" expanded="true" signature="2440:3348" ph="..." />
-                <marker date="1511950234738" expanded="true" signature="2518:3316" ph="..." />
-                <marker date="1511950234738" expanded="true" signature="2548:3305" ph="..." />
-                <marker date="1511950234738" expanded="true" signature="2755:3293" ph="..." />
-                <marker date="1511950234738" expanded="true" signature="2786:2861" ph="..." />
-                <marker date="1511950234738" expanded="true" signature="2966:3269" ph="..." />
-                <marker date="1511950234738" expanded="true" signature="3667:3789" ph="..." />
-                <marker date="1511950234738" expanded="true" signature="3826:4009" ph="..." />
-                <marker date="1511950234738" expanded="true" signature="3837:3945" ph="..." />
-                <marker date="1511950234738" expanded="true" signature="3877:3933" ph="..." />
-                <marker date="1511950234738" expanded="true" signature="3956:4001" ph="..." />
-              </folding>
+            <state relative-caret-position="204">
+              <caret line="86" column="22" lean-forward="false" selection-start-line="86" selection-start-column="22" selection-end-line="86" selection-end-column="22" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -212,6 +80,8 @@
       <find>input</find>
       <find>{{nam</find>
       <find>_class</find>
+      <find>quiz</find>
+      <find>add me</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -225,12 +95,16 @@
         <option value="$PROJECT_DIR$/static/css/createquiz.css" />
         <option value="$PROJECT_DIR$/templates/editquiz.html" />
         <option value="$PROJECT_DIR$/templates/quizboard.html" />
-        <option value="$PROJECT_DIR$/templates/classboard.html" />
         <option value="$PROJECT_DIR$/templates/editclass.html" />
-        <option value="$PROJECT_DIR$/templates/assigmentboard.html" />
-        <option value="$PROJECT_DIR$/db_function.py" />
         <option value="$PROJECT_DIR$/templates/editassignment.html" />
+        <option value="$PROJECT_DIR$/templates/classboard.html" />
+        <option value="$PROJECT_DIR$/templates/Profile_in.html" />
+        <option value="$PROJECT_DIR$/templates/Profile_out.html" />
+        <option value="$PROJECT_DIR$/templates/Profile_edit.html" />
+        <option value="$PROJECT_DIR$/db_function.py" />
+        <option value="$PROJECT_DIR$/templates/Member_list.html" />
         <option value="$PROJECT_DIR$/appweb.py" />
+        <option value="$PROJECT_DIR$/templates/assigmentboard.html" />
       </list>
     </option>
   </component>
@@ -255,6 +129,7 @@
     </navigator>
     <panes>
       <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -271,7 +146,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -334,7 +208,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="65" y="-4" width="1301" height="772" extended-state="6" />
+    <frame x="-8" y="0" width="1303" height="780" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24980783" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -342,7 +216,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3283582" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3283582" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -365,6 +239,93 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/appweb.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2604">
+          <caret line="227" column="86" lean-forward="false" selection-start-line="227" selection-start-column="86" selection-end-line="227" selection-end-column="86" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db_function.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2364">
+          <caret line="204" column="36" lean-forward="false" selection-start-line="204" selection-start-column="36" selection-end-line="204" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/editassignment.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1548">
+          <caret line="129" column="26" lean-forward="true" selection-start-line="129" selection-start-column="26" selection-end-line="129" selection-end-column="26" />
+          <folding>
+            <element signature="e#2751#2757#0" expanded="true" />
+            <element signature="e#3052#3058#0" expanded="true" />
+            <element signature="n#style#0;n#textarea#0;n#div#0;n#div#1;n#form#0;n#div#2;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#3361#3367#0" expanded="true" />
+            <element signature="n#style#0;n#select#0;n#div#0;n#div#2;n#form#0;n#div#2;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#3775#3781#0" expanded="true" />
+            <element signature="e#4062#4068#0" expanded="true" />
+            <element signature="e#4518#4524#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/functional.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="8" column="36" lean-forward="true" selection-start-line="8" selection-start-column="36" selection-end-line="8" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/assigmentboard.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1140">
+          <caret line="95" column="172" lean-forward="false" selection-start-line="95" selection-start-column="172" selection-end-line="95" selection-end-column="172" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/editclass.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="996">
+          <caret line="83" column="26" lean-forward="false" selection-start-line="83" selection-start-column="26" selection-end-line="83" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gpps_db.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1080">
+          <caret line="94" column="4" lean-forward="false" selection-start-line="94" selection-start-column="4" selection-end-line="99" selection-end-column="31" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/classboard.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="16" column="44" lean-forward="false" selection-start-line="16" selection-start-column="44" selection-end-line="16" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/createquiz.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="900">
+          <caret line="75" column="75" lean-forward="false" selection-start-line="75" selection-start-column="75" selection-end-line="75" selection-end-column="75" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/appweb.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4968">
@@ -411,7 +372,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="876">
           <caret line="73" column="20" lean-forward="true" selection-start-line="73" selection-start-column="20" selection-end-line="73" selection-end-column="20" />
-          <folding />
+          <folding>
+            <element signature="e#2751#2757#0" expanded="true" />
+            <element signature="e#3052#3058#0" expanded="true" />
+            <element signature="n#style#0;n#textarea#0;n#div#0;n#div#1;n#form#0;n#div#2;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#3361#3367#0" expanded="true" />
+            <element signature="n#style#0;n#select#0;n#div#0;n#div#2;n#form#0;n#div#2;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#3775#3781#0" expanded="true" />
+            <element signature="e#4062#4068#0" expanded="true" />
+            <element signature="e#4518#4524#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -427,7 +397,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1056">
           <caret line="88" column="25" lean-forward="true" selection-start-line="88" selection-start-column="25" selection-end-line="88" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -487,14 +456,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/quizboard.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="92" column="127" lean-forward="false" selection-start-line="92" selection-start-column="72" selection-end-line="92" selection-end-column="127" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///usr/local/lib/python3.5/dist-packages/flask/globals.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="549">
@@ -507,15 +468,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-864">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/createquiz.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="268">
-          <caret line="79" column="65" lean-forward="true" selection-start-line="79" selection-start-column="65" selection-end-line="79" selection-end-column="65" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -523,7 +475,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
           <caret line="18" column="82" lean-forward="true" selection-start-line="18" selection-start-column="82" selection-end-line="18" selection-end-column="82" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -531,145 +482,21 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="116">
           <caret line="75" column="55" lean-forward="false" selection-start-line="75" selection-start-column="55" selection-end-line="75" selection-end-column="55" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gpps_db.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="94" column="4" lean-forward="false" selection-start-line="94" selection-start-column="4" selection-end-line="99" selection-end-column="31" />
-          <folding>
-            <element signature="e#0#24#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/classboard.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="16" column="44" lean-forward="false" selection-start-line="16" selection-start-column="44" selection-end-line="16" selection-end-column="44" />
-          <folding>
-            <marker date="1511950234738" expanded="true" signature="1057:1303" ph="..." />
-            <marker date="1511950234738" expanded="true" signature="1105:1284" ph="..." />
-            <marker date="1511950234738" expanded="true" signature="1147:1262" ph="..." />
-            <marker date="1511950234738" expanded="true" signature="1337:3799" ph="..." />
-            <marker date="1511950234738" expanded="true" signature="1359:3792" ph="..." />
-            <marker date="1511950234738" expanded="true" signature="1410:1715" ph="..." />
-            <marker date="1511950234738" expanded="true" signature="1439:1705" ph="..." />
-            <marker date="1511950234738" expanded="true" signature="1449:1477" ph="..." />
-            <marker date="1511950234738" expanded="true" signature="1509:1569" ph="..." />
-            <marker date="1511950234738" expanded="true" signature="1519:1546" ph="..." />
-            <marker date="1511950234738" expanded="true" signature="1579:1638" ph="..." />
-            <marker date="1511950234738" expanded="true" signature="1648:1695" ph="..." />
-            <marker date="1511950234738" expanded="true" signature="1797:3371" ph="..." />
-            <marker date="1511950234738" expanded="true" signature="1833:2243" ph="..." />
-            <marker date="1511950234738" expanded="true" signature="1867:2233" ph="..." />
-            <marker date="1511950234738" expanded="true" signature="1907:2222" ph="..." />
-            <marker date="1511950234738" expanded="true" signature="1934:2210" ph="..." />
-            <marker date="1511950234738" expanded="true" signature="2393:3362" ph="..." />
-            <marker date="1511950234738" expanded="true" signature="2440:3348" ph="..." />
-            <marker date="1511950234738" expanded="true" signature="2518:3316" ph="..." />
-            <marker date="1511950234738" expanded="true" signature="2548:3305" ph="..." />
-            <marker date="1511950234738" expanded="true" signature="2755:3293" ph="..." />
-            <marker date="1511950234738" expanded="true" signature="2786:2861" ph="..." />
-            <marker date="1511950234738" expanded="true" signature="2966:3269" ph="..." />
-            <marker date="1511950234738" expanded="true" signature="3667:3789" ph="..." />
-            <marker date="1511950234738" expanded="true" signature="3826:4009" ph="..." />
-            <marker date="1511950234738" expanded="true" signature="3837:3945" ph="..." />
-            <marker date="1511950234738" expanded="true" signature="3877:3933" ph="..." />
-            <marker date="1511950234738" expanded="true" signature="3956:4001" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/db_function.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="204" column="36" lean-forward="false" selection-start-line="204" selection-start-column="36" selection-end-line="204" selection-end-column="36" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/assigmentboard.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="549">
-          <caret line="95" column="172" lean-forward="false" selection-start-line="95" selection-start-column="172" selection-end-line="95" selection-end-column="172" />
-          <folding>
-            <marker date="1511950234738" expanded="true" signature="1068:1314" ph="..." />
-            <marker date="1511950234738" expanded="true" signature="1116:1295" ph="..." />
-            <marker date="1511950234738" expanded="true" signature="1158:1273" ph="..." />
-            <marker date="1511950234738" expanded="true" signature="1348:4256" ph="..." />
-            <marker date="1511950234738" expanded="true" signature="1372:3799" ph="..." />
-            <marker date="1511950234738" expanded="true" signature="1433:1947" ph="..." />
-            <marker date="1511950234738" expanded="true" signature="1470:1932" ph="..." />
-            <marker date="1511950234738" expanded="true" signature="1479:1532" ph="..." />
-            <marker date="1511950234738" expanded="true" signature="1575:1626" ph="..." />
-            <marker date="1511950234738" expanded="true" signature="1647:1731" ph="..." />
-            <marker date="1511950234738" expanded="true" signature="1752:1821" ph="..." />
-            <marker date="1511950234738" expanded="true" signature="1842:1914" ph="..." />
-            <marker date="1511950234738" expanded="true" signature="2008:3787" ph="..." />
-            <marker date="1511950234738" expanded="true" signature="2078:2618" ph="..." />
-            <marker date="1511950234738" expanded="true" signature="2159:2584" ph="..." />
-            <marker date="1511950234738" expanded="true" signature="2200:2573" ph="..." />
-            <marker date="1511950234738" expanded="true" signature="2729:3775" ph="..." />
-            <marker date="1511950234738" expanded="true" signature="2757:3766" ph="..." />
-            <marker date="1511950234738" expanded="true" signature="2768:2936" ph="..." />
-            <marker date="1511950234738" expanded="true" signature="2777:2924" ph="..." />
-            <marker date="1511950234738" expanded="true" signature="2981:3738" ph="..." />
-            <marker date="1511950234738" expanded="true" signature="2991:3725" ph="..." />
-            <marker date="1511950234738" expanded="true" signature="3078:3540" ph="..." />
-            <marker date="1511950234738" expanded="true" signature="4109:4247" ph="..." />
-            <marker date="1511950234738" expanded="true" signature="4284:4467" ph="..." />
-            <marker date="1511950234738" expanded="true" signature="4295:4403" ph="..." />
-            <marker date="1511950234738" expanded="true" signature="4335:4391" ph="..." />
-            <marker date="1511950234738" expanded="true" signature="4414:4459" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/editclass.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
+        <state relative-caret-position="996">
           <caret line="83" column="26" lean-forward="false" selection-start-line="83" selection-start-column="26" selection-end-line="83" selection-end-column="26" />
-          <folding>
-            <marker date="1511950234742" expanded="true" signature="1120:1366" ph="..." />
-            <marker date="1511950234742" expanded="true" signature="1168:1347" ph="..." />
-            <marker date="1511950234742" expanded="true" signature="1210:1325" ph="..." />
-            <marker date="1511950234742" expanded="true" signature="1399:4099" ph="..." />
-            <marker date="1511950234742" expanded="true" signature="1423:3666" ph="..." />
-            <marker date="1511950234742" expanded="true" signature="1484:1908" ph="..." />
-            <marker date="1511950234742" expanded="true" signature="1521:1893" ph="..." />
-            <marker date="1511950234742" expanded="true" signature="1530:1583" ph="..." />
-            <marker date="1511950234742" expanded="true" signature="1626:1677" ph="..." />
-            <marker date="1511950234742" expanded="true" signature="1698:1782" ph="..." />
-            <marker date="1511950234742" expanded="true" signature="1803:1875" ph="..." />
-            <marker date="1511950234742" expanded="true" signature="1969:3632" ph="..." />
-            <marker date="1511950234742" expanded="true" signature="2039:2254" ph="..." />
-            <marker date="1511950234742" expanded="true" signature="2120:2220" ph="..." />
-            <marker date="1511950234742" expanded="true" signature="2454:2624" ph="..." />
-            <marker date="1511950234742" expanded="true" signature="2668:3617" ph="..." />
-            <marker date="1511950234742" expanded="true" signature="2691:3597" ph="..." />
-            <marker date="1511950234742" expanded="true" signature="2717:2899" ph="..." />
-            <marker date="1511950234742" expanded="true" signature="2925:3122" ph="..." />
-            <marker date="1511950234742" expanded="true" signature="3170:3574" ph="..." />
-            <marker date="1511950234742" expanded="true" signature="3200:3384" ph="..." />
-            <marker date="1511950234742" expanded="true" signature="3414:3547" ph="..." />
-            <marker date="1511950234742" expanded="true" signature="3952:4090" ph="..." />
-            <marker date="1511950234742" expanded="true" signature="4126:4309" ph="..." />
-            <marker date="1511950234742" expanded="true" signature="4137:4245" ph="..." />
-            <marker date="1511950234742" expanded="true" signature="4177:4233" ph="..." />
-            <marker date="1511950234742" expanded="true" signature="4256:4301" ph="..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/editassignment.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="229">
-          <caret line="129" column="26" lean-forward="true" selection-start-line="129" selection-start-column="26" selection-end-line="129" selection-end-column="26" />
+        <state relative-caret-position="1548">
+          <caret line="129" column="26" lean-forward="false" selection-start-line="129" selection-start-column="26" selection-end-line="129" selection-end-column="26" />
           <folding>
             <element signature="e#2751#2757#0" expanded="true" />
             <element signature="e#3052#3058#0" expanded="true" />
@@ -691,13 +518,105 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/appweb.py">
+    <entry file="file://$PROJECT_DIR$/templates/createquiz.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="75" column="75" lean-forward="false" selection-start-line="75" selection-start-column="75" selection-end-line="75" selection-end-column="75" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/Profile_in.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="696">
+          <caret line="58" column="98" lean-forward="false" selection-start-line="58" selection-start-column="98" selection-end-line="58" selection-end-column="98" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/quizboard.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="92" column="35" lean-forward="true" selection-start-line="92" selection-start-column="35" selection-end-line="92" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/Profile_out.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="42" column="78" lean-forward="false" selection-start-line="42" selection-start-column="78" selection-end-line="42" selection-end-column="78" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/createclass.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
-          <caret line="227" column="86" lean-forward="false" selection-start-line="227" selection-start-column="86" selection-end-line="227" selection-end-column="86" />
+          <caret line="98" column="12" lean-forward="true" selection-start-line="98" selection-start-column="12" selection-end-line="98" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/Profile_edit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="384">
+          <caret line="68" column="119" lean-forward="false" selection-start-line="68" selection-start-column="119" selection-end-line="68" selection-end-column="119" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/classboard.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="29" column="85" lean-forward="false" selection-start-line="29" selection-start-column="85" selection-end-line="29" selection-end-column="85" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/Member_list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1164">
+          <caret line="97" column="8" lean-forward="true" selection-start-line="97" selection-start-column="8" selection-end-line="97" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gpps_db.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="55" column="24" lean-forward="false" selection-start-line="55" selection-start-column="13" selection-end-line="55" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db_function.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="146" column="17" lean-forward="false" selection-start-line="146" selection-start-column="4" selection-end-line="146" selection-end-column="17" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/appweb.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="210" column="57" lean-forward="true" selection-start-line="210" selection-start-column="57" selection-end-line="210" selection-end-column="57" />
           <folding>
             <element signature="e#0#23#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/assigmentboard.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="86" column="22" lean-forward="false" selection-start-line="86" selection-start-column="22" selection-end-line="86" selection-end-column="22" />
+          <folding />
         </state>
       </provider>
     </entry>

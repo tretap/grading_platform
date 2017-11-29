@@ -59,6 +59,35 @@ def logout():
 
 # This Section for Class Board #
 
+@app.route('/load_profile_out')
+def load_profileOut():
+	profile = get_information_user(session.get('id'))
+
+	return render_template('Profile_out.html',profile = profile)
+
+@app.route('/load_edit_profile_out')
+def load_editprofileOut():
+	profile = get_information_user(session.get('id'))
+
+	return render_template('Profile_edit.html',profile = profile)
+
+
+@app.route('/editprofile', methods=['POST'])
+def edit_profile_web():
+
+	name = str(request.form['Name'])
+	lastname = str(request.form['Surname'])
+
+
+	if name == ""  or lastname == "" :
+		return load_editprofileOut()
+
+	profile = get_information_user(session.get('id'))
+
+	edit_information_user(session.get('id'),name,lastname,profile.student_id,profile.role)
+
+	return home_page()
+
 @app.route('/classboard_load')
 def classboard_loading():
 	return home_page()
@@ -87,6 +116,34 @@ def home_page():
 
 
 	return render_template('classboard.html',list_html = list_html,role = get_role(session.get('id')),name = get_username(session.get('id')))
+
+@app.route('/load_memberClass')
+def load_memberClass_web():
+
+	list_member = get_allmemberClassID(session.get('class'))
+
+	list_html = []
+	dict_html = {}
+
+	for i in list_member:
+		result = get_information_user(i)
+
+		dict_html['id'] = result.id
+		dict_html['student_id'] = result.student_id
+		dict_html['name'] = result.name
+
+		#print(dict_html)
+		list_html.append(dict_html)
+
+		dict_html = {}
+
+	return render_template('Member_list.html',list_html = list_html,name = get_username(session.get('id')),role = get_role(session.get('id')))
+
+@app.route('/delete_memberClass/<string:id_member>')
+def delete_member_class_web(id_member):
+	delete_member(session.get('class'),int(id_member))
+
+	return load_memberClass_web()
 
 @app.route('/createclass_load')
 def class_create_page():
@@ -151,7 +208,7 @@ def loadingclass(id_class):
 				dict_html = {}
 
 
-	return render_template('assigmentboard.html',list_html = list_html, role = get_role(session.get('id')),name = get_username(session.get('id')))
+	return render_template('assigmentboard.html',about = get_ClassInfo(session.get('class')).description,list_html = list_html, role = get_role(session.get('id')),name = get_username(session.get('id')))
 
 @app.route('/load_editClass/<string:class_id>')
 def load_editclass(class_id,error_msn = ""):

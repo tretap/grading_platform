@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 {% if session['logged_in'] %}
-
 <html lang="en">
 
 <head>
@@ -10,18 +9,17 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Assignment Board</title>
+    <title>Quiz Board</title>
 
     <!-- Bootstrap core CSS -->
     <link href="/static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="/static/css/simple-sidebar.css" rel="stylesheet">
+    <link href="/static/css/Submit.css" rel="stylesheet">
     <link href="/static/css/scrolling-nav.css" rel="stylesheet">
-	
-	
-</head>
 
+
+</head>
     <nav class="nav navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -36,7 +34,6 @@
             </div>
         </div>
     </nav>
-
 <body>
 
     <div id="wrapper">
@@ -54,7 +51,7 @@
                     <a href="/classboard_load">Classboard</a>
                 </li>
                 <li>
-                    <a href="#">Assignment</a>
+                    <a href="/load_class">Assignment</a>
                 </li>
                 <li>
                     <a href="/logout">Log out</a>
@@ -69,56 +66,33 @@
 				<nav class="fix-top" id="mainNav">
                     <div class="inline">
                         <a href="#menu-toggle" class="btn btn-space old-menu-nav" id="menu-toggle">Menu</a>
-                        {% if role == "teacher" or role == "admin" %}
-                        <a href="/create_assignment_load" class="btn btn-space old-menu-nav" id="menu-toggle">Create Assignment</a>
-                        {% endif %}
                     </div>
 				</nav>
             </div>
         </div>
         <!-- /#page-content-wrapper -->
-        <h1 class="head">Class Activity</h1>
-        <div class="container">
-            <h4 class="card-title">
-                <a>Class Description</a>
-            </h4>
-                <div>
-                    <p class="card-text">{{about}}</p>
-                </div>
-                <div>
-                    {% for teacher in list_teacher %}
-                    <li>{{teacher.name}}</li>
-                    {% endfor %}
-                </div>
-            {% if role == "teacher" or role == "admin" %}
-            <div>
-                <button type="submit" class="btn btn-secondary" onclick="window.location.href='/load_memberClass'">Member List</button>
-            </div>
-            {% endif %}
-        </div>
-		<h1 class="head">Assignment Board</h1>    
+		<h1 class="head">Member List</h1>
 		<div class="container">
-		
 			<table class="table">
 			<thead>
 				<tr>
-					<th>Assignment</th>
-					<th></th>{% if role == "teacher" or role == "admin" %}<th></th>{% endif %}
-					<th>Description</th>
-					
+					<th>Student ID</th>
+                    <th>Student Name</th>
 				</tr>
 			</thead>
-			{% for assign in list_html %}
+            <div class = "inline">
+                <input class="btn btn-secondary" id="example-picker" type="file" name="file" accept="py/*"/>
+                <input class="btn btn-secondary btn-space" type="submit" value="Add member">
+            </div>
+			{% for student in list_html %}
 				<tbody>
 					<tr>
-						<td>{{assign.name}}</td>
-						{% if role == "teacher" or role == "admin" %}<td><button type="submit" class="btn btn-secondary" onclick="window.location.href='/load_editAssignment/{{assign.id}}'">edit</button>
-                        <button type="submit" class="btn btn-secondary" onclick="window.location.href='/delete_assignment/{{assign.id}}'">delete</button>
-                        <button type="button" class="btn btn-secondary" onclick="Score page link">Check</button>
-                        {% endif %}
-                        </td>
-						<td><button type="button" class="btn btn-secondary" onclick="window.location.href='/load_assignment/{{assign.id}}'">enter</button></td>
-						<td>{{assign.about}}</td>
+						<td>{{student.student_id}}</td><!-- This is a place where it show student id -->
+                        <td>{{student.name}}</td><!-- This is a place where it show student name -->
+                        {% if role == "teacher" or role == "admin" %}
+                        <td><button type="submit" class="btn btn-secondary" onclick="window.location.href='/delete_memberClass/{{student.id}}'" >delete</button><!-- Delete Student from class -->
+						<button type="button" class="btn btn-secondary" onclick="">enter</button></td>
+                        {% endif %}<!-- Enter Student Profile -->
 					</tr>
 				</tbody>
 			{% endfor %}
@@ -127,7 +101,6 @@
 
     </div>
 
-    </div>
     <!-- /#wrapper -->
 
     <!-- Bootstrap core JavaScript -->
@@ -146,7 +119,6 @@
 </body>
 
 </html>
-
 {% else %}
 <html>
     <head>
