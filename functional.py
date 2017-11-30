@@ -21,3 +21,14 @@ def check_datetime_withNow(time_input):
 		return True
 	else :
 		return False
+
+def remove_print(string):
+	string = string.split("(")
+	string[0] = string[0].replace("print","")
+	string1 = "(".join(string[1::])
+
+	string2 = string1[::-1]
+	string2 = string2.replace(")","",1)
+	string2 = string2[::-1]
+
+	return string2.replace(" ","")

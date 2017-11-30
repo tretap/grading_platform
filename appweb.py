@@ -449,7 +449,7 @@ def loadingquiz(id_quiz, error="", result=[], preload_code=''):
     id = session.get('id')
     id_class = session.get('class')
     id_assignment = session.get('assignment')
-    data_name = str(id) + '_' + str(id_class) + '_' + str(id_assignment) + str(id_quiz)
+    data_name = str(id) + '_' + str(id_class) + '_' + str(id_assignment)+'_' + str(id_quiz)
     if os.path.exists(target + data_name + '.py'):
         f_answer = open(target + data_name + '.py', 'r')
     else:
@@ -481,7 +481,7 @@ def create_quiz():
     sol = []
     e = []
     get_test_case = ''
-    data_name = 'solution' + '_' + str(id) + '_' + str(id_class) + '_' + str(id_assignment)
+    data_name = 'solution'  + '_' + str(id_class) + '_' + str(id_assignment)
     target = os.path.join(APP_ROOT, 'solution\\')
     if not os.path.isdir(target):
         os.mkdir(target)
@@ -581,7 +581,7 @@ def create_quiz():
         pass
 
     quiz_id = create_quiz_db(session.get('assignment'), name, problem, solution, example, testcase)
-    file_name = target + data_name + str(quiz_id) + '.py'
+    file_name = target + data_name + '_' + str(quiz_id) + '.py'
     final_sol = open(file_name, 'w')
     final_sol.write(solution)
 
@@ -609,9 +609,11 @@ def delete_quiz(id_quiz):
 
 @app.route('/submission_answer/<string:id_quiz>', methods=['POST'])
 def submission_answer(id_quiz):
+    score = 0
     id = session.get('id')
     id_class = session.get('class')
     id_assignment = session.get('assignment')
+    add_Submission_log(id_class, id_assignment, id_quiz, id, str(request.remote_addr), datetime.datetime.now().strftime("%d/%m/%y/%H/%M"))
 
     target = os.path.join(APP_ROOT, 'submission\\')
     result =  []
@@ -625,12 +627,13 @@ def submission_answer(id_quiz):
     filename = file.filename
 
     #print(destination)
-    data_name = str(id) + '_' + str(id_class) + '_' + str(id_assignment) + str(id_quiz)
+    data_name = str(id) + '_' + str(id_class) + '_' + str(id_assignment) + '_'+str(id_quiz)
     if ".py" not in file.filename:#not file upload or invalid file
         #print("Get data")
         answer = str(request.form['answer'])
-        print(answer)
+
         if (answer != ""):#text field check
+            print('from text field')
             print(answer)
 
             fin = open(target + data_name + '.py', 'w')
@@ -646,29 +649,74 @@ def submission_answer(id_quiz):
 
 
     ####edit
-    prob = importlib.import_module('submission.'+data_name)
+    sol_name = 'solution' + '_' + str(id_class) + '_' + str(id_assignment) + '_' + str(id_quiz)
+    sol_module = importlib.import_module('solution.'+sol_name)
+    try:
+        prob = importlib.import_module('submission.'+data_name)
+    except:
+        result.append('syntax error')
+        print('syntax error')
+        return loadingquiz(int(id_quiz), "", result)
+
     f_answer = open(target +data_name+  '.py', 'r')
+
+    importlib.reload(prob)
+
     for i in f_answer:
-        if i[0] == '#':
-            command_data = i.replace('#','prob.')
+        if 'print' == i[0:5]:
+            command_data = remove_print(i)
             print("command_data : "+command_data)
             get_out = 'error'
             try:
-                get_out = str(eval(command_data))
+                get_out = str(eval("prob."+command_data))
             except:
                 pass
                 #continue
             print("get_out : " + get_out)
             result.append(get_out)
-    print(id_quiz)
-    print('find testcase')
-    print(get_testcase(id_quiz))
 
+    print('find testcase')
+    testcase_str = get_testcase(id_quiz)
+    testcase_str = testcase_str.replace('\r','')
+    testcase_line = testcase_str.split('\n')
+    #print(testcase_line)
+
+    for i in range(len(testcase_line)):
+        test_line = testcase_line[i]
+        sol = str(eval("sol_module."+test_line))
+        answer = ''
+        try:
+            answer =  str(eval("prob."+test_line))
+        except:
+            pass
+        result.append('testcase '+str(i))
+        result.append('solution = '+sol)
+        result.append('answer   = '+ answer)
+        if sol == answer:
+            result.append('pass')
+        else :
+            result.append('fail')
+
+            if check_score_table(id,id_assignment,id_quiz):
+                score_id = get_score_table_id(id,id_assignment,id_quiz)
+                edit_score_table(score_id, id, id_assignment, id_quiz, 0, datetime.datetime.now().strftime("%d/%m/%y/%H/%M"))
+            else :
+                create_score_table(id, id_assignment, id_quiz, 0, datetime.datetime.now().strftime("%d/%m/%y/%H/%M"))
+            return loadingquiz(int(id_quiz), "fail", result)
+        print('sol = '+sol+' answer = '+answer)
 
     ####compile
 
+    score = get_AssignmentInfo(int(id_assignment)).assignment_score
+    print('score = '+str(score))
 
-    return loadingquiz(int(id_quiz), "",result)
+    if check_score_table(id, id_assignment, id_quiz):
+        score_id = get_score_table_id(id, id_assignment, id_quiz)
+        edit_score_table(score_id, id, id_assignment, id_quiz, score, datetime.datetime.now().strftime("%d/%m/%y/%H/%M"))
+    else:
+        create_score_table(id, id_assignment, id_quiz, score, datetime.datetime.now().strftime("%d/%m/%y/%H/%M"))
+
+    return loadingquiz(int(id_quiz), "pass",result)
 
 if __name__ == '__main__':
     app.debug = False

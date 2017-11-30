@@ -11,5 +11,4 @@ def loop_F_inal(num):
 
 	#for i in range(num, 0,-1):
 
-	return _sum + sum_[1::]
-
+	return _sum + sum_[1::]  

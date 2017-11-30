@@ -147,20 +147,19 @@ class Quiz(Base):
 class Submission_log(Base):
     __tablename__ = "Submission_log"
 
-    class_id = Column(Integer, primary_key=True)
+    id = Column(Integer, primary_key=True)
+    class_id = Column(Integer)
     assignment_id = Column(Integer)
     quiz_id = Column(Integer)
-    answer_id = Column(String)
     time = Column(String)
     user_id = Column(String)
     client_ip  = Column(String)
 
-    def __init__(self,class_id,assignment_id,quiz_id,answer_id,user_id,client_ip,time):
+    def __init__(self,class_id,assignment_id,quiz_id,user_id,client_ip,time):
         """"""
         self.class_id = class_id
         self.assignment_id = assignment_id
         self.quiz_id = quiz_id
-        self.answer_id = answer_id
         self.user_id = user_id
         self.client_ip = client_ip
         self.time = time
@@ -179,7 +178,7 @@ class Login_log(Base):
         self.time = time
         self.client_ip = client_ip
     ########################################################################
-class score_table (Base):
+class score_table(Base):
     __tablename__ = 'score_table'
     score_id =  Column(Integer, primary_key=True)
     user_id        = Column(String)
@@ -187,6 +186,13 @@ class score_table (Base):
     quiz_id         = Column(String)
     score           = Column(String)
     time            = Column(String)
+
+    def __init__(self,user_id,assignment_id,quiz_id,score,time):
+        self.user_id = user_id
+        self.assignment_id = assignment_id
+        self.quiz_id = quiz_id
+        self.score = score
+        self.time = time
 
 # create tables
 Base.metadata.create_all(engine)

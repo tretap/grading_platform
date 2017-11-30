@@ -10,6 +10,8 @@ def loop_F_inal(num):
 			sum_ += str(j)
 
 	#for i in range(num, 0,-1):
-
-	return _sum + sum_[1::]
-
+	return 'x'
+	#return _sum + sum_[1::]
+#loop_F_inal(3)
+print(loop_F_inal(3))
+                                          

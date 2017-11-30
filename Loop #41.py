@@ -29,7 +29,7 @@ print(loop_F_inal(3))
 print(loop_F_inal(4))
 
 # Test cases #
-print(loop_F_inal(8))
-print(loop_F_inal(7))
-print(loop_F_inal(6))
-print(loop_F_inal(9))
+loop_F_inal(8)
+loop_F_inal(7)
+loop_F_inal(6)
+loop_F_inal(9)

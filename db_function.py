@@ -79,6 +79,14 @@ def create_quiz_db(id_assignment, name, problem, solution, example, testcase):
     session.add(quiz_info)
     session.commit()
     return _quiz.id
+
+def create_score_table(user_id,assignment_id,quiz_id,score,time):
+    Session = sessionmaker(bind=engine)
+    session = Session()
+
+    _score = score_table(user_id,assignment_id,quiz_id,score,time)
+    session.add(_score)
+    session.commit()
 #-----------------------------------------------------------------------------------------------#
 
 #----------------------This Section for GET INFORMATION FORM DB --------------------------------#
@@ -103,6 +111,28 @@ def check_account_db(username):
         return True
     else :
         return False
+
+def check_score_table(user_id,assignment_id,quiz_id):
+    Session = sessionmaker(bind=engine)
+    s = Session()
+
+    query = s.query(score_table).filter(score_table.user_id.in_([str(user_id)]),score_table.assignment_id.in_([str(assignment_id)]),score_table.quiz_id.in_([str(quiz_id)]))
+    result = query.first()
+
+    if result:
+        return True
+    else :
+        return False
+
+def get_score_table_id(user_id,assignment_id,quiz_id):
+    Session = sessionmaker(bind=engine)
+    s = Session()
+
+    query = s.query(score_table).filter(score_table.user_id.in_([str(user_id)]),
+                                        score_table.assignment_id.in_([str(assignment_id)]),
+                                        score_table.quiz_id.in_([str(quiz_id)]))
+    result = query.first()
+    return result.score_id
 
 def get_id_member_db(username):
     Session = sessionmaker(bind=engine)
@@ -285,6 +315,21 @@ def edit_assignment_db(id_assignment, name, description, scoring_type, assignmen
 
     session.commit()
 
+def edit_score_table(score_id,user_id,assignment_id,quiz_id,score,time):
+    Session = sessionmaker(bind=engine)
+    s = Session()
+
+    query = s.query(score_table).filter(score_table.score_id.in_([str(score_id)]))
+    result = query.first()
+
+    result.user_id = user_id
+    result.assignment_id = assignment_id
+    result.quiz_id = quiz_id
+    result.score = score
+    result.time = time
+
+    s.commit()
+
 #-----------------------------------------------------------------------------------------------#
 
 #----------------------This Section for DELETE INFORMATION FORM DB --------------------------------#
@@ -360,11 +405,11 @@ def delete_quiz_db(id_assignment, id_quiz):
     #For more about Quiz student db delete
 
 
-def add_Submission_log(class_id,assignment_id,quiz_id,answer_id,user_id,client_ip,time):
+def add_Submission_log(class_id,assignment_id,quiz_id,user_id,client_ip,time):
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    log =  Submission_log(class_id, assignment_id, quiz_id, answer_id, user_id,client_ip, time)
+    log =  Submission_log(class_id, assignment_id, quiz_id, user_id,client_ip, time)
     session.add(log)
     session.commit()
 
