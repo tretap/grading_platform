@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5fa443ca-28c4-4842-8829-b1dcfc6e245c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gpps_db.db" afterPath="$PROJECT_DIR$/gpps_db.db" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/grading_platform.iml" afterPath="$PROJECT_DIR$/.idea/grading_platform.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/submission.html" afterPath="$PROJECT_DIR$/templates/submission.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -59,8 +56,8 @@
       <file leaf-file-name="submission.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/submission.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-25">
-              <caret line="120" column="23" selection-start-line="120" selection-start-column="23" selection-end-line="120" selection-end-column="23" />
+            <state relative-caret-position="105">
+              <caret line="26" column="46" selection-start-line="26" selection-start-column="46" selection-end-line="26" selection-end-column="46" />
               <folding />
             </state>
           </provider>
@@ -175,7 +172,6 @@
         <option value="$PROJECT_DIR$/templates/Member_list.html" />
         <option value="$PROJECT_DIR$/solution/solution_1_1_1.py" />
         <option value="$PROJECT_DIR$/Loop #41.py" />
-        <option value="$PROJECT_DIR$/templates/submission.html" />
         <option value="$PROJECT_DIR$/submission/1_1_1_2.py" />
         <option value="$PROJECT_DIR$/functional.py" />
         <option value="$PROJECT_DIR$/gpps_db.py" />
@@ -183,6 +179,7 @@
         <option value="$PROJECT_DIR$/appweb.py" />
         <option value="$PROJECT_DIR$/templates/classboard.html" />
         <option value="$PROJECT_DIR$/templates/log.html" />
+        <option value="$PROJECT_DIR$/templates/submission.html" />
       </list>
     </option>
   </component>
@@ -858,8 +855,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/submission.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-25">
-          <caret line="120" column="23" selection-start-line="120" selection-start-column="23" selection-end-line="120" selection-end-column="23" />
+        <state relative-caret-position="105">
+          <caret line="26" column="46" selection-start-line="26" selection-start-column="46" selection-end-line="26" selection-end-column="46" />
           <folding />
         </state>
       </provider>
