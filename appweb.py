@@ -356,8 +356,11 @@ def loadingquiz(id_quiz,error = "",result = [],preload_code = ''):
     id = session.get('id')
     id_class = session.get('class')
     id_assignment = session.get('assignment')
-    data_name = str(id) + '_' + str(id_class) + '_' + str(id_assignment)
-    f_answer = open(target + data_name + '.py', 'r')
+    data_name = str(id) + '_' + str(id_class) + '_' + str(id_assignment)  + str(id_quiz)
+    if  os.path.exists(target + data_name + '.py'):
+        f_answer = open(target + data_name + '.py', 'r')
+    else :
+        f_answer = []
     #print(list(f_answer))
     preload_code = "".join(list(f_answer))
     return render_template('submission.html', quiz_info = quiz_info_html, error = error, role = get_role(session.get('id')),name  = get_username(session.get('id')),result = result,preload_code = preload_code)
@@ -381,91 +384,91 @@ def create_quiz():
     sol = []
     e = []
     get_test_case = ''
-    data_name = 'solution'+ '_' + +str(id) + '_' + str(id_class) + '_' + str(id_assignment)
-    target = os.path.join(APP_ROOT, 'images/')
+    data_name = 'solution'+ '_' +str(id) + '_' + str(id_class) + '_' + str(id_assignment)
+    target = os.path.join(APP_ROOT, 'solution\\')
     if not os.path.isdir(target):
         os.mkdir(target)
     if name == "" or problem == "" or solution == "" or example == "" or testcase == "":
 
 
-        for file in request.files.getlist("file"):
-            filename = file.filename
-            if ".py" not in filename:
-                return render_template('createquiz.html', error_msn="Sorry sir, name or about can't be blank!")
-            destination = target + data_name + '.py'
-            file.save(destination)
+        file = request.files.getlist("file")[0]
+        filename = file.filename
+        if ".py" not in filename:
+            return render_template('createquiz.html', error_msn="Sorry sir, name or about can't be blank!")
+        destination = target + data_name + '.py'
+        file.save(destination)
 
-            pyfile = destination
-            print('py file = ' + pyfile)
-            print(filename[:len(filename) - 3])
-            prob = importlib.import_module(filename[:len(filename) - 3])
-            f = open(pyfile, 'r')
-            j = 0
-            i = 0
-            name_mode = False
-            prob_mode = False
-            solu_mode = False
-            exam_mode = False
-            test_mode = False
-            """print(f.read())"""
+        pyfile = destination
+        print('py file = ' + pyfile)
+        print(filename[:len(filename) - 3])
+        prob = importlib.import_module(filename[:len(filename) - 3])
+        f = open(pyfile, 'r')
+        j = 0
+        i = 0
+        name_mode = False
+        prob_mode = False
+        solu_mode = False
+        exam_mode = False
+        test_mode = False
+        """print(f.read())"""
 
-            for line in f:
-                print(line)
-                if name_mode:
-                    if("# Problem" not in line):
-                        n.append(line)
-                if "# Name" in line:
-                    name_mode = True
-                    test_mode = False
-                    solu_mode = False
-                    exam_mode = False
-                    prob_mode = False
-                if prob_mode:
-                    if ("# Solution" not in line):
-                        p.append(line)
-                if "# Problem" in line:
-                    name_mode = False
-                    test_mode = False
-                    solu_mode = False
-                    exam_mode = False
-                    prob_mode = True
-                    i = i + 1
-                    j = 0
-                if solu_mode:
-                    if ("# Example" not in line):
-                        sol.append(line)
-                if "# Solution" in line:
-                    name_mode = False
-                    test_mode = False
-                    solu_mode = True
-                    exam_mode = False
-                    prob_mode = False
-                if exam_mode:
-                    if ("# Test cases" not in line):
-                        e.append(line)
-                if "# Example" in line:
-                    name_mode = False
-                    test_mode = False
-                    solu_mode = False
-                    exam_mode = True
-                    prob_mode = False
-                if test_mode:
-                    j = j + 1
-                    get_test_case += line
-                    command = line.replace('print(', 'prob.')
-                    try:
-                        out = eval(command[:-2])
-                        out = str(out) + "\n"
-                        print("Answer : " + out)
+        for line in f:
+            print(line)
+            if name_mode:
+                if("# Problem" not in line):
+                    n.append(line)
+            if "# Name" in line:
+                name_mode = True
+                test_mode = False
+                solu_mode = False
+                exam_mode = False
+                prob_mode = False
+            if prob_mode:
+                if ("# Solution" not in line):
+                    p.append(line)
+            if "# Problem" in line:
+                name_mode = False
+                test_mode = False
+                solu_mode = False
+                exam_mode = False
+                prob_mode = True
+                i = i + 1
+                j = 0
+            if solu_mode:
+                if ("# Example" not in line):
+                    sol.append(line)
+            if "# Solution" in line:
+                name_mode = False
+                test_mode = False
+                solu_mode = True
+                exam_mode = False
+                prob_mode = False
+            if exam_mode:
+                if ("# Test cases" not in line):
+                    e.append(line)
+            if "# Example" in line:
+                name_mode = False
+                test_mode = False
+                solu_mode = False
+                exam_mode = True
+                prob_mode = False
+            if test_mode:
+                j = j + 1
+                get_test_case += line
+                command = line.replace('print(', 'prob.')
+                try:
+                    out = eval(command[:-2])
+                    out = str(out) + "\n"
+                    print("Answer : " + out)
 
-                    except:
-                        continue
-                if "# Test cases" in line:
-                    name_mode = False
-                    test_mode = True
-                    solu_mode = False
-                    exam_mode = False
-                    prob_mode = False
+                except:
+                    continue
+            if "# Test cases" in line:
+                name_mode = False
+                test_mode = True
+                solu_mode = False
+                exam_mode = False
+                prob_mode = False
         name = "".join(n)
         name = name.replace('\"\"\"', '')
         problem = "".join(p)
@@ -475,7 +478,9 @@ def create_quiz():
         testcase = get_test_case
         print(problem, solution, example)
     else:
+
         sol = open(target + data_name + '.py','w')
+        solution = solution.replace('\r','')
         sol.write(solution)
         sol.close()
 
@@ -521,7 +526,7 @@ def submission_answer(id_quiz):
     filename = file.filename
 
     #print(destination)
-    data_name = str(id) + '_' + str(id_class) + '_' + str(id_assignment)
+    data_name = str(id) + '_' + str(id_class) + '_' + str(id_assignment) + str(id_quiz)
     if ".py" not in file.filename:#not file upload or invalid file
         #print("Get data")
         answer = str(request.form['answer'])
@@ -530,9 +535,9 @@ def submission_answer(id_quiz):
             print(answer)
 
             fin = open(target + data_name + '.py', 'w')
-            code_line = answer.split('\r\n')
-            for line in code_line:
-                fin.write(line+'\n')
+            answer = answer.replace('\r','')
+
+            fin.write(answer)
             fin.close()
         else:
             return loadingquiz(int(id_quiz), "no answer",result)
@@ -542,25 +547,16 @@ def submission_answer(id_quiz):
 
 
     ####edit
-    prob = importlib.import_module(data_name)
+    prob = importlib.import_module('submission.'+data_name)
     f_answer = open(target +data_name+  '.py', 'r')
     for i in f_answer:
         if i[0] == '#':
             command_data = i.replace('#','prob.')
 
-<<<<<<< HEAD
             print("command_data : "+command_data)
             get_out = 'error'
             try:
                 get_out = str(eval(command_data))
-=======
-            print("command_data : "+command_data[:-1])
-            get_out = 'error'
-            try:
-                get_out = str(eval(command_data[:-1]))
-
-
->>>>>>> parent of f071ea8... can import module now
             except:
                 pass
                 #continue

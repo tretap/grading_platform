@@ -1,0 +1,1 @@
+def x_n(n):    return 'x'*n
