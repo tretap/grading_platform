@@ -178,7 +178,15 @@ class Login_log(Base):
         self.user_id = user_id
         self.time = time
         self.client_ip = client_ip
-
+    ########################################################################
+class score_table (Base):
+    __tablename__ = 'score_table'
+    score_id =  Column(Integer, primary_key=True)
+    user_id        = Column(String)
+    assignment_id  = Column(String)
+    quiz_id         = Column(String)
+    score           = Column(String)
+    time            = Column(String)
 
 # create tables
 Base.metadata.create_all(engine)
