@@ -160,6 +160,7 @@ def add_member_class_web():
     for line in f:
         information_line = line.split(",")
         if information_line[0] == "" or information_line[1] == "":
+            os.remove(destination)
             return load_memberClass_web()
 
         if  check_account_db(information_line[0]):
@@ -169,7 +170,7 @@ def add_member_class_web():
             _id = add_account(information_line[0],"password",(information_line[1].split(" "))[0],(information_line[1].split(" "))[1],information_line[0],"student")
             add_member(session.get('class'),int(_id))
 
-
+    os.remove(destination)
     return load_memberClass_web()
 
 
@@ -488,8 +489,6 @@ def create_quiz():
 
 
         file = request.files.getlist("file")[0]
-  
-
 
         filename = file.filename
         if ".py" not in filename:
