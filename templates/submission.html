@@ -18,6 +18,21 @@
 
     <link href="/static/css/Submit.css" rel="stylesheet">
     <link href="/static/css/scrolling-nav.css" rel="stylesheet">
+	
+	<script language="Javascript" type="text/javascript" src="/static/edit_area/edit_area_full.js"></script>
+	<script language="Javascript" type="text/javascript">
+		// initialisation
+		editAreaLoader.init({
+			id: "code_1"			// id of the textarea to transform		
+			,start_highlight: true	// if start with highlight
+			,allow_resize: "both"
+			,allow_toggle: true
+			,word_wrap: true
+			,language: "en"
+			,syntax: "python"	
+		});
+		
+	</script>
 
 </head>
 
@@ -81,27 +96,39 @@
 		<h2 class="head">
             Problem<br><br>
             {{quiz_info.problem}}
-        </h2> <!-- /ข้อมูลที่กรกอกใน create quiz ต้องมาอยู -->
-        <h3 class="head">
+            <br><br>
             Example<br><br>
             {{quiz_info.example}}
-        </h3>
+            <br><br>
+        </h2> <!-- /ข้อมูลที่กรกอกใน create quiz ต้องมาอยู -->
 
-            <div>
-                <textarea  class = "position_first form-control" type = text placeholder="Enter code here!" name = "problem" value ="problem" required>
-
-                </textarea>
-            </div>
+            <!--<div class="container">
+                <textarea id="code_1"  cols=95 rows=20 type = text placeholder="Enter code here!" name = "problem" value ="problem" required></textarea>
+            </div>-->
 
 			<h4 class="head">{{error}}</h4>
-			<form id="upload-form" action="/submission_answer/{{quiz_info.name}}" method="POST" enctype="multipart/form-data">
+			<form id="upload-form" action="/submission_answer/{{quiz_info.id}}" method="POST" enctype="multipart/form-data">
                 <div class = "input_box">
+
+                    <div class="container">
+                    <textarea id="code_1"  cols=95 rows=20 type = text placeholder="Enter code here!" name = "answer" value ="answer">{{preload_code}} </textarea>
+                    </div>
+
                     <div>
                         <input class="up_pos1 btn btn-secondary" id="example-picker" type="file" name="file" accept="py/*"/>
                         <input class="up_pos1 btn" type="submit" value="Submit" id="submit-button">
                     </div>
                  </div>
 		    </form>
+
+        <h3 class="head">
+
+            result<br>
+            {% for line in result %}
+            {{line}}<br>
+            {% endfor %}
+
+        </h3>
 
 
 

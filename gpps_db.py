@@ -143,6 +143,42 @@ class Quiz(Base):
         self.solution = solution
         self.example = example
         self.testcase = testcase
- 
+########################################################################
+class Submission_log(Base):
+    __tablename__ = "Submission_log"
+
+    class_id = Column(Integer, primary_key=True)
+    assignment_id = Column(Integer)
+    quiz_id = Column(Integer)
+    answer_id = Column(String)
+    time = Column(String)
+    user_id = Column(String)
+    client_ip  = Column(String)
+
+    def __init__(self,class_id,assignment_id,quiz_id,answer_id,user_id,client_ip,time):
+        """"""
+        self.class_id = class_id
+        self.assignment_id = assignment_id
+        self.quiz_id = quiz_id
+        self.answer_id = answer_id
+        self.user_id = user_id
+        self.client_ip = client_ip
+        self.time = time
+
+    ########################################################################
+class Login_log(Base):
+    __tablename__ = "Login_log"
+
+    log_index = Column(Integer, primary_key=True)
+    user_id = Column(String)
+    time = Column(String)
+    client_ip  = Column(String)
+    def __init__(self, user_id,client_ip, time):
+        """"""
+        self.user_id = user_id
+        self.time = time
+        self.client_ip = client_ip
+
+
 # create tables
 Base.metadata.create_all(engine)
