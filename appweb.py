@@ -337,7 +337,7 @@ def loadingassignment(id_assignment):
     return render_template('quizboard.html', list_html=list_html, role = get_role(session.get('id')),name  = get_username(session.get('id')))
 
 @app.route("/quizpage_load/<string:id_quiz>")
-def loadingquiz(id_quiz,error = "",result = []):
+def loadingquiz(id_quiz,error = "",result = [],preload_code = ''):
 
     id_quiz = int(id_quiz)
 
@@ -352,8 +352,15 @@ def loadingquiz(id_quiz,error = "",result = []):
 
     _info = get_QuizInfo(id_quiz)
     quiz_info_html = {'id':_info.id,'name':_info.name,'problem':_info.description,'example':_info.example}
-
-    return render_template('submission.html', quiz_info = quiz_info_html, error = error, role = get_role(session.get('id')),name  = get_username(session.get('id')),result = result)
+    target = os.path.join(APP_ROOT, 'submission\\')
+    id = session.get('id')
+    id_class = session.get('class')
+    id_assignment = session.get('assignment')
+    data_name = str(id) + '_' + str(id_class) + '_' + str(id_assignment)
+    f_answer = open(target + data_name + '.py', 'r')
+    #print(list(f_answer))
+    preload_code = "".join(list(f_answer))
+    return render_template('submission.html', quiz_info = quiz_info_html, error = error, role = get_role(session.get('id')),name  = get_username(session.get('id')),result = result,preload_code = preload_code)
 
 @app.route('/create_quiz')
 def load_quiz_create_page():
@@ -361,7 +368,9 @@ def load_quiz_create_page():
 
 @app.route('/createquiz', methods=['POST'])
 def create_quiz():
-
+    id = session.get('id')
+    id_class = session.get('class')
+    id_assignment = session.get('assignment')
     name = str(request.form['name'])
     problem = str(request.form['problem'])
     solution = str(request.form['solution'])
@@ -372,17 +381,18 @@ def create_quiz():
     sol = []
     e = []
     get_test_case = ''
-
+    data_name = 'solution'+ '_' + +str(id) + '_' + str(id_class) + '_' + str(id_assignment)
+    target = os.path.join(APP_ROOT, 'images/')
+    if not os.path.isdir(target):
+        os.mkdir(target)
     if name == "" or problem == "" or solution == "" or example == "" or testcase == "":
-        target = os.path.join(APP_ROOT, 'images/')
-        if not os.path.isdir(target):
-            os.mkdir(target)
-        print(request.files.getlist("file"))
+
+
         for file in request.files.getlist("file"):
             filename = file.filename
             if ".py" not in filename:
                 return render_template('createquiz.html', error_msn="Sorry sir, name or about can't be blank!")
-            destination = "".join([target, filename])
+            destination = target + data_name + '.py'
             file.save(destination)
 
             pyfile = destination
@@ -464,6 +474,10 @@ def create_quiz():
         example = "".join(e)
         testcase = get_test_case
         print(problem, solution, example)
+    else:
+        sol = open(target + data_name + '.py','w')
+        sol.write(solution)
+        sol.close()
 
     create_quiz_db(session.get('assignment'), name, problem, solution, example, testcase)
 
@@ -514,8 +528,11 @@ def submission_answer(id_quiz):
         print(answer)
         if (answer != ""):#text field check
             print(answer)
+
             fin = open(target + data_name + '.py', 'w')
-            fin.write(answer)
+            code_line = answer.split('\r\n')
+            for line in code_line:
+                fin.write(line+'\n')
             fin.close()
         else:
             return loadingquiz(int(id_quiz), "no answer",result)
@@ -528,15 +545,13 @@ def submission_answer(id_quiz):
     prob = importlib.import_module('submission.'+data_name)
     f_answer = open(target +data_name+  '.py', 'r')
     for i in f_answer:
-        if 'print(' in i:
-            command_data = i.replace('print(', 'prob.')
+        if i[0] == '#':
+            command_data = i.replace('#','prob.')
 
-            print("command_data : "+command_data[:-2])
+            print("command_data : "+command_data)
             get_out = 'error'
             try:
-                get_out = str(eval(command_data[:-2]))
-
-
+                get_out = str(eval(command_data))
             except:
                 pass
                 #continue
@@ -551,7 +566,7 @@ def submission_answer(id_quiz):
     ####compile
 
 
-    return loadingquiz(int(id_quiz), "got file",result)
+    return loadingquiz(int(id_quiz), "",result)
 
 if __name__ == '__main__':
     app.debug = False
