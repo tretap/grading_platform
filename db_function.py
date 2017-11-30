@@ -24,6 +24,8 @@ def add_account(username, password, name, lastname, student_id, role):
 
     session.commit()
 
+    return _profile.id
+
 def create_classroom(name,discription,id_teacher):
     Session = sessionmaker(bind=engine)
     session = Session()
@@ -89,6 +91,27 @@ def get_login(POST_USERNAME, POST_PASSWORD):
     result = query.first()
 
     return result
+
+def check_account_db(username):
+    Session = sessionmaker(bind=engine)
+    s = Session()
+
+    query = s.query(Account).filter(Account.username.in_([username]))
+    result = query.first()
+
+    if result:
+        return True
+    else :
+        return False
+
+def get_id_member_db(username):
+    Session = sessionmaker(bind=engine)
+    s = Session()
+
+    query = s.query(Account).filter(Account.username.in_([username]))
+    result = query.first()
+
+    return result.id
 
 def get_role(id_member):
     Session = sessionmaker(bind = engine)

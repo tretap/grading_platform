@@ -139,6 +139,40 @@ def load_memberClass_web():
 
     return render_template('Member_list.html',list_html = list_html,name = get_username(session.get('id')),role = get_role(session.get('id')))
 
+@app.route('/add_Memberclass_web', methods=['POST'])
+def add_member_class_web():
+
+    data_name = 'class' + '_' + str(session.get('class')) + '_member'
+    target = os.path.join(APP_ROOT, 'log_addmember\\')
+    if not os.path.isdir(target):
+        os.mkdir(target)
+    file = request.files.getlist("file")[0]
+    filename = file.filename
+    if ".csv" not in filename:
+        return load_memberClass_web()
+
+    destination = target + data_name + '.csv'
+    file.save(destination)
+
+    pyfile = destination
+    f = open(pyfile, 'r')
+
+    for line in f:
+        information_line = line.split(",")
+        if information_line[0] == "" or information_line[1] == "":
+            return load_memberClass_web()
+
+        if  check_account_db(information_line[0]):
+            _id = get_id_member_db(information_line[0])
+            add_member(session.get('class'),int(_id))
+        else :
+            _id = add_account(information_line[0],"password",(information_line[1].split(" "))[0],(information_line[1].split(" "))[1],information_line[0],"student")
+            add_member(session.get('class'),int(_id))
+
+
+    return load_memberClass_web()
+
+
 @app.route('/delete_memberClass/<string:id_member>')
 def delete_member_class_web(id_member):
     delete_member(session.get('class'),int(id_member))

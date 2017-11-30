@@ -73,18 +73,20 @@
         <!-- /#page-content-wrapper -->
 		<h1 class="head">Member List</h1>
 		<div class="container">
-			<table class="table">
+			<form action="/add_Memberclass_web" method="POST" enctype="multipart/form-data">
+            <table class="table">
 			<thead>
 				<tr>
 					<th>Student ID</th>
                     <th>Student Name</th>
 				</tr>
 			</thead>
-            <div class = "inline">
-                <input class="btn btn-secondary" id="example-picker" type="file" name="file" accept="py/*"/>
-                <input class="btn btn-secondary btn-space" type="submit" value="Add member">
-            </div>
-			{% for student in list_html %}
+
+                <div class = "inline">
+                    <input class="btn btn-secondary" id="example-picker" type="file" name="file" id= "file" accept="py/*"/>
+                    <input class="btn btn-secondary btn-space" type="submit" value="Add member">
+                </div>
+            {% for student in list_html %}
 				<tbody>
 					<tr>
 						<td>{{student.student_id}}</td><!-- This is a place where it show student id -->
@@ -97,6 +99,7 @@
 				</tbody>
 			{% endfor %}
 			</table>
+            </form>
 		</div>
 
     </div>
