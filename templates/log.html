@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Classboard</title>
+    <title>Log</title>
 
     <!-- Bootstrap core CSS -->
     <link href="/static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -52,9 +52,6 @@
 						<a href="/classboard_load">Classboard</a>
 					</li>
 					<li>
-						<a href="/load_dataLog">Data Log</a>
-					</li>
-					<li>
 						<a href="/logout">Log out</a>
 					</li>
 				</ul>
@@ -69,37 +66,31 @@
 					<nav class="fix-top" id="mainNav">
 						<div class="inline">
 						<a href="#menu-toggle" class = "btn btn-space old-menu-nav" id="menu-toggle">Menu</a>
-						{% if role == "teacher" or role == "admin" %}
-						<a href="/createclass_load" class="btn btn-space old-menu-nav" id="create-calss">Add class</a>
-						{% endif %}
 						</div>
 					</nav>
 				</div>
 			</div>
 			<!-- /#page-content-wrapper -->
 			<!-- /ใส่เว็บตรงนี้ -->
-		<h1 class="head">Welcome to Classroom Board, {{name}}</h1>
+		<h1 class="head">SHOW LOG HERE!?</h1>
 			<div class="container">
 			<!-- Page Heading -->
 
 			<div class="row">
-			{% for class in list_html %}
-			
-				<div class="col-lg-6 portfolio-item">
-					<div class="card h-100">
-						<a href="/load_class/{{class.id}}"><img class="card-img-top" src="http://www.talentinternational.com/wp-content/uploads/2017/05/Toby-Greet-Newsjack-image.jpg" alt=""></a>
-						<div class="card-body">
-							<h4 class="card-title">
-								<a href="/load_class/{{class.id}}">{{class.name}}</a>
-							</h4>
-							<p class="card-text">{{class.about}}</p>
-							{% if role == "teacher" or role == "admin" %}<td><button type="submit" class="btn btn-secondary" onclick="window.location.href='/load_editClass/{{class.id}}'">edit</button>
-                        	<button type="submit" class="btn btn-secondary" onclick="window.location.href='/delete_class/{{class.id}}'">delete</button>
-                        	</td>{% endif %}
-						</div>
-					</div>
-				</div>  
-			
+			<br></br>
+			<p><h2>LOGIN LOG:</h2></p>
+			{% for class in login_html %}
+				<br></br>
+				<p><h4>{{class.log_index}}</h4>,<h4>{{class.user_id}}</h4><h4>{{class.time}}</h4><h4>{{class.client_ip}}</h4></p>
+				<br></br>
+			{% endfor %}
+
+			<br></br>
+			<p><h2>SUBMISSION LOG:</h2></p>
+			{% for class in submission_html %}
+				<br></br>
+				<p><h4>{{class.id}}</h4>,<h4>{{class.class_id}}</h4><h4>{{class.assignment_id}}</h4><h4>{{class.quiz_id}}</h4><h4>{{class.time}}</h4><h4>{{class.user_id}}</h4><h4>{{class.client_ip}}</h4></p>
+				<br></br>
 			{% endfor %}
 			</div>
 			

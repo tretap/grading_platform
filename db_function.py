@@ -112,6 +112,28 @@ def check_account_db(username):
     else :
         return False
 
+def get_login_logAll_db():
+    metadata = MetaData(engine)
+    all_loginLog = Table('Login_log', metadata, autoload=True).select().execute()
+
+    result = []
+
+    for row in all_loginLog:
+        result.append(row)
+
+    return result
+
+def get_submission_logAll_db():
+    metadata = MetaData(engine)
+    all_submissionLog = Table('Submission_log', metadata, autoload=True).select().execute()
+
+    result = []
+
+    for row in all_submissionLog:
+        result.append(row)
+
+    return result
+
 def check_score_table(user_id,assignment_id,quiz_id):
     Session = sessionmaker(bind=engine)
     s = Session()

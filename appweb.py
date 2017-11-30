@@ -59,6 +59,13 @@ def logout():
 
 # This Section for Class Board #
 
+@app.route('/load_dataLog')
+def load_dataLog():
+    login_html = get_login_logAll_db()
+    submission_html = get_submission_logAll_db()
+
+    return render_template('log.html',login_html = login_html,submission_html = submission_html)
+
 @app.route('/load_profile_out')
 def load_profileOut():
     profile = get_information_user(session.get('id'))
