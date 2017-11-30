@@ -481,19 +481,18 @@ def create_quiz():
     sol = []
     e = []
     get_test_case = ''
-    data_name = 'solution'+ '_' +str(id) + '_' + str(id_class) + '_' + str(id_assignment)
+    data_name = 'solution' + '_' + str(id) + '_' + str(id_class) + '_' + str(id_assignment)
     target = os.path.join(APP_ROOT, 'solution\\')
     if not os.path.isdir(target):
         os.mkdir(target)
+    destination = target + data_name + '.py'
     if name == "" or problem == "" or solution == "" or example == "" or testcase == "":
-
 
         file = request.files.getlist("file")[0]
 
         filename = file.filename
         if ".py" not in filename:
             return render_template('createquiz.html', error_msn="Sorry sir, name or about can't be blank!")
-        destination = target + data_name + '.py'
         file.save(destination)
 
         pyfile = destination
@@ -513,7 +512,7 @@ def create_quiz():
         for line in f:
             print(line)
             if name_mode:
-                if("# Problem" not in line):
+                if ("# Problem" not in line):
                     n.append(line)
             if "# Name" in line:
                 name_mode = True
@@ -567,6 +566,8 @@ def create_quiz():
                 solu_mode = False
                 exam_mode = False
                 prob_mode = False
+        f.close()
+        os.remove(destination)
         name = "".join(n)
         name = name.replace('\"\"\"', '')
         problem = "".join(p)
@@ -577,13 +578,12 @@ def create_quiz():
         print(problem, solution, example)
     else:
 
-        sol = open(target + data_name + '.py','w')
-        solution = solution.replace('\r','')
-        sol.write(solution)
-        sol.close()
+        pass
 
     quiz_id = create_quiz_db(session.get('assignment'), name, problem, solution, example, testcase)
-    print('quiz_id = '+str(quiz_id))
+    file_name = target + data_name + str(quiz_id) + '.py'
+    final_sol = open(file_name, 'w')
+    final_sol.write(solution)
 
     return loadingassignment(session.get('assignment'))
 @app.route('/delete_quiz/<string:id_quiz>')
