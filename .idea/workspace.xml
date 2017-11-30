@@ -14,8 +14,8 @@
       <file leaf-file-name="appweb.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/appweb.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="481">
-              <caret line="491" column="33" lean-forward="true" selection-start-line="491" selection-start-column="33" selection-end-line="491" selection-end-column="33" />
+            <state relative-caret-position="260">
+              <caret line="490" column="2" lean-forward="false" selection-start-line="490" selection-start-column="2" selection-end-line="490" selection-end-column="2" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
               </folding>
@@ -26,8 +26,8 @@
       <file leaf-file-name="solution_1_1_1.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/solution/solution_1_1_1.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="25">
-              <caret line="1" column="24" lean-forward="false" selection-start-line="1" selection-start-column="24" selection-end-line="1" selection-end-column="24" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -36,8 +36,8 @@
       <file leaf-file-name="db_function.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/db_function.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-321">
-              <caret line="127" column="0" lean-forward="false" selection-start-line="127" selection-start-column="0" selection-end-line="127" selection-end-column="0" />
+            <state relative-caret-position="509">
+              <caret line="80" column="19" lean-forward="false" selection-start-line="80" selection-start-column="19" selection-end-line="80" selection-end-column="19" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
@@ -45,37 +45,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Member_list.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/Member_list.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1775">
-              <caret line="71" column="14" lean-forward="false" selection-start-line="71" selection-start-column="14" selection-end-line="71" selection-end-column="14" />
-              <folding>
-                <marker date="1512010905350" expanded="true" signature="4057:4195" ph="..." />
-                <marker date="1512010905350" expanded="true" signature="4231:4414" ph="..." />
-                <marker date="1512010905350" expanded="true" signature="4242:4350" ph="..." />
-                <marker date="1512010905350" expanded="true" signature="4282:4338" ph="..." />
-                <marker date="1512010905350" expanded="true" signature="4361:4406" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="createquiz.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/createquiz.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1850">
-              <caret line="74" column="29" lean-forward="false" selection-start-line="74" selection-start-column="29" selection-end-line="74" selection-end-column="29" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="gpps_db.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/gpps_db.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="670">
-              <caret line="188" column="36" lean-forward="false" selection-start-line="188" selection-start-column="36" selection-end-line="188" selection-end-column="36" />
+            <state relative-caret-position="135">
+              <caret line="131" column="4" lean-forward="false" selection-start-line="131" selection-start-column="4" selection-end-line="131" selection-end-column="6" />
               <folding>
                 <element signature="e#0#24#0" expanded="true" />
               </folding>
@@ -101,6 +75,7 @@
       <find>quiz</find>
       <find>add me</find>
       <find>add mem</find>
+      <find>creat</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -121,11 +96,11 @@
         <option value="$PROJECT_DIR$/templates/Profile_out.html" />
         <option value="$PROJECT_DIR$/templates/Profile_edit.html" />
         <option value="$PROJECT_DIR$/templates/assigmentboard.html" />
-        <option value="$PROJECT_DIR$/db_function.py" />
         <option value="$PROJECT_DIR$/templates/Member_list.html" />
-        <option value="$PROJECT_DIR$/appweb.py" />
         <option value="$PROJECT_DIR$/gpps_db.py" />
         <option value="$PROJECT_DIR$/solution/solution_1_1_1.py" />
+        <option value="$PROJECT_DIR$/db_function.py" />
+        <option value="$PROJECT_DIR$/appweb.py" />
       </list>
     </option>
   </component>
@@ -135,7 +110,7 @@
     <option name="height" value="1038" />
   </component>
   <component name="ProjectView">
-    <navigator currentView="ProjectPane" proportions="" version="1">
+    <navigator proportions="" version="1">
       <flattenPackages />
       <showMembers />
       <showModules />
@@ -148,26 +123,7 @@
       <manualOrder />
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes>
-      <pane id="Scratches" />
-      <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="grading_platform" type="b2602c69:ProjectViewProjectNode" />
-              <item name="grading_platform" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="grading_platform" type="b2602c69:ProjectViewProjectNode" />
-              <item name="grading_platform" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-    </panes>
+    <panes />
   </component>
   <component name="PropertiesComponent">
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
@@ -302,6 +258,24 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/templates/createquiz.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1850">
+          <caret line="74" column="29" lean-forward="false" selection-start-line="74" selection-start-column="29" selection-end-line="74" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gpps_db.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4475">
+          <caret line="183" column="32" lean-forward="true" selection-start-line="183" selection-start-column="32" selection-end-line="183" selection-end-column="32" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/appweb.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -326,13 +300,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1775">
           <caret line="71" column="14" lean-forward="true" selection-start-line="71" selection-start-column="14" selection-end-line="71" selection-end-column="14" />
-          <folding>
-            <marker date="1512010905350" expanded="true" signature="4057:4195" ph="..." />
-            <marker date="1512010905350" expanded="true" signature="4231:4414" ph="..." />
-            <marker date="1512010905350" expanded="true" signature="4242:4350" ph="..." />
-            <marker date="1512010905350" expanded="true" signature="4282:4338" ph="..." />
-            <marker date="1512010905350" expanded="true" signature="4361:4406" ph="..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -631,60 +599,54 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/templates/Member_list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1775">
+          <caret line="71" column="14" lean-forward="false" selection-start-line="71" selection-start-column="14" selection-end-line="71" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/solution/solution_1_1_1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/templates/createquiz.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1850">
+        <state relative-caret-position="535">
           <caret line="74" column="29" lean-forward="false" selection-start-line="74" selection-start-column="29" selection-end-line="74" selection-end-column="29" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/Member_list.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1775">
-          <caret line="71" column="14" lean-forward="false" selection-start-line="71" selection-start-column="14" selection-end-line="71" selection-end-column="14" />
-          <folding>
-            <marker date="1512010905350" expanded="true" signature="4057:4195" ph="..." />
-            <marker date="1512010905350" expanded="true" signature="4231:4414" ph="..." />
-            <marker date="1512010905350" expanded="true" signature="4242:4350" ph="..." />
-            <marker date="1512010905350" expanded="true" signature="4282:4338" ph="..." />
-            <marker date="1512010905350" expanded="true" signature="4361:4406" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/db_function.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-321">
-          <caret line="127" column="0" lean-forward="false" selection-start-line="127" selection-start-column="0" selection-end-line="127" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/gpps_db.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="670">
-          <caret line="188" column="36" lean-forward="false" selection-start-line="188" selection-start-column="36" selection-end-line="188" selection-end-column="36" />
+        <state relative-caret-position="135">
+          <caret line="131" column="4" lean-forward="false" selection-start-line="131" selection-start-column="4" selection-end-line="131" selection-end-column="6" />
           <folding>
             <element signature="e#0#24#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/solution/solution_1_1_1.py">
+    <entry file="file://$PROJECT_DIR$/db_function.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="25">
-          <caret line="1" column="24" lean-forward="false" selection-start-line="1" selection-start-column="24" selection-end-line="1" selection-end-column="24" />
-          <folding />
+        <state relative-caret-position="509">
+          <caret line="80" column="19" lean-forward="false" selection-start-line="80" selection-start-column="19" selection-end-line="80" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/appweb.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="481">
-          <caret line="491" column="33" lean-forward="true" selection-start-line="491" selection-start-column="33" selection-end-line="491" selection-end-column="33" />
+        <state relative-caret-position="260">
+          <caret line="490" column="2" lean-forward="false" selection-start-line="490" selection-start-column="2" selection-end-line="490" selection-end-column="2" />
           <folding>
             <element signature="e#0#23#0" expanded="true" />
           </folding>

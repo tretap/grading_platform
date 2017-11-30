@@ -78,7 +78,7 @@ def create_quiz_db(id_assignment, name, problem, solution, example, testcase):
     quiz_info = Assignment_db_quiz(id_assignment, result.id)
     session.add(quiz_info)
     session.commit()
-
+    return _quiz.id
 #-----------------------------------------------------------------------------------------------#
 
 #----------------------This Section for GET INFORMATION FORM DB --------------------------------#

@@ -488,6 +488,9 @@ def create_quiz():
 
 
         file = request.files.getlist("file")[0]
+  
+
+
         filename = file.filename
         if ".py" not in filename:
             return render_template('createquiz.html', error_msn="Sorry sir, name or about can't be blank!")
@@ -580,7 +583,8 @@ def create_quiz():
         sol.write(solution)
         sol.close()
 
-    create_quiz_db(session.get('assignment'), name, problem, solution, example, testcase)
+    quiz_id = create_quiz_db(session.get('assignment'), name, problem, solution, example, testcase)
+    print('quiz_id = '+str(quiz_id))
 
     return loadingassignment(session.get('assignment'))
 @app.route('/delete_quiz/<string:id_quiz>')
