@@ -3,4 +3,4 @@ def greeting(n):
     b = ''
     return 'Hello '+n
 #greeting('john')
-#greeting('michael')
+#greeting('michael')    
